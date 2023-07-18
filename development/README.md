@@ -101,17 +101,19 @@ Next,
 
 ## NVIDIA
 
+In terms of installing  `cudatoolkit` & `cuDNN` within a WSL (Windows Subsystem for Linux) operating system, the a probable approach is
+
 ```shell
   conda activate base
   conda install -c anaconda cudatoolkit=11.8.0
   python -m pip install nvidia-cudnn-cu11==8.6.0.163 
 ```
 
-Then
+Beware of the `base` installation.  Then
 
 ```shell
   mkdir -p /opt/miniconda3/etc/conda/activate.d
-  
+
   echo 'CUDNN_PATH=$(dirname $(python -c "import nvidia.cudnn;print(nvidia.cudnn.__file__)"))' 
     >> /opt/miniconda3/etc/conda/activate.d/env_vars.sh
 
