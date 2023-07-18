@@ -5,7 +5,7 @@
 
 <br>
 
-### IntelliJ IDEA
+## IntelliJ IDEA
 
 ```shell
   # get
@@ -20,13 +20,19 @@
 <br>
 <br>
 
-### miniconda
+## miniconda
 
 Foremost, check the python version
 
 ```shell
   python --version
 ```
+
+
+<br>
+
+
+### get
 
 Subsequently, `get` the [installer](https://docs.conda.io/en/latest/miniconda.html#linux-installers) relative to the system's python version, e.g.,
 
@@ -37,7 +43,11 @@ Subsequently, `get` the [installer](https://docs.conda.io/en/latest/miniconda.ht
   sudo chmod +x Miniconda3-py310_23.5.2-0-Linux-x86_64.sh
 ```
 
+
 <br>
+
+
+### Install
 
 Install in the specified directory
 
@@ -49,7 +59,11 @@ Install in the specified directory
   >>> no
 ```
 
+
 <br>
+
+
+### Path Variable
 
 Open `profile`, i.e.,
 
@@ -67,7 +81,11 @@ fi
 
 The command `i` starts the edit mode, `ESC` exits the mode, and `:wq` saves; [`vi` commands](https://www.cs.colostate.edu/helpdocs/vi.html).  **Exit** the terminal.
 
+
 <br>
+
+
+### Set-up
 
 Next,
 
@@ -77,16 +95,6 @@ Next,
   sudo chown -R $USER:$USER /opt/miniconda3
 
 ```
-
-
-
-
-
-
-
-
-
-
 
 <br> 
 <br>
