@@ -121,8 +121,7 @@ Beware of the `base` installation.  Then
     >> /opt/miniconda3/etc/conda/activate.d/env_vars.sh
 ```
 
-Subsequently, run
-
+Is `CONDA_PREFIX='/opt/miniconda3'` a sensible option?  Subsequently, run
 
 ```shell
   source /opt/miniconda3/etc/conda/activate.d/env_vars.sh
