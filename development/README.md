@@ -111,8 +111,12 @@ Then
 
 ```shell
   mkdir -p /opt/miniconda3/etc/conda/activate.d
-  echo 'CUDNN_PATH=$(dirname $(python -c "import nvidia.cudnn;print(nvidia.cudnn.__file__)"))' >> /opt/miniconda3/etc/conda/activate.d/env_vars.sh
-  echo 'export LD_LIBRARY_PATH=/opt/miniconda3/lib/:$CUDNN_PATH/lib:$LD_LIBRARY_PATH' >> /opt/miniconda3/etc/conda/activate.d/env_vars.sh
+  
+  echo 'CUDNN_PATH=$(dirname $(python -c "import nvidia.cudnn;print(nvidia.cudnn.__file__)"))' 
+    >> /opt/miniconda3/etc/conda/activate.d/env_vars.sh
+
+  echo 'export LD_LIBRARY_PATH=/opt/miniconda3/lib/:$CUDNN_PATH/lib:$LD_LIBRARY_PATH' 
+    >> /opt/miniconda3/etc/conda/activate.d/env_vars.sh
 ```
 
 
