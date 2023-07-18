@@ -121,7 +121,12 @@ Beware of the `base` installation.  Then
     >> /opt/miniconda3/etc/conda/activate.d/env_vars.sh
 ```
 
+Subsequently, run
 
+
+```shell
+  source /opt/miniconda3/etc/conda/activate.d/env_vars.sh
+```
 
 
 <br> 
