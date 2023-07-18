@@ -96,6 +96,17 @@ Next,
 
 ```
 
+<br>
+<br>
+
+## NVIDIA
+
+```shell
+  conda activate base
+  conda install -c anaconda cudatoolkit=11.8.0
+  python -m pip install nvidia-cudnn-cu11==8.6.0.163 
+```
+
 <br> 
 <br>
 
