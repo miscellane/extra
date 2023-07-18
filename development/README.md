@@ -2,6 +2,16 @@
 
 **LINUX**
 
+
+<br>
+
+### IntelliJ IDEA
+
+```shell
+  
+```
+
+
 <br> 
 <br>
 
