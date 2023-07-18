@@ -127,6 +127,24 @@ Is `CONDA_PREFIX='/opt/miniconda3'` a sensible option?  Subsequently, run
   source /opt/miniconda3/etc/conda/activate.d/env_vars.sh
 ```
 
+<br>
+<br>
+
+## git
+
+```shell
+  git config --global user.name ""
+  git config --global user.email "...@users.noreply.github.com"
+  git config --global core.editor ""
+
+  ssh-keygen -t ed25519 -C "...@users.noreply.github.com"
+
+  cat ~/.ssh/id_ed25519.pub
+```
+
+
+
+
 
 <br> 
 <br>
