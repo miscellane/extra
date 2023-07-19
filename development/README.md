@@ -155,7 +155,7 @@ Uninstall packages
 
 <br>
 
-### `apt`
+### Via `apt`
 
 Setting-up the [`apt` repo](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 
@@ -182,11 +182,35 @@ Setting-up the [`apt` repo](https://docs.docker.com/engine/install/ubuntu/#insta
 
 <br>
 
-
-### Docker Engine
-
 ```bash
   sudo apt-get update
+```
+
+<br>
+
+Alas the command
+
+```bash
+  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+fails.
+
+
+<br>
+<br>
+
+### Via Packages
+
+```bash
+
+  endpoint='https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64'
+
+  sudo wget $endpoint/containerd.io_1.6.21-1_amd64.deb
+  sudo wget $endpoint/docker-ce_24.0.4-1~ubuntu.22.04~jammy_amd64.deb
+  sudo wget $endpoint/docker-ce-cli_24.0.4-1~ubuntu.22.04~jammy_amd64.deb
+  sudo wget $endpoint/docker-buildx-plugin_0.11.1-1~ubuntu.22.04~jammy_amd64.deb
+  sudo wget $endpoint/docker-compose-plugin_2.19.1-1~ubuntu.22.04~jammy_amd64.deb
 ```
 
 
