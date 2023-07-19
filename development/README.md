@@ -142,8 +142,14 @@ Is `CONDA_PREFIX='/opt/miniconda3'` a sensible option?  Subsequently, run
   cat ~/.ssh/id_ed25519.pub
 ```
 
+<br>
+<br>
 
+## docker
 
+```bash
+  for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+```
 
 
 <br> 
