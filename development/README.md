@@ -208,7 +208,8 @@ After determining Ubuntu release details
   cat /etc/os-release
 ```
 
-Get 
+Subsequently, get the appropriate packages via the [distributions page](https://download.docker.com/linux/ubuntu/dists/
+); for [this specific case](https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/).
 
 ```bash
 
