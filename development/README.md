@@ -244,6 +244,8 @@ Check
   sudo service docker start
 ```
 
+To upgrade, download the latest set of packages, then repeat the installation steps.
+
 
 <br> 
 <br>
