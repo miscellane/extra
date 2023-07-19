@@ -202,6 +202,14 @@ fails.
 
 ### Via Packages
 
+After determining Ubuntu release details
+
+```bash
+  cat /etc/os-release
+```
+
+Get 
+
 ```bash
 
   endpoint='https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64'
