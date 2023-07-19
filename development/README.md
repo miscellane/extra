@@ -180,6 +180,15 @@ Setting-up the [`apt` repo](https://docs.docker.com/engine/install/ubuntu/#insta
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
+<br>
+
+
+### Docker Engine
+
+```bash
+  sudo apt-get update
+```
+
 
 <br> 
 <br>
