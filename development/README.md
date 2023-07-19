@@ -236,6 +236,15 @@ Installing:
 	docker-compose-plugin_2.19.1-1~ubuntu.22.04~jammy_amd64.deb \
 ```
 
+<br>
+
+Check
+
+```bash
+  sudo service docker start
+```
+
+
 <br> 
 <br>
 
