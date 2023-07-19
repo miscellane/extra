@@ -208,6 +208,8 @@ After determining Ubuntu release details
   cat /etc/os-release
 ```
 
+<br>
+
 Subsequently, get the appropriate packages via the [distributions page](https://download.docker.com/linux/ubuntu/dists/
 ); for [this specific case](https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/).
 
@@ -222,6 +224,17 @@ Subsequently, get the appropriate packages via the [distributions page](https://
   sudo wget $endpoint/docker-compose-plugin_2.19.1-1~ubuntu.22.04~jammy_amd64.deb
 ```
 
+<br>
+
+Installing:
+
+```bash
+  sudo dpkg -i containerd.io_1.6.21-1_amd64.deb \
+	docker-ce_24.0.4-1~ubuntu.22.04~jammy_amd64.deb \ 
+	docker-ce-cli_24.0.4-1~ubuntu.22.04~jammy_amd64.deb \
+	docker-buildx-plugin_0.11.1-1~ubuntu.22.04~jammy_amd64.deb \
+	docker-compose-plugin_2.19.1-1~ubuntu.22.04~jammy_amd64.deb \
+```
 
 <br> 
 <br>
