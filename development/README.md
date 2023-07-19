@@ -155,6 +155,10 @@ Uninstall packages
 
 <br>
 
+### `apt`
+
+Setting-up the [`apt` repo](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+
 ```bash
   sudo apt-get update
   sudo apt-get install ca-certificates curl gnupg
