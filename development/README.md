@@ -101,7 +101,7 @@ Next,
 
 ## NVIDIA
 
-In terms of installing  `cudatoolkit` & `cuDNN` within a WSL (Windows Subsystem for Linux) operating system, the a probable approach is
+In terms of installing  `cudatoolkit` & `cuDNN` within a WSL (Windows Subsystem for Linux) operating system, a probable approach is
 
 ```shell
   conda activate base
