@@ -14,7 +14,7 @@ wherein `-p 10000:8888` maps the host port $10000$ to container port $8888$
 
 <br>
 
-Build a new container image via using the Dockerfile in the current directory, i.e., `.`; the image's tag is `notebook`.
+Build a new container image using the Dockerfile in the current directory, i.e., the closing `.`; the image's tag is `notebook`.
 
 > docker build -t notebook .
 
