@@ -13,6 +13,12 @@ An [interesting article](https://www.docker.com/blog/supercharging-ai-ml-develop
 wherein `-p 10000:8888` maps the host port $10000$ to container port $8888$
 
 <br>
+
+Build a new container image via using the Dockerfile in the current directory, i.e., `.`; the image's tag is `notebook`.
+
+> docker build -t notebook .
+
+<br>
 <br>
 
 <br>
