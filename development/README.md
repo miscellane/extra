@@ -136,6 +136,7 @@ Is `CONDA_PREFIX='/opt/miniconda3'` a sensible option?  Subsequently, run
   git config --global user.name ""
   git config --global user.email "...@users.noreply.github.com"
   git config --global core.editor "vim --nofork"
+  git config --global init.defaultBranch master
 
   ssh-keygen -t ed25519 -C "...@users.noreply.github.com"
 
