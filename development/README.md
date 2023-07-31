@@ -225,8 +225,16 @@ Restart Docker Desktop, then run
 docker run --rm --gpus all nvidia/cuda:{cuda_version}-base-ubuntu{ubuntu_version} nvidia-smi
 ```
 
+wherein
+
 * `cuda_version`: {major}.{minor}.{build}, e.g., 12.2.0
 * `ubuntu_version`: {major}.{minor}, e.g., 20.04
+
+e.g.,
+
+```shell
+docker run --rm --gpus all nvidia/cuda:12.2.0-base-ubuntu20.04 nvidia-smi
+```
 
 Important, ensure that a [`nvidia/cuda` tag]( https://hub.docker.com/r/nvidia/cuda/tags) that is inline with the machine's CUDA & Ubuntu versions exists.  The machine's cuda version is retrievable via
 
