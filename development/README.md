@@ -240,7 +240,7 @@ and
 cat /etc/os-release
 ```
 
-prints the Ubuntu version, amongst other details.
+prints the Ubuntu version, amongst other details; alternatively, `lsb_release -a` or `cat /etc/issue`.
 
 
 <br> 
