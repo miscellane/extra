@@ -172,7 +172,7 @@ pip install pytest coverage pylint pytest-cov flake8
 <br>
 <br>
 
-## docker
+## Docker
 
 Uninstall packages
 
@@ -180,98 +180,7 @@ Uninstall packages
   for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
 
-<br>
 
-### Via `apt`
-
-Setting-up the [`apt` repo](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
-
-```bash
-  sudo apt-get update
-  sudo apt-get install ca-certificates curl gnupg
-```
-
-<br>
-
-```bash
-  sudo install -m 0755 -d /etc/apt/keyrings
-  wget https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  sudo chmod a+r /etc/apt/keyrings/docker.gpg
-```
-
-<br>
-
-```bash
-  echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] \
-  https://download.docker.com/linux/ubuntu "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
-
-<br>
-
-```bash
-  sudo apt-get update
-```
-
-<br>
-
-Alas, the command
-
-```bash
-  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
-fails.
-
-
-<br>
-<br>
-
-### Via Packages
-
-After determining Ubuntu release details
-
-```bash
-  cat /etc/os-release
-```
-
-<br>
-
-Subsequently, get the appropriate packages via the [distributions page](https://download.docker.com/linux/ubuntu/dists/
-); for [this specific case](https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/).
-
-```bash
-
-  endpoint='https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64'
-
-  sudo wget $endpoint/containerd.io_1.6.21-1_amd64.deb
-  sudo wget $endpoint/docker-ce_24.0.4-1~ubuntu.22.04~jammy_amd64.deb
-  sudo wget $endpoint/docker-ce-cli_24.0.4-1~ubuntu.22.04~jammy_amd64.deb
-  sudo wget $endpoint/docker-buildx-plugin_0.11.1-1~ubuntu.22.04~jammy_amd64.deb
-  sudo wget $endpoint/docker-compose-plugin_2.19.1-1~ubuntu.22.04~jammy_amd64.deb
-```
-
-<br>
-
-Installing:
-
-```bash
-  sudo dpkg -i containerd.io_1.6.21-1_amd64.deb \
-	docker-ce_24.0.4-1~ubuntu.22.04~jammy_amd64.deb \ 
-	docker-ce-cli_24.0.4-1~ubuntu.22.04~jammy_amd64.deb \
-	docker-buildx-plugin_0.11.1-1~ubuntu.22.04~jammy_amd64.deb \
-	docker-compose-plugin_2.19.1-1~ubuntu.22.04~jammy_amd64.deb \
-```
-
-<br>
-
-Check
-
-```bash
-  sudo service docker start
-```
-
-To upgrade, download the latest set of packages, then repeat the installation steps.
 
 
 <br> 
