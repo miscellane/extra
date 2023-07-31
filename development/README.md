@@ -158,7 +158,7 @@ pip install pytest coverage pylint pytest-cov flake8
 
 ## GIT
 
-Update `git` via the `git-core` <abbr title="Personal Package Archive">PPA</abbr> (Personal Package Archive).
+Update `git` via the `git-core/ppa` <abbr title="Personal Package Archive">PPA</abbr> (Personal Package Archive).
 
 ```shell
 sudo add-apt-repository ppa:git-core/ppa
