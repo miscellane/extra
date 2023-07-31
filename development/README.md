@@ -156,7 +156,7 @@ pip install pytest coverage pylint pytest-cov flake8
 <br>
 <br>
 
-## git
+## GIT
 
 ```shell
   git config --global user.name ""
@@ -174,9 +174,9 @@ pip install pytest coverage pylint pytest-cov flake8
 
 ## Docker
 
-Uninstall packages
+Foremost, uninstall docker within each WSL (Windows Subsystem for Linux) operating system that will be associated with Docker Desktop
 
-```bash
+```shell
   for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
 
