@@ -202,6 +202,14 @@ curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-
     sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 ```
 
+<br>
+
+Next install `nvidia-container-toolkit`
+
+```shell
+sudo apt update
+sudo apt install -y nvidia-container-toolkit
+```
 
 <br> 
 <br>
