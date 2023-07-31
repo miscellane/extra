@@ -180,6 +180,7 @@ Foremost, uninstall docker within each WSL (Windows Subsystem for Linux) operati
   for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
 
+[This avoids conflicts](https://docs.docker.com/desktop/wsl/#:~:text=To%20avoid%20any%20potential%20conflicts).
 
 
 
