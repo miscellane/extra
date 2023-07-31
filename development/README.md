@@ -219,6 +219,16 @@ sudo mkdir -p /etc/docker
 sudo nvidia-ctk runtime configure --runtime=docker
 ```
 
+Restart Docker Desktop, then run
+
+```shell
+docker run --rm --gpus all nvidia/cuda:{cuda_version}-base-ubuntu{ubuntu_version} nvidia-smi
+```
+
+* `cuda_version`: {major}.{minor}.{build}, e.g., 12.2.0
+* `ubuntu_version`: {major}.{minor}, e.g., 20.04
+
+
 <br> 
 <br>
 
