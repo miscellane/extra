@@ -65,7 +65,7 @@ Install in the specified directory
 
 ### Path Variable
 
-Open `profile`, i.e.,
+Open `/etc/profile`, i.e.,
 
 ```shell
   sudo vi profile
@@ -87,13 +87,12 @@ The command `i` starts the edit mode, `ESC` exits the mode, and `:wq` saves; [`v
 
 ### Set-up
 
-Next,
+Next, within a new terminal
 
 ```shell
   conda init bash
   conda config --set auto_activate_base false
   sudo chown -R $USER:$USER /opt/miniconda3
-
 ```
 
 <br>
