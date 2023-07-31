@@ -188,7 +188,19 @@ Foremost, uninstall docker within each WSL (Windows Subsystem for Linux) operati
 
 ## NVIDIA Container Toolkit
 
-[**Setting Up NVIDIA Container Toolkit**](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#setting-up-nvidia-container-toolkit) outlines the setting-up steps.
+[**Setting Up NVIDIA Container Toolkit**](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#setting-up-nvidia-container-toolkit) outlines the setting-up steps.  Foremost, set up the package directory & <abbr title="GNU Privacy Guard">GPG</abbr> key
+
+```shell
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+echo $distribution
+
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | \
+  sudo gpg --dearmour -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+  
+curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
+  sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+```
 
 
 <br> 
