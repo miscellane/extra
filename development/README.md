@@ -158,6 +158,16 @@ pip install pytest coverage pylint pytest-cov flake8
 
 ## GIT
 
+Update `git` via the repository ...
+
+```shell
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt update
+sudo apt list --upgradable
+sudo apt install git-all
+```
+
+
 ```shell
   git config --global user.name ""
   git config --global user.email "...@users.noreply.github.com"
