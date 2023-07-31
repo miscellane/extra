@@ -19,8 +19,133 @@
 
 <br>
 <br>
+<br>
 
-## miniconda
+
+## GIT
+
+Update `git` via the `git-core/ppa` <abbr title="Personal Package Archive">PPA</abbr> (Personal Package Archive).
+
+```shell
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt update
+sudo apt list --upgradable
+sudo apt install git-all
+```
+
+Subsequently, [set up & configure](https://git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config) `git` ...
+
+```shell
+  git config --global user.name ""
+  git config --global user.email "...@users.noreply.github.com"
+  git config --global core.editor "vim --nofork"
+  git config --global init.defaultBranch master
+
+  ssh-keygen -t ed25519 -C "...@users.noreply.github.com"
+
+  cat ~/.ssh/id_ed25519.pub
+```
+
+<br>
+<br>
+<br>
+
+## Docker
+
+<br>
+
+### Docker Desktop
+
+Foremost, uninstall docker within each WSL (Windows Subsystem for Linux) operating system that will be associated with Docker Desktop
+
+```shell
+  for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+```
+
+[This avoids conflicts](https://docs.docker.com/desktop/wsl/#:~:text=To%20avoid%20any%20potential%20conflicts).  Subsequently, [install Docker Desktop](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-containers#install-docker-desktop).  Read [...](https://www.docker.com/products/docker-desktop/alternatives/) for an outline of the advantages of Docker Desktop vis-à-vis Docker Engine.
+
+<br>
+<br>
+
+### NVIDIA Container Toolkit
+
+[**Setting Up NVIDIA Container Toolkit**](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#setting-up-nvidia-container-toolkit) outlines the setting-up steps.  Foremost, set up the package directory & <abbr title="GNU Privacy Guard">GPG</abbr> key
+
+```shell
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+echo $distribution
+
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | \
+  sudo gpg --dearmour -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+  
+curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
+  sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+```
+
+Next install `nvidia-container-toolkit`
+
+```shell
+sudo apt update
+sudo apt install -y nvidia-container-toolkit
+```
+
+Subsequently, ensure the Docker daemon recognises NVIDIA Container Runtime by running a configuration script
+
+```shell
+# Initially, ensure /etc/docker exists; option -p ensures all the directories of a path hierarchy exist
+sudo mkdir -p /etc/docker
+sudo nvidia-ctk runtime configure --runtime=docker
+```
+
+Restart Docker Desktop, then run
+
+```shell
+docker run --rm --gpus all nvidia/cuda:{cuda_version}-base-ubuntu{ubuntu_version} nvidia-smi
+```
+
+wherein
+
+* `cuda_version`: {major}.{minor}.{build}, e.g., 12.2.0
+* `ubuntu_version`: {major}.{minor}, e.g., 20.04
+
+e.g.,
+
+```shell
+docker run --rm --gpus all nvidia/cuda:12.2.0-base-ubuntu20.04 nvidia-smi
+```
+
+Important, ensure that a [`nvidia/cuda` tag]( https://hub.docker.com/r/nvidia/cuda/tags) that is inline with the machine's CUDA & Ubuntu versions exists.  The machine's cuda version is retrievable via
+
+```shell
+nvidia-smi
+```
+
+within a linux system.  Alternatively, the Windows Command Prompt command
+
+```commandline
+nvcc -V
+```
+
+will print the cuda version.  In the case of Ubuntu
+
+```shell
+cat /etc/os-release
+```
+
+prints the Ubuntu version, amongst other details; alternatively, `lsb_release -a` or `cat /etc/issue`.
+
+
+<br> 
+<br>
+<br>
+
+
+## Virtual Environments
+
+<br>
+
+### Software: `miniconda`
 
 Foremost, check the python version
 
@@ -28,11 +153,7 @@ Foremost, check the python version
   python --version
 ```
 
-
-<br>
-
-
-### get
+#### get
 
 Subsequently, `get` the [installer](https://docs.conda.io/en/latest/miniconda.html#linux-installers) relative to the system's python version, e.g.,
 
@@ -43,11 +164,7 @@ Subsequently, `get` the [installer](https://docs.conda.io/en/latest/miniconda.ht
   sudo chmod +x Miniconda3-py310_23.5.2-0-Linux-x86_64.sh
 ```
 
-
-<br>
-
-
-### Install
+#### Install
 
 Install in the specified directory
 
@@ -59,13 +176,9 @@ Install in the specified directory
   >>> no
 ```
 
+#### Path Variable
 
-<br>
-
-
-### Path Variable
-
-Open `profile`, i.e.,
+Open `/etc/profile`, i.e.,
 
 ```shell
   sudo vi profile
@@ -81,174 +194,82 @@ fi
 
 The command `i` starts the edit mode, `ESC` exits the mode, and `:wq` saves; [`vi` commands](https://www.cs.colostate.edu/helpdocs/vi.html).  **Exit** the terminal.
 
+#### Set-up
 
-<br>
-
-
-### Set-up
-
-Next,
+Next, within a new terminal
 
 ```shell
   conda init bash
   conda config --set auto_activate_base false
   sudo chown -R $USER:$USER /opt/miniconda3
-
 ```
 
 <br>
 <br>
 
-## NVIDIA
+<br>
+<br>
 
-In terms of installing  `cudatoolkit` & `cuDNN` within a WSL (Windows Subsystem for Linux) operating system, a probable approach is
+### A sample Tensorflow/<abbr>GPU</abbr> virtual environment
+
+Foremost, a virtual conda environment for tensorflow - within a WSL (Windows Subsystem for Linux) operating system ...
 
 ```shell
-  conda activate base
-  conda install -c anaconda cudatoolkit=11.8.0
-  python -m pip install nvidia-cudnn-cu11==8.6.0.163 
+conda create --prefix /opt/miniconda3/envs/tensors python=3.11
 ```
 
-Beware of the `base` installation.  Then
+Next, activate the environment then inspect ...
 
 ```shell
-  mkdir -p /opt/miniconda3/etc/conda/activate.d
-
-  echo 'CUDNN_PATH=$(dirname $(python -c "import nvidia.cudnn;print(nvidia.cudnn.__file__)"))' 
-    >> /opt/miniconda3/etc/conda/activate.d/env_vars.sh
-
-  echo 'export LD_LIBRARY_PATH=/opt/miniconda3/lib/:$CUDNN_PATH/lib:$LD_LIBRARY_PATH' 
-    >> /opt/miniconda3/etc/conda/activate.d/env_vars.sh
+conda activate tensors
+python -m pip list
+conda list
 ```
 
-Is `CONDA_PREFIX='/opt/miniconda3'` a sensible option?  Subsequently, run
+Next, the core/background installations for tensorflow ... `cudatoolkit` & `cuDNN`
 
 ```shell
-  source /opt/miniconda3/etc/conda/activate.d/env_vars.sh
+conda install -c conda-forge cudatoolkit=11.8.0
+pip install nvidia-cudnn-cu11==8.6.0.163
 ```
 
-<br>
-<br>
-
-## git
+... hence, the setting-up of their path variables
 
 ```shell
-  git config --global user.name ""
-  git config --global user.email "...@users.noreply.github.com"
-  git config --global core.editor "vim --nofork"
-  git config --global init.defaultBranch master
+# ascertain that this variable has a value
+echo $CONDA_PREFIX
 
-  ssh-keygen -t ed25519 -C "...@users.noreply.github.com"
+# subsequently
+mkdir -p $CONDA_PREFIX/etc/conda/activate.d
 
-  cat ~/.ssh/id_ed25519.pub
+echo 'CUDNN_PATH=$(dirname $(python -c "import nvidia.cudnn;print(nvidia.cudnn.__file__)"))' \
+  >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+  
+echo 'export LD_LIBRARY_PATH=$CONDA_PREFIX/lib/:$CUDNN_PATH/lib:$LD_LIBRARY_PATH' \
+  >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+```
+
+Now, **install `tensorflow`**
+
+```shell
+pip install tensorflow==2.12.*
+```
+
+Perhaps [TensorRT](https://www.tensorflow.org/install/pip#windows-wsl2:~:text=improve%20latency%20and%20throughput%20for%20inference)
+
+```shell
+pip install --upgrade tensorrt
+```
+
+The upcoming sample project depends on ...
+
+```shell
+pip install "dask[complete]"
+pip install scikit-learn
+pip install pytest coverage pylint pytest-cov flake8
 ```
 
 <br>
-<br>
-
-## docker
-
-Uninstall packages
-
-```bash
-  for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
-```
-
-<br>
-
-### Via `apt`
-
-Setting-up the [`apt` repo](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
-
-```bash
-  sudo apt-get update
-  sudo apt-get install ca-certificates curl gnupg
-```
-
-<br>
-
-```bash
-  sudo install -m 0755 -d /etc/apt/keyrings
-  wget https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  sudo chmod a+r /etc/apt/keyrings/docker.gpg
-```
-
-<br>
-
-```bash
-  echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] \
-  https://download.docker.com/linux/ubuntu "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
-
-<br>
-
-```bash
-  sudo apt-get update
-```
-
-<br>
-
-Alas the command
-
-```bash
-  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
-fails.
-
-
-<br>
-<br>
-
-### Via Packages
-
-After determining Ubuntu release details
-
-```bash
-  cat /etc/os-release
-```
-
-<br>
-
-Subsequently, get the appropriate packages via the [distributions page](https://download.docker.com/linux/ubuntu/dists/
-); for [this specific case](https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/).
-
-```bash
-
-  endpoint='https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64'
-
-  sudo wget $endpoint/containerd.io_1.6.21-1_amd64.deb
-  sudo wget $endpoint/docker-ce_24.0.4-1~ubuntu.22.04~jammy_amd64.deb
-  sudo wget $endpoint/docker-ce-cli_24.0.4-1~ubuntu.22.04~jammy_amd64.deb
-  sudo wget $endpoint/docker-buildx-plugin_0.11.1-1~ubuntu.22.04~jammy_amd64.deb
-  sudo wget $endpoint/docker-compose-plugin_2.19.1-1~ubuntu.22.04~jammy_amd64.deb
-```
-
-<br>
-
-Installing:
-
-```bash
-  sudo dpkg -i containerd.io_1.6.21-1_amd64.deb \
-	docker-ce_24.0.4-1~ubuntu.22.04~jammy_amd64.deb \ 
-	docker-ce-cli_24.0.4-1~ubuntu.22.04~jammy_amd64.deb \
-	docker-buildx-plugin_0.11.1-1~ubuntu.22.04~jammy_amd64.deb \
-	docker-compose-plugin_2.19.1-1~ubuntu.22.04~jammy_amd64.deb \
-```
-
-<br>
-
-Check
-
-```bash
-  sudo service docker start
-```
-
-To upgrade, download the latest set of packages, then repeat the installation steps.
-
-
-<br> 
 <br>
 
 <br> 
