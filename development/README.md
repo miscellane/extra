@@ -158,7 +158,7 @@ pip install pytest coverage pylint pytest-cov flake8
 
 ## GIT
 
-Update `git` via the repository ...
+Update `git` via the `git-core` <abbr title="Personal Package Archive">PPA</abbr> (Personal Package Archive).
 
 ```shell
 sudo add-apt-repository ppa:git-core/ppa
@@ -167,6 +167,7 @@ sudo apt list --upgradable
 sudo apt install git-all
 ```
 
+Subsequently, [set up & configure](https://git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config) `git` ...
 
 ```shell
   git config --global user.name ""
