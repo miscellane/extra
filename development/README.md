@@ -253,7 +253,13 @@ Important, ensure that a [`nvidia/cuda` tag]( https://hub.docker.com/r/nvidia/cu
 nvidia-smi
 ```
 
-and
+within a linux system.  Alternatively, the Windows Command Prompt command
+
+```commandline
+nvcc -V
+```
+
+will print the cuda version.  In the case of Ubuntu
 
 ```shell
 cat /etc/os-release
