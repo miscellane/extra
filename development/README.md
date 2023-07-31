@@ -19,7 +19,7 @@
 
 <br>
 <br>
-
+<br>
 
 
 ## GIT
@@ -52,6 +52,8 @@ Subsequently, [set up & configure](https://git-scm.com/book/en/v2/Appendix-C%3A-
 
 ## Docker
 
+<br>
+
 ### Docker Desktop
 
 Foremost, uninstall docker within each WSL (Windows Subsystem for Linux) operating system that will be associated with Docker Desktop
@@ -61,7 +63,6 @@ Foremost, uninstall docker within each WSL (Windows Subsystem for Linux) operati
 ```
 
 [This avoids conflicts](https://docs.docker.com/desktop/wsl/#:~:text=To%20avoid%20any%20potential%20conflicts).  Subsequently, [install Docker Desktop](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-containers#install-docker-desktop).  Read [...](https://www.docker.com/products/docker-desktop/alternatives/) for an outline of the advantages of Docker Desktop vis-à-vis Docker Engine.
-
 
 <br>
 <br>
@@ -81,8 +82,6 @@ curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-
   sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
     sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 ```
-
-<br>
 
 Next install `nvidia-container-toolkit`
 
@@ -143,6 +142,8 @@ prints the Ubuntu version, amongst other details; alternatively, `lsb_release -a
 
 
 ## Virtual Environments
+
+<br>
 
 ### Software: `miniconda`
 
@@ -206,6 +207,7 @@ Next, within a new terminal
 <br>
 <br>
 
+<br>
 <br>
 
 ### A sample Tensorflow/<abbr>GPU</abbr> virtual environment
