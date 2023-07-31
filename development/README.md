@@ -189,7 +189,7 @@ Setting-up the [`apt` repo](https://docs.docker.com/engine/install/ubuntu/#insta
 
 <br>
 
-Alas the command
+Alas, the command
 
 ```bash
   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
