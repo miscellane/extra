@@ -1,6 +1,6 @@
 <br>
 
-**Extra**
+**Investments**
 
 <br> 
 <br>
