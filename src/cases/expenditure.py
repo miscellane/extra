@@ -74,5 +74,6 @@ class Expenditure:
         data = self.__code(blob=data)
         data = self.__filter(blob=data)
         data = self.__segment(blob=data)
+        data.loc[:, 'year'] = year
 
         return data
