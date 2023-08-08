@@ -5,6 +5,7 @@ import logging
 import os
 
 import pandas as pd
+import dask
 
 import config
 import src.cases.expenditure
@@ -47,6 +48,7 @@ class Interface:
         directories.cleanup(path=self.__datasets)
         directories.create(path=self.__datasets)
 
+    @dask.delayed
     def __expenditure_cases(self, year: int) -> pd.DataFrame:
         """
 
@@ -56,6 +58,7 @@ class Interface:
 
         return self.__expenditure.exc(year=year)
 
+    @dask.delayed
     def __write(self, blob: pd.DataFrame, path: str) -> str:
         """
 
@@ -66,15 +69,18 @@ class Interface:
 
         return self.__streams.write(blob=blob, path=path)
 
-    def exc(self):
+    def exc(self) -> list:
         """
 
         :return:
         """
 
-        for year in self.__years[:1]:
+        computations = []
+        for year in self.__years:
             data = self.__expenditure_cases(year=year)
-            self.__logger.info(data.head())
-
             message = self.__write(blob=data, path=os.path.join(self.__datasets, f'{str(year)}.csv'))
-            self.__logger.info(message)
+            computations.append(message)
+        dask.visualize(computations, filename='computations.pdf')
+        messages = dask.compute(computations, scheduler='threads')[0]
+
+        return messages
