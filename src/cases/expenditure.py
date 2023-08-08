@@ -53,13 +53,17 @@ class Expenditure:
 
         return data
 
+    def __filter(self, blob: pd.DataFrame) -> pd.DataFrame:
+
+        data = blob.copy()
+        data = data.copy().loc[~data['code'].isin(self.__exclude), :]
+
+        return data
+
     def exc(self, year) -> pd.DataFrame:
 
         data = self.__dataset(sheet_name=str(year))
         data = self.__code(blob=data)
-
-        condition = data['code'].isin(self.__exclude)
-        self.__logger.info(condition)
-        self.__logger.info(data.loc[~condition, :])
+        data = self.__filter(blob=data)
 
         return data
