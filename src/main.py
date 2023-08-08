@@ -6,10 +6,7 @@ import sys
 def main():
     logger.info('investments')
 
-    years = range(1995, 2021)
-    sample = src.cases.expenditure.Expenditure().exc(year=years[0])
-    sample.info()
-    logger.info(sample.head())
+    src.cases.interface.Interface().exc()
 
 
 if __name__ == '__main__':
@@ -27,6 +24,6 @@ if __name__ == '__main__':
     logger = logging.getLogger(__name__)
 
     # classes
-    import src.cases.expenditure
+    import src.cases.interface
 
     main()
