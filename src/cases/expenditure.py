@@ -5,12 +5,17 @@ import os
 import numpy as np
 import pandas as pd
 
+import config
+
 
 class Expenditure:
 
     def __init__(self):
 
         self.uri = os.path.join(os.getcwd(), 'data', 'esatable11centralgovernment.xls')
+
+        # Exclude these expenditure transaction labels because they are aggregates of other labels
+        self.__exclude = config.Config().expenditure.exclude
 
         # data sheets
         Data = collections.namedtuple(typename='Data', field_names=['cells', 'start', 'end'])
@@ -52,5 +57,9 @@ class Expenditure:
 
         data = self.__dataset(sheet_name=str(year))
         data = self.__code(blob=data)
+
+        condition = data['code'].isin(self.__exclude)
+        self.__logger.info(condition)
+        self.__logger.info(data.loc[~condition, :])
 
         return data
