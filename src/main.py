@@ -9,6 +9,8 @@ def main():
     messages = src.cases.interface.Interface().exc()
     logger.info(messages)
 
+    src.algorithms.summaries.Summaries().exc()
+
 
 if __name__ == '__main__':
     root = os.getcwd()
@@ -26,5 +28,6 @@ if __name__ == '__main__':
 
     # classes
     import src.cases.interface
+    import src.algorithms.summaries
 
     main()
