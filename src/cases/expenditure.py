@@ -40,6 +40,7 @@ class Expenditure:
 
         doublet = data['Transaction'].str.split(pat='-', n=1, expand=True)
         doublet = doublet.copy().set_axis(['code', 'description'], axis=1)
+        doublet.loc[:, 'code'] = doublet['code'].str.strip()
         self.__logger.info(doublet)
 
         data = doublet.join(data.drop(columns=['Transaction']))
