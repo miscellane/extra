@@ -1,17 +1,26 @@
-import pandas as pd
-import os
+"""
+interface.py
+"""
 import logging
+import os
 
-import src.functions.streams
-import src.functions.directories
-import src.cases.expenditure
+import pandas as pd
 
 import config
+import src.cases.expenditure
+import src.functions.directories
+import src.functions.streams
 
 
 class Interface:
+    """
+    Interface
+    """
 
     def __init__(self):
+        """
+        Constructor
+        """
 
         self.__years = config.Config().expenditure.years
 
@@ -29,23 +38,41 @@ class Interface:
         self.__logger = logging.getLogger(__name__)
 
     def __set_up(self):
+        """
+
+        :return:
+        """
 
         directories = src.functions.directories.Directories()
         directories.cleanup(path=self.__datasets)
         directories.create(path=self.__datasets)
 
     def __expenditure_cases(self, year: int) -> pd.DataFrame:
+        """
+
+        :param year:
+        :return:
+        """
 
         return self.__expenditure.exc(year=year)
 
     def __write(self, blob: pd.DataFrame, path: str) -> str:
+        """
+
+        :param blob:
+        :param path:
+        :return:
+        """
 
         return self.__streams.write(blob=blob, path=path)
 
     def exc(self):
+        """
+
+        :return:
+        """
 
         for year in self.__years[:1]:
-
             data = self.__expenditure_cases(year=year)
             self.__logger.info(data.head())
 
