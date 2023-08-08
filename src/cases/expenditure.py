@@ -60,10 +60,19 @@ class Expenditure:
 
         return data
 
+    @staticmethod
+    def __segment(blob: pd.DataFrame) -> pd.DataFrame:
+
+        data = blob.copy()
+        data.loc[:, 'segment'] = data['code'].str.slice(stop=4)
+
+        return data
+
     def exc(self, year: int) -> pd.DataFrame:
 
         data = self.__dataset(sheet_name=str(year))
         data = self.__code(blob=data)
         data = self.__filter(blob=data)
+        data = self.__segment(blob=data)
 
         return data
