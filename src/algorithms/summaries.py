@@ -1,24 +1,50 @@
-import glob
 import logging
 import os
+
+import dask.dataframe
+import pandas as pd
+
 import config
 
 
 class Summaries:
+    """
+    Summaries
+    """
 
     def __init__(self):
+        """
+        Constructor
+        """
 
-        self.__datasets = config.Config().expenditure.datasets
+        # The overall government expenditure per segment code is recorded in field <OTE> 
+        self.__usecols = ['code', 'OTE', 'segment', 'year']
 
-        # ['code', 'OTE', 'segment']
-        # .loc[:, 'year'] =
+        # The path to the data sets
+        self.__datapath = config.Config().expenditure.datapath
 
         # logging
         logging.basicConfig(level=logging.INFO, format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
                             datefmt='%Y-%m-%d %H:%M:%S')
         self.__logger = logging.getLogger(__name__)
 
-    def exc(self):
+    def __read(self) -> pd.DataFrame:
+        """
 
-        list_of_documents = glob.glob(pathname=os.path.join(self.__datasets, '*.csv'))
-        self.__logger.info(list_of_documents)
+        :return:
+        """
+
+        frame = dask.dataframe.read_csv(
+            urlpath=os.path.join(self.__datapath, '*.csv'), usecols=self.__usecols)
+        data = frame.compute().reset_index(drop=True)
+
+        return data
+
+    def exc(self):
+        """
+
+        :return:
+        """
+
+        data = self.__read()
+        self.__logger.info(data)
