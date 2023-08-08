@@ -34,21 +34,22 @@ class Expenditure:
         except OSError as err:
             raise Exception(err.strerror) from err
 
-    def __code(self, blob: pd.DataFrame):
+    def __code(self, blob: pd.DataFrame) -> pd.DataFrame:
 
         data = blob.copy()
 
         doublet = data['Transaction'].str.split(pat='-', n=1, expand=True)
         doublet = doublet.copy().set_axis(['code', 'description'], axis=1)
         doublet.loc[:, 'code'] = doublet['code'].str.strip()
-        self.__logger.info(doublet)
 
         data = doublet.join(data.drop(columns=['Transaction']))
-        self.__logger.info(data.head())
+        self.__logger.info(data.shape)
+
+        return data
 
     def exc(self, year) -> pd.DataFrame:
 
         data = self.__dataset(sheet_name=str(year))
-        self.__code(blob=data)
+        data = self.__code(blob=data)
 
         return data
