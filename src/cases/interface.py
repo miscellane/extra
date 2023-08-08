@@ -26,7 +26,7 @@ class Interface:
         self.__years = config.Config().expenditure.years
 
         # Storage
-        self.__datasets = config.Config().expenditure.datasets
+        self.__datapath = config.Config().expenditure.datapath
         self.__set_up()
 
         # Exporting
@@ -45,8 +45,8 @@ class Interface:
         """
 
         directories = src.functions.directories.Directories()
-        directories.cleanup(path=self.__datasets)
-        directories.create(path=self.__datasets)
+        directories.cleanup(path=self.__datapath)
+        directories.create(path=self.__datapath)
 
     @dask.delayed
     def __expenditure_cases(self, year: int) -> pd.DataFrame:
@@ -78,7 +78,7 @@ class Interface:
         computations = []
         for year in self.__years:
             data = self.__expenditure_cases(year=year)
-            message = self.__write(blob=data, path=os.path.join(self.__datasets, f'{str(year)}.csv'))
+            message = self.__write(blob=data, path=os.path.join(self.__datapath, f'{str(year)}.csv'))
             computations.append(message)
         dask.visualize(computations, filename='computations.pdf')
         messages = dask.compute(computations, scheduler='threads')[0]
