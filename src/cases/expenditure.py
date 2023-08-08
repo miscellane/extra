@@ -60,7 +60,7 @@ class Expenditure:
 
         return data
 
-    def exc(self, year) -> pd.DataFrame:
+    def exc(self, year: int) -> pd.DataFrame:
 
         data = self.__dataset(sheet_name=str(year))
         data = self.__code(blob=data)
