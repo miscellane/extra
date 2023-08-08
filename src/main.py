@@ -6,7 +6,8 @@ import sys
 def main():
     logger.info('investments')
 
-    src.cases.interface.Interface().exc()
+    messages = src.cases.interface.Interface().exc()
+    logger.info(messages)
 
 
 if __name__ == '__main__':
