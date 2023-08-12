@@ -7,9 +7,9 @@ import pandas as pd
 import config
 
 
-class Summaries:
+class Overall:
     """
-    Summaries
+    Overall
     """
 
     def __init__(self):
