@@ -12,7 +12,7 @@ class Expenditure:
 
     def __init__(self):
 
-        self.uri = os.path.join(os.getcwd(), 'data', 'esatable11centralgovernment.xls')
+        self.uri = os.path.join(os.getcwd(), 'data', 'esa_table_11_central_government.xls')
 
         # Exclude these expenditure transaction labels because they are aggregates of other labels
         self.__exclude = config.Config().expenditure.exclude
