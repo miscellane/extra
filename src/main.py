@@ -9,7 +9,7 @@ def main():
     messages = src.cases.interface.Interface().exc()
     logger.info(messages)
 
-    src.algorithms.summaries.Summaries().exc()
+    src.algorithms.overall.Overall().exc()
 
 
 if __name__ == '__main__':
@@ -28,6 +28,6 @@ if __name__ == '__main__':
 
     # classes
     import src.cases.interface
-    import src.algorithms.summaries
+    import src.algorithms.overall
 
     main()
