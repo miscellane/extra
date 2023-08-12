@@ -48,3 +48,6 @@ class Summaries:
 
         data = self.__read()
         self.__logger.info(data)
+
+        tallies = data.groupby(by=['segment', 'year']).agg(total=('OTE', sum))
+        self.__logger.info(tallies)
