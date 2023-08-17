@@ -3,6 +3,8 @@ rebase.py
 """
 import logging
 
+import pandas as pd
+
 import config
 import src.functions.streams
 
@@ -27,7 +29,7 @@ class Rebase:
                             datefmt='%Y-%m-%d %H:%M:%S')
         self.__logger = logging.getLogger(__name__)
 
-    def exc(self):
+    def exc(self) -> pd.DataFrame:
         """
 
         :return:
@@ -37,5 +39,7 @@ class Rebase:
             uri=self.__deflator.source, header=0, usecols=['year', 'quote'], dtype={'year': int, 'quote': float})
 
         value = deflator.loc[deflator['year'] == self.__deflator.rebase_year, 'quote'].array[0]
-        self.__logger.info(type(value))
-        self.__logger.info(value)
+        deflator.loc[:, 'rebase'] = 100 * deflator['quote'] / value
+        self.__logger.info(deflator)
+
+        return deflator
