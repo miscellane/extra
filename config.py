@@ -9,9 +9,9 @@ class Config:
     def __init__(self):
 
         # gross domestic product (gdp) deflator series
-        self.deflator_rebase_year = 2010
-        self.deflator_base_year = 2022
-        self.deflator_file = os.path.join(os.getcwd(), 'data', 'gdp_deflator_qna_update_2022.csv')
+        Deflator = collections.namedtuple(typename='Deflator', field_names=['source', 'base_year', 'rebase_year'])
+        self.deflator = Deflator(source=os.path.join(os.getcwd(), 'data', 'gdp_deflator_qna_update_2022.csv'),
+                                 base_year=2022, rebase_year=2010)
 
         # quarterly national accounts (qna)
         Expenditure = collections.namedtuple(typename='Expenditure',
