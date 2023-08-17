@@ -14,9 +14,12 @@ class Rebase:
     """
 
     def __init__(self):
+        """
+        Constructor
+        """
+
         configurations = config.Config()
-        self.deflator_rebase_year = configurations.deflator_rebase_year
-        self.deflator_file = configurations.deflator_file
+        self.__deflator = configurations.deflator
 
         # logging
         logging.basicConfig(level=logging.INFO,
@@ -25,9 +28,14 @@ class Rebase:
         self.__logger = logging.getLogger(__name__)
 
     def exc(self):
-        deflator = src.functions.streams.Streams().read(
-            uri=self.deflator_file, header=0, usecols=['year', 'series'], dtype={'year': int, 'series': float})
+        """
 
-        value = deflator.loc[deflator['year'] == self.deflator_rebase_year, 'base']
+        :return:
+        """
+
+        deflator = src.functions.streams.Streams().read(
+            uri=self.__deflator.source, header=0, usecols=['year', 'quote'], dtype={'year': int, 'quote': float})
+
+        value = deflator.loc[deflator['year'] == self.__deflator.rebase_year, 'quote'].array[0]
         self.__logger.info(type(value))
         self.__logger.info(value)
