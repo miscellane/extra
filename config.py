@@ -15,11 +15,11 @@ class Config:
 
         # quarterly national accounts (qna)
         Expenditure = collections.namedtuple(typename='Expenditure',
-                                             field_names=['source', 'exclude', 'years', 'datapath'])
+                                             field_names=['source', 'exclude', 'years', 'destination'])
         start = 1995
         stop = 2021
         self.expenditure = Expenditure(
             source=os.path.join(os.getcwd(), 'data', 'esa_table_11_central_government.xls'),
             exclude=['_T', 'GF01', 'GF02', 'GF03', 'GF04', 'GF05', 'GF06', 'GF07', 'GF08', 'GF09', 'GF10'],
             years=np.linspace(start=start, stop=stop, num=stop - start + 1, dtype=int),
-            datapath=os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'initial'))
+            destination=os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'initial'))
