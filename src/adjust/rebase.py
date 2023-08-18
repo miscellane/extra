@@ -29,18 +29,29 @@ class Rebase:
                             datefmt='%Y-%m-%d %H:%M:%S')
         self.__logger = logging.getLogger(__name__)
 
+    def __calculate(self, data: pd.DataFrame) -> pd.DataFrame:
+        """
+
+        :param data:
+        :return:
+        """
+
+        # The <quote> of the rebase year is the rebasing denominator
+        value = data.loc[data['year'] == self.__deflator.rebase_year, 'quote'].array[0]
+        data.loc[:, 'rebase'] = 100 * data['quote'] / value
+        data.loc[:, 'kappa'] = data['rebase'] / 100
+
+        return data
+
     def exc(self) -> pd.DataFrame:
         """
 
         :return:
         """
 
-        deflator = src.functions.streams.Streams().read(
+        frame = src.functions.streams.Streams().read(
             uri=self.__deflator.source, header=0, usecols=['year', 'quote'], dtype={'year': int, 'quote': float})
+        frame = self.__calculate(data=frame.copy())
+        self.__logger.info(frame)
 
-        value = deflator.loc[deflator['year'] == self.__deflator.rebase_year, 'quote'].array[0]
-        deflator.loc[:, 'rebase'] = 100 * deflator['quote'] / value
-        deflator.loc[:, 'kappa'] = deflator['rebase'] / 100
-        self.__logger.info(deflator)
-
-        return deflator
+        return frame
