@@ -1,3 +1,6 @@
+"""
+overall.py
+"""
 import logging
 import os
 
@@ -51,7 +54,7 @@ class Overall:
         description = self.__segments.loc[self.__segments['segment_code'] == segment_code, 'segment_description'].array[0]
 
         node = {'name': segment_code, 'description': description, 'data': data.to_dict(orient='records')}
-        print(node)
+        self.__logger.info(node)
 
     def exc(self):
         """
@@ -62,11 +65,7 @@ class Overall:
         data = self.__read()
         aggregates = data.groupby(by=['segment_code', 'year']).agg(total=('OTE', sum))
         aggregates.reset_index(drop=False, inplace=True)
-        self.__logger.info(aggregates)
-
         segment_codes = aggregates['segment_code'].unique()
-        self.__logger.info(segment_codes)
 
         for segment_code in segment_codes:
-            self.__logger.info(segment_code)
             self.__node(aggregates=aggregates, segment_code=segment_code)
