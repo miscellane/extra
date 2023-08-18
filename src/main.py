@@ -9,8 +9,8 @@ def main():
     messages = src.cases.interface.Interface().exc()
     logger.info(messages)
 
-    src.algorithms.overall.Overall().exc()
-    src.adjust.revalue.Revalue().exc()
+    messages = src.adjust.revalue.Revalue().exc()
+    logger.info(messages)
 
 
 if __name__ == '__main__':
