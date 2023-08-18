@@ -5,6 +5,8 @@ import dask.dataframe
 import pandas as pd
 
 import config
+import src.functions.streams
+import src.adjust.transactions
 
 
 class Overall:
@@ -17,8 +19,10 @@ class Overall:
         Constructor
         """
 
+        self.__segments = src.adjust.transactions.Transactions().segments
+
         # The overall government expenditure per segment code is recorded in field <OTE> 
-        self.__usecols = ['code', 'OTE', 'segment', 'year']
+        self.__usecols = ['code', 'OTE', 'segment_code', 'year']
 
         # The path to the revalued data sets
         self.__datapath = config.Config().expenditure.datapath
@@ -40,6 +44,14 @@ class Overall:
 
         return data
 
+    def __node(self, aggregates: pd.DataFrame, segment_code: str):
+
+        data = aggregates.loc[aggregates['segment_code'] == segment_code, ['year', 'total']]
+        description = self.__segments[self.__segments['segment_code'] == segment_code, 'segment_description'].array[0]
+
+        node = {'name': segment_code, 'description': description, 'data': data.to_dict(orient='records')}
+        print(node)
+
     def exc(self):
         """
 
@@ -47,7 +59,9 @@ class Overall:
         """
 
         data = self.__read()
-        self.__logger.info(data)
+        aggregates = data.groupby(by=['segment_code', 'year']).agg(total=('OTE', sum))
+        aggregates.reset_index(drop=False, inplace=True)
+        self.__logger.info(aggregates)
 
-        tallies = data.groupby(by=['segment', 'year']).agg(total=('OTE', sum))
-        self.__logger.info(tallies)
+        segment_codes = aggregates['segment_code'].unique()
+        self.__logger.info(segment_codes)
