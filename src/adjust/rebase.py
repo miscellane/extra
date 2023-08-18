@@ -43,7 +43,7 @@ class Rebase:
         # The <quote> of the rebase year is the rebasing denominator
         value = data.loc[data['year'] == self.__deflator.rebase_year, 'quote'].array[0]
         data.loc[:, 'rebase'] = 100 * data['quote'] / value
-        data.loc[:, 'kappa'] = data['rebase'] / 100
+        data.loc[:, 'kappa'] = 100 / data['rebase']
 
         return data
 
