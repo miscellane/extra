@@ -12,6 +12,7 @@ import config
 import src.adjust.rebase
 import src.adjust.variables
 import src.functions.streams
+import src.functions.directories
 
 
 class Revalue:
@@ -26,6 +27,10 @@ class Revalue:
 
         # Expenditure metadata
         self.__expenditure = config.Config().expenditure
+        self.__datapath = os.path.join(os.path.dirname(self.__expenditure.destination), 'revalued')
+        directories = src.functions.directories.Directories()
+        directories.cleanup(self.__datapath)
+        directories.create(self.__datapath)
 
         # The rebase values, and variables, for revaluation
         self.__rebase: pd.DataFrame = src.adjust.rebase.Rebase().data
@@ -71,6 +76,17 @@ class Revalue:
 
         return data
 
+    def __write(self, blob: pd.DataFrame, year: int) -> str:
+        """
+
+        :param blob: Revalued data
+        :param year: Year
+        :return:
+        """
+
+        return self.__streams.write(blob=blob,
+                                    path=os.path.join(self.__datapath, f'{year}.csv'))
+
     def exc(self):
         """
 
@@ -83,4 +99,5 @@ class Revalue:
             data = self.__read(path=path)
             data = self.__streamline(blob=data)
             data = self.__revalue(blob=data, year=int(pathlib.Path(path).stem))
-            print(data)
+            message = self.__write(blob=data, year=int(pathlib.Path(path).stem))
+            print(message)
