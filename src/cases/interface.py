@@ -26,7 +26,7 @@ class Interface:
         self.__years = config.Config().expenditure.years
 
         # Storage
-        self.__datapath = config.Config().expenditure.datapath
+        self.__datapath = config.Config().expenditure.destination
         self.__set_up()
 
         # Exporting
