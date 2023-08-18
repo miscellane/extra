@@ -3,6 +3,7 @@ variables.py
 """
 import os
 
+import numpy as np
 import pandas as pd
 
 import src.functions.streams
@@ -22,6 +23,7 @@ class Variables:
 
         # the variables data
         self.data: pd.DataFrame = self.__exc()
+        self.fields: np.ndarray = self.data['field'].to_numpy()
 
     def __exc(self) -> pd.DataFrame:
         """
@@ -30,6 +32,6 @@ class Variables:
         """
 
         data = src.functions.streams.Streams().read(
-            uri=self.__uri, header=0, usecols=['variable', 'description'], dtype={'variable': str, 'description': str})
+            uri=self.__uri, header=0, usecols=['field', 'description'], dtype={'field': str, 'description': str})
 
         return data
