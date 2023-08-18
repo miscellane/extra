@@ -10,7 +10,7 @@ def main():
     logger.info(messages)
 
     src.algorithms.overall.Overall().exc()
-    src.adjust.rebase.Rebase().exc()
+    src.adjust.revalue.Revalue().exc()
 
 
 if __name__ == '__main__':
@@ -30,6 +30,6 @@ if __name__ == '__main__':
     # classes
     import src.cases.interface
     import src.algorithms.overall
-    import src.adjust.rebase
+    import src.adjust.revalue
 
     main()
