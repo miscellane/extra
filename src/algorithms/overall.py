@@ -23,9 +23,10 @@ class Overall:
         Constructor
         """
 
+        # The overarching segments, e.g., defence, economic affairs, etc.
         self.__segments = src.adjust.transactions.Transactions().segments
 
-        # The overall government expenditure per segment code is recorded in field <OTE> 
+        # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
         self.__usecols = ['code', 'OTE', 'segment_code', 'year']
 
         # The path to the revalued data sets
