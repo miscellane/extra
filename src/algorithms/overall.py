@@ -4,6 +4,7 @@ overall.py
 import logging
 import os
 
+import dask
 import dask.dataframe
 import pandas as pd
 
@@ -47,6 +48,16 @@ class Overall:
 
         return data
 
+    @staticmethod
+    def __aggregates(blob: pd.DataFrame) -> pd.DataFrame:
+
+        data = blob.copy()
+        aggregates = data.groupby(by=['segment_code', 'year']).agg(total=('OTE', sum))
+        aggregates.reset_index(drop=False, inplace=True)
+
+        return aggregates
+
+    @dask.delayed
     def __node(self, aggregates: pd.DataFrame, segment_code: str) -> dict:
         """
 
@@ -69,11 +80,17 @@ class Overall:
         :return:
         """
 
+        # Read-in the revalued data
         data = self.__read()
-        aggregates = data.groupby(by=['segment_code', 'year']).agg(total=('OTE', sum))
-        aggregates.reset_index(drop=False, inplace=True)
+
+        #
+        aggregates = self.__aggregates(blob=data)
         segment_codes = aggregates['segment_code'].unique()
 
+        computations = []
         for segment_code in segment_codes:
             node = self.__node(aggregates=aggregates, segment_code=segment_code)
-            self.__logger.info(node)
+            computations.append(node)
+        summary = dask.compute(computations, scheduler='threads')[0]
+
+        self.__logger.info(summary)
