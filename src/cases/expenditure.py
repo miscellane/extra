@@ -86,7 +86,7 @@ class Expenditure:
         """
 
         data = blob.copy()
-        data.loc[:, 'segment'] = data['code'].str.slice(stop=4)
+        data.loc[:, 'segment_code'] = data['code'].str.slice(stop=4)
 
         return data
 
