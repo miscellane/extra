@@ -47,7 +47,7 @@ class Overall:
 
         return data
 
-    def __node(self, aggregates: pd.DataFrame, segment_code: str):
+    def __node(self, aggregates: pd.DataFrame, segment_code: str) -> dict:
         """
 
         :param aggregates:
@@ -56,12 +56,12 @@ class Overall:
         """
 
         data = aggregates.loc[aggregates['segment_code'] == segment_code, ['year', 'total']]
-        self.__logger.info(data)
-        description = self.__segments.loc[self.__segments['segment_code'] == segment_code, 'segment_description'].array[
-            0]
+        description = self.__segments.loc[
+            self.__segments['segment_code'] == segment_code, 'segment_description'].array[0]
 
         node = {'name': segment_code, 'description': description, 'data': data.to_dict(orient='records')}
-        self.__logger.info(node)
+
+        return node
 
     def exc(self):
         """
@@ -75,4 +75,5 @@ class Overall:
         segment_codes = aggregates['segment_code'].unique()
 
         for segment_code in segment_codes:
-            self.__node(aggregates=aggregates, segment_code=segment_code)
+            node = self.__node(aggregates=aggregates, segment_code=segment_code)
+            self.__logger.info(node)
