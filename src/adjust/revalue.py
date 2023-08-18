@@ -7,6 +7,7 @@ import pathlib
 
 import numpy as np
 import pandas as pd
+import dask
 
 import config
 import src.adjust.rebase
@@ -40,6 +41,7 @@ class Revalue:
         # Instances
         self.__streams = src.functions.streams.Streams()
 
+    @dask.delayed
     def __read(self, path) -> pd.DataFrame:
         """
 
@@ -49,6 +51,7 @@ class Revalue:
 
         return self.__streams.read(uri=path, header=0)
 
+    @dask.delayed
     def __streamline(self, blob: pd.DataFrame) -> pd.DataFrame:
         """
 
@@ -61,6 +64,7 @@ class Revalue:
 
         return blob.copy()[spectrum]
 
+    @dask.delayed
     def __revalue(self, blob: pd.DataFrame, year: int) -> pd.DataFrame:
         """
         Revaluing vis-à-vis the rebase year
@@ -76,6 +80,7 @@ class Revalue:
 
         return data
 
+    @dask.delayed
     def __write(self, blob: pd.DataFrame, year: int) -> str:
         """
 
@@ -87,7 +92,7 @@ class Revalue:
         return self.__streams.write(blob=blob,
                                     path=os.path.join(self.__datapath, f'{year}.csv'))
 
-    def exc(self):
+    def exc(self) -> list:
         """
 
         :return:
@@ -95,9 +100,13 @@ class Revalue:
 
         paths = glob.glob(pathname=os.path.join(self.__expenditure.destination, '*.csv'))
 
-        for path in paths[:8]:
+        computations = []
+        for path in paths:
             data = self.__read(path=path)
             data = self.__streamline(blob=data)
             data = self.__revalue(blob=data, year=int(pathlib.Path(path).stem))
             message = self.__write(blob=data, year=int(pathlib.Path(path).stem))
-            print(message)
+            computations.append(message)
+        messages = dask.compute(computations, scheduler='threads')[0]
+
+        return messages
