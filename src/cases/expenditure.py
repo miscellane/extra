@@ -40,21 +40,36 @@ class Expenditure:
         except OSError as err:
             raise Exception(err.strerror) from err
 
-    def __code(self, blob: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def __code(blob: pd.DataFrame) -> pd.DataFrame:
+        """
+        Deduces the transaction code of each record/row
+
+        :param blob: An expenditure data set
+        :return:
+        """
 
         data = blob.copy()
 
+        # Each <Transaction> field value is a combination of transaction code & transaction description,
+        # separated by a dash
         doublet = data['Transaction'].str.split(pat='-', n=1, expand=True)
         doublet = doublet.copy().set_axis(['code', 'description'], axis=1)
         doublet.loc[:, 'code'] = doublet['code'].str.strip()
 
+        # Instead of the transaction column, code & description columns
         data = doublet.join(data.drop(columns=['Transaction']))
-        self.__logger.info(data.shape)
 
         return data
 
     def __filter(self, blob: pd.DataFrame) -> pd.DataFrame:
+        """
 
+        :param blob: An expenditure data set
+        :return:
+        """
+
+        # Excluding records that are aggregates of other records
         data = blob.copy()
         data = data.copy().loc[~data['code'].isin(self.__aggregates), :]
 
@@ -62,6 +77,13 @@ class Expenditure:
 
     @staticmethod
     def __segment(blob: pd.DataFrame) -> pd.DataFrame:
+        """
+        The first four characters of a transaction code denote an overarching transaction
+        segment, e.g., defence, economic affairs, environmental protection, etc.
+
+        :param blob:
+        :return:
+        """
 
         data = blob.copy()
         data.loc[:, 'segment'] = data['code'].str.slice(stop=4)
@@ -69,6 +91,11 @@ class Expenditure:
         return data
 
     def exc(self, year: int) -> pd.DataFrame:
+        """
+
+        :param year:
+        :return:
+        """
 
         data = self.__dataset(sheet_name=str(year))
         data = self.__code(blob=data)
