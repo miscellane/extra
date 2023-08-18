@@ -20,6 +20,7 @@ class Rebase:
         Constructor
         """
 
+        # the metadata of the deflator series
         configurations = config.Config()
         self.__deflator = configurations.deflator
 
@@ -28,6 +29,9 @@ class Rebase:
                             format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
                             datefmt='%Y-%m-%d %H:%M:%S')
         self.__logger = logging.getLogger(__name__)
+
+        # the rebase data
+        self.data = self.__exc()
 
     def __calculate(self, data: pd.DataFrame) -> pd.DataFrame:
         """
@@ -43,15 +47,15 @@ class Rebase:
 
         return data
 
-    def exc(self) -> pd.DataFrame:
+    def __exc(self) -> pd.DataFrame:
         """
 
         :return:
         """
 
-        frame = src.functions.streams.Streams().read(
+        data = src.functions.streams.Streams().read(
             uri=self.__deflator.source, header=0, usecols=['year', 'quote'], dtype={'year': int, 'quote': float})
-        frame = self.__calculate(data=frame.copy())
-        self.__logger.info(frame)
+        data = self.__calculate(data=data.copy())
+        self.__logger.info(data)
 
-        return frame
+        return data
