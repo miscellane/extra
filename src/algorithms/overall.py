@@ -8,8 +8,8 @@ import dask.dataframe
 import pandas as pd
 
 import config
-import src.functions.streams
 import src.adjust.transactions
+import src.functions.streams
 
 
 class Overall:
@@ -48,10 +48,17 @@ class Overall:
         return data
 
     def __node(self, aggregates: pd.DataFrame, segment_code: str):
+        """
+
+        :param aggregates:
+        :param segment_code:
+        :return:
+        """
 
         data = aggregates.loc[aggregates['segment_code'] == segment_code, ['year', 'total']]
         self.__logger.info(data)
-        description = self.__segments.loc[self.__segments['segment_code'] == segment_code, 'segment_description'].array[0]
+        description = self.__segments.loc[self.__segments['segment_code'] == segment_code, 'segment_description'].array[
+            0]
 
         node = {'name': segment_code, 'description': description, 'data': data.to_dict(orient='records')}
         self.__logger.info(node)
