@@ -40,6 +40,7 @@ class Rebase:
 
         value = deflator.loc[deflator['year'] == self.__deflator.rebase_year, 'quote'].array[0]
         deflator.loc[:, 'rebase'] = 100 * deflator['quote'] / value
+        deflator.loc[:, 'kappa'] = deflator['rebase'] / 100
         self.__logger.info(deflator)
 
         return deflator
