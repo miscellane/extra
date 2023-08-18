@@ -28,7 +28,7 @@ class Revalue:
 
         # Expenditure metadata
         self.__expenditure = config.Config().expenditure
-        self.__datapath = os.path.join(os.path.dirname(self.__expenditure.destination), 'revalued')
+        self.__datapath = self.__expenditure.datapath
         directories = src.functions.directories.Directories()
         directories.cleanup(self.__datapath)
         directories.create(self.__datapath)
