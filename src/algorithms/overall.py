@@ -20,8 +20,8 @@ class Overall:
         # The overall government expenditure per segment code is recorded in field <OTE> 
         self.__usecols = ['code', 'OTE', 'segment', 'year']
 
-        # The path to the data sets
-        self.__datapath = config.Config().expenditure.destination
+        # The path to the revalued data sets
+        self.__datapath = config.Config().expenditure.datapath
 
         # logging
         logging.basicConfig(level=logging.INFO, format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
