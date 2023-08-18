@@ -12,6 +12,8 @@ def main():
     messages = src.adjust.revalue.Revalue().exc()
     logger.info(messages)
 
+    src.algorithms.overall.Overall().exc()
+
 
 if __name__ == '__main__':
     root = os.getcwd()
