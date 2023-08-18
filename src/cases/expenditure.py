@@ -1,6 +1,5 @@
 import collections
 import logging
-import os
 
 import numpy as np
 import pandas as pd
@@ -16,7 +15,7 @@ class Expenditure:
         self.uri = config.Config().expenditure.source
 
         # Exclude these expenditure transaction labels because they are aggregates of other labels
-        self.__exclude = config.Config().expenditure.exclude
+        self.__aggregates = config.Config().expenditure.aggregates
 
         # data sheets
         Data = collections.namedtuple(typename='Data', field_names=['cells', 'start', 'end'])
@@ -57,7 +56,7 @@ class Expenditure:
     def __filter(self, blob: pd.DataFrame) -> pd.DataFrame:
 
         data = blob.copy()
-        data = data.copy().loc[~data['code'].isin(self.__exclude), :]
+        data = data.copy().loc[~data['code'].isin(self.__aggregates), :]
 
         return data
 
