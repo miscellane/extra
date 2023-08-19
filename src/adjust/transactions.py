@@ -6,6 +6,7 @@ import os
 import pandas as pd
 
 import src.functions.streams
+import src.functions.objects
 
 
 class Transactions:
@@ -30,6 +31,8 @@ class Transactions:
         data = src.functions.streams.Streams().read(
             uri=self.__uri, header=0, usecols=['code', 'description'],
             dtype={'code': str, 'description': str})
+
+
 
         return data
 
