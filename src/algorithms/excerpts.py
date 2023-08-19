@@ -29,11 +29,8 @@ class Excerpts:
         self.__objects = src.functions.objects.Objects()
 
         # The codes per segment
-        transactions = src.adjust.transactions.Transactions()
-        self.__codes = transactions.codes
-        self.__objects.write(nodes=transactions.segments.rename(
-            columns={'segment_code': 'name', 'segment_description': 'desc'}).to_dict(orient='records'),
-                             path=os.path.join(os.getcwd(), 'graphs', 'assets', 'menu', 'excerpts.json'))
+        self.__transactions = src.adjust.transactions.Transactions()
+        self.__codes = self.__transactions.codes
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
         # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
@@ -46,6 +43,8 @@ class Excerpts:
         """
 
         :param datapath:
+        :param usecols:
+        :param rename_fields:
         :return:
         """
 
@@ -93,15 +92,20 @@ class Excerpts:
         :return:
         """
 
-        # Read-in the revalued data
-
+        # The segment codes
         segment_codes = self.__data['segment_code'].unique()
 
+        # Computations per segment code
         computations = []
         for segment_code in segment_codes:
             dictionary = self.__nodes(segment_code)
             message = self.__persist(dictionary=dictionary, segment_code=segment_code)
             computations.append(message)
         messages = dask.compute(computations, scheduler='threads')[0]
+
+        # Hence, the menu for the graphs
+        menu = self.__transactions.segments.rename(columns={'segment_code': 'name', 'segment_description': 'desc'})
+        self.__objects.write(nodes=menu.to_dict(orient='records'),
+                             path=os.path.join(os.getcwd(), 'graphs', 'assets', 'menu', 'excerpts.json'))
 
         return messages
