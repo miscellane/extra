@@ -1,9 +1,9 @@
 """
 overall.py
 """
+import json
 import logging
 import os
-import json
 
 import dask
 import dask.dataframe
@@ -11,8 +11,8 @@ import pandas as pd
 
 import config
 import src.adjust.transactions
-import src.functions.streams
 import src.functions.directories
+import src.functions.streams
 
 
 class Overall:
@@ -28,10 +28,9 @@ class Overall:
         # The overarching foci, i.e., segments, e.g., defence, economic affairs, etc.
         self.__segments = src.adjust.transactions.Transactions().segments
 
-        # The calculations must be based on revalued data sets, hence prices are comparable 
-        # across years.
+        # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
         self.__datapath = config.Config().expenditure.datapath
-        
+
         # The graphing data will be stored in ...
         self.__storage = os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'graphing')
         src.functions.directories.Directories().create(self.__storage)
@@ -56,21 +55,29 @@ class Overall:
 
         return data
 
-    def __persist(self, dictionary):
+    def __persist(self, dictionary) -> str:
         """
 
         :param dictionary:
         :return:
         """
 
-        with open(os.path.join(self.__storage, 'overall.json'), 'w') as disk:
-            json.dump(dictionary, disk)
+        try:
+            with open(os.path.join(self.__storage, 'overall.json'), 'w') as disk:
+                json.dump(dictionary, disk)
+            return 'overall.json: success'
+        except IOError as err:
+            raise Exception(err) from err
 
     @staticmethod
     def __aggregates(blob: pd.DataFrame) -> pd.DataFrame:
+        """
 
-        data = blob.copy()
-        aggregates = data.groupby(by=['segment_code', 'year']).agg(total=('OTE', sum))
+        :param blob:
+        :return:
+        """
+
+        aggregates = blob.copy().groupby(by=['segment_code', 'year']).agg(total=('OTE', sum))
         aggregates.reset_index(drop=False, inplace=True)
 
         return aggregates
@@ -101,8 +108,10 @@ class Overall:
         # Read-in the revalued data
         data = self.__read()
 
-        #
+        # Get aggregates by segment
         aggregates = self.__aggregates(blob=data)
+
+        # The unique segments
         segment_codes = aggregates['segment_code'].unique()
 
         computations = []
@@ -110,5 +119,6 @@ class Overall:
             node = self.__node(aggregates=aggregates, segment_code=segment_code)
             computations.append(node)
         dictionary = dask.compute(computations, scheduler='threads')[0]
-        self.__persist(dictionary=dictionary)
+        message = self.__persist(dictionary=dictionary)
 
+        self.__logger.info(message)
