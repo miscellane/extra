@@ -28,8 +28,10 @@ class Excerpts:
         self.__storage = storage
         self.__objects = src.functions.objects.Objects()
 
-        # The overarching foci, i.e., segments, e.g., defence, economic affairs, etc.
+        # The codes per segment
         self.__codes = src.adjust.transactions.Transactions().codes
+        self.__objects.write(nodes=self.__codes.to_dict(orient='records'),
+                             path=os.path.join(os.getcwd(), 'graphs', 'assets', 'menu', 'excerpts.json'))
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
         # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
