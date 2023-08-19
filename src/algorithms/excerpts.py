@@ -23,29 +23,31 @@ class Excerpts:
         self.__segments = src.adjust.transactions.Transactions().segments
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
-        self.__datapath = config.Config().expenditure.datapath
-
-        # The graphing data will be stored in ...
-        self.__storage = os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'graphs', 'excerpts')
-        src.functions.directories.Directories().create(self.__storage)
+        datapath = config.Config().expenditure.datapath
+        self.__data = self.__read(datapath=datapath)
 
         # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
         self.__usecols = ['code', 'description', 'OTE', 'segment_code', 'year']
         self.__rename_aggregates = {'year': 'x', 'OTE': 'y'}
+
+        # The graphing data will be stored in ...
+        self.__storage = os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'graphs', 'excerpts')
+        src.functions.directories.Directories().create(self.__storage)
 
         # logging
         logging.basicConfig(level=logging.INFO, format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
                             datefmt='%Y-%m-%d %H:%M:%S')
         self.__logger = logging.getLogger(__name__)
 
-    def __read(self) -> pd.DataFrame:
+    def __read(self, datapath: str) -> pd.DataFrame:
         """
 
+        :param datapath:
         :return:
         """
 
         frame = dask.dataframe.read_csv(
-            urlpath=os.path.join(self.__datapath, '*.csv'), usecols=self.__usecols)
+            urlpath=os.path.join(datapath, '*.csv'), usecols=self.__usecols)
         data = frame.compute().reset_index(drop=True)
 
         return data
@@ -65,6 +67,10 @@ class Excerpts:
         except IOError as err:
             raise Exception(err) from err
 
+    def __node(self, segment_code: str):
+
+        frame = self.__data.copy().loc[self.__data['segment_code'] == segment_code, :]
+
     def exc(self):
         """
 
@@ -72,8 +78,8 @@ class Excerpts:
         """
 
         # Read-in the revalued data
-        data = self.__read()
-        segment_codes = data['segment_code'].unique()
+
+        segment_codes = self.__data['segment_code'].unique()
 
         computations = []
         for segment_code in segment_codes:
