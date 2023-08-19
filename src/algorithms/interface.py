@@ -26,6 +26,10 @@ class Interface:
         self.__logger = logging.getLogger(__name__)
 
     def graphs(self):
+        """
+        
+        :return:
+        """
 
         path = os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'graphs')
 
