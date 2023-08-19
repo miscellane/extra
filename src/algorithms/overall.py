@@ -3,6 +3,7 @@ overall.py
 """
 import logging
 import os
+import json
 
 import dask
 import dask.dataframe
@@ -11,6 +12,7 @@ import pandas as pd
 import config
 import src.adjust.transactions
 import src.functions.streams
+import src.functions.directories
 
 
 class Overall:
@@ -23,14 +25,19 @@ class Overall:
         Constructor
         """
 
-        # The overarching segments, e.g., defence, economic affairs, etc.
+        # The overarching foci, i.e., segments, e.g., defence, economic affairs, etc.
         self.__segments = src.adjust.transactions.Transactions().segments
+
+        # The calculations must be based on revalued data sets, hence prices are comparable 
+        # across years.
+        self.__datapath = config.Config().expenditure.datapath
+        
+        # The graphing data will be stored in ...
+        self.__storage = os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'graphing')
+        src.functions.directories.Directories().create(self.__storage)
 
         # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
         self.__usecols = ['code', 'OTE', 'segment_code', 'year']
-
-        # The path to the revalued data sets
-        self.__datapath = config.Config().expenditure.datapath
 
         # logging
         logging.basicConfig(level=logging.INFO, format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
@@ -48,6 +55,16 @@ class Overall:
         data = frame.compute().reset_index(drop=True)
 
         return data
+
+    def __persist(self, dictionary):
+        """
+
+        :param dictionary:
+        :return:
+        """
+
+        with open(os.path.join(self.__storage, 'overall.json'), 'w') as disk:
+            json.dump(dictionary, disk)
 
     @staticmethod
     def __aggregates(blob: pd.DataFrame) -> pd.DataFrame:
@@ -92,6 +109,6 @@ class Overall:
         for segment_code in segment_codes:
             node = self.__node(aggregates=aggregates, segment_code=segment_code)
             computations.append(node)
-        summary = dask.compute(computations, scheduler='threads')[0]
+        dictionary = dask.compute(computations, scheduler='threads')[0]
+        self.__persist(dictionary=dictionary)
 
-        self.__logger.info(summary)
