@@ -29,8 +29,10 @@ class Excerpts:
         self.__objects = src.functions.objects.Objects()
 
         # The codes per segment
-        self.__codes = src.adjust.transactions.Transactions().codes
-        self.__objects.write(nodes=self.__codes.to_dict(orient='records'),
+        transactions = src.adjust.transactions.Transactions()
+        self.__codes = transactions.codes
+        self.__objects.write(nodes=transactions.segments.rename(
+            columns={'segment_code': 'name', 'segment_description': 'desc'}).to_dict(orient='records'),
                              path=os.path.join(os.getcwd(), 'graphs', 'assets', 'menu', 'excerpts.json'))
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
