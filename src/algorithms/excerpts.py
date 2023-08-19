@@ -26,14 +26,13 @@ class Excerpts:
         self.__codes = src.adjust.transactions.Transactions().codes
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
-        datapath = config.Config().expenditure.datapath
-        self.__data = self.__read(datapath=datapath)
-
         # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
-        self.__usecols = ['code', 'description', 'OTE', 'segment_code', 'year']
-        self.__rename_fields = {'year': 'x', 'OTE': 'y'}
+        datapath = config.Config().expenditure.datapath
+        self.__data = self.__read(datapath=datapath, usecols=['code', 'description', 'OTE', 'segment_code', 'year'],
+                                  rename_fields={'year': 'x', 'OTE': 'y'})
 
-    def __read(self, datapath: str) -> pd.DataFrame:
+    @staticmethod
+    def __read(datapath: str, usecols: list, rename_fields: dict) -> pd.DataFrame:
         """
 
         :param datapath:
@@ -41,9 +40,9 @@ class Excerpts:
         """
 
         frame = dask.dataframe.read_csv(
-            urlpath=os.path.join(datapath, '*.csv'), usecols=self.__usecols)
+            urlpath=os.path.join(datapath, '*.csv'), usecols=usecols)
         data = frame.compute().reset_index(drop=True)
-        data.rename(columns=self.__rename_fields, inplace=True)
+        data.rename(columns=rename_fields, inplace=True)
 
         return data
 
@@ -71,7 +70,7 @@ class Excerpts:
 
         structure = []
         for code in codes:
-            partition = frame[frame['code'] == code, :]
+            partition = frame.copy().loc[frame['code'] == code, :]
             data = partition[['x', 'y']]
             description = self.__codes.loc[self.__codes['code'] == code, 'description'].array[0]
             structure.append({'name': code, 'description': description, 'data': data.to_dict(orient='records')})
