@@ -97,3 +97,6 @@ class Excerpts:
             dictionary = self.__nodes(segment_code)
             message = self.__persist(dictionary=dictionary, segment_code=segment_code)
             computations.append(message)
+        messages = dask.compute(computations, scheduler='threads')[0]
+
+        self.__logger.info(messages)
