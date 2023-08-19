@@ -1,4 +1,3 @@
-import json
 import os
 
 import dask
@@ -7,6 +6,7 @@ import pandas as pd
 
 import config
 import src.adjust.transactions
+import src.functions.objects
 import src.functions.streams
 
 
@@ -20,6 +20,7 @@ class Excerpts:
 
         # The resulting graphing data will be stored in ...
         self.__storage = storage
+        self.__objects = src.functions.objects.Objects()
 
         # The overarching foci, i.e., segments, e.g., defence, economic affairs, etc.
         self.__codes = src.adjust.transactions.Transactions().codes
@@ -54,12 +55,8 @@ class Excerpts:
         :return:
         """
 
-        try:
-            with open(os.path.join(self.__storage, f'{segment_code}.json'), 'w') as disk:
-                json.dump(dictionary, disk)
-            return f'{segment_code}.json: success'
-        except IOError as err:
-            raise Exception(err) from err
+        return self.__objects.write(
+            nodes=dictionary, path=os.path.join(self.__storage, f'{segment_code}.json'))
 
     @dask.delayed
     def __nodes(self, segment_code: str) -> list:
