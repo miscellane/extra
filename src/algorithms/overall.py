@@ -37,6 +37,7 @@ class Overall:
 
         # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
         self.__usecols = ['code', 'OTE', 'segment_code', 'year']
+        self.__rename_aggregates = {'year': 'x', 'total': 'y'}
 
         # logging
         logging.basicConfig(level=logging.INFO, format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
@@ -69,8 +70,7 @@ class Overall:
         except IOError as err:
             raise Exception(err) from err
 
-    @staticmethod
-    def __aggregates(blob: pd.DataFrame) -> pd.DataFrame:
+    def __aggregates(self, blob: pd.DataFrame) -> pd.DataFrame:
         """
 
         :param blob:
@@ -79,6 +79,7 @@ class Overall:
 
         aggregates = blob.copy().groupby(by=['segment_code', 'year']).agg(total=('OTE', sum))
         aggregates.reset_index(drop=False, inplace=True)
+        aggregates.rename(columns=self.__rename_aggregates, inplace=True)
 
         return aggregates
 
@@ -91,7 +92,7 @@ class Overall:
         :return:
         """
 
-        data = aggregates.loc[aggregates['segment_code'] == segment_code, ['year', 'total']]
+        data = aggregates.loc[aggregates['segment_code'] == segment_code, ['x', 'y']]
         description = self.__segments.loc[
             self.__segments['segment_code'] == segment_code, 'segment_description'].array[0]
 
