@@ -8,16 +8,19 @@ import pandas as pd
 
 import config
 import src.adjust.transactions
-import src.functions.directories
 import src.functions.streams
 
 
 class Excerpts:
 
-    def __init__(self):
+    def __init__(self, storage: str):
         """
-        Constructor
+
+        :param storage:
         """
+
+        # The resulting graphing data will be stored in ...
+        self.__storage = storage
 
         # The overarching foci, i.e., segments, e.g., defence, economic affairs, etc.
         self.__codes = src.adjust.transactions.Transactions().codes
@@ -30,11 +33,7 @@ class Excerpts:
         self.__usecols = ['code', 'description', 'OTE', 'segment_code', 'year']
         self.__rename_fields = {'year': 'x', 'OTE': 'y'}
 
-        # The graphing data will be stored in ...
-        self.__storage = os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'graphs', 'excerpts')
-        src.functions.directories.Directories().create(self.__storage)
-
-        # logging
+        # Logging
         logging.basicConfig(level=logging.INFO, format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
                             datefmt='%Y-%m-%d %H:%M:%S')
         self.__logger = logging.getLogger(__name__)
