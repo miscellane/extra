@@ -28,7 +28,7 @@ class Excerpts:
 
         # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
         self.__usecols = ['code', 'description', 'OTE', 'segment_code', 'year']
-        self.__rename_aggregates = {'year': 'x', 'OTE': 'y'}
+        self.__rename_fields = {'year': 'x', 'OTE': 'y'}
 
         # The graphing data will be stored in ...
         self.__storage = os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'graphs', 'excerpts')
@@ -49,6 +49,7 @@ class Excerpts:
         frame = dask.dataframe.read_csv(
             urlpath=os.path.join(datapath, '*.csv'), usecols=self.__usecols)
         data = frame.compute().reset_index(drop=True)
+        data.rename(columns=self.__rename_fields, inplace=True)
 
         return data
 
@@ -70,6 +71,7 @@ class Excerpts:
     def __node(self, segment_code: str):
 
         frame = self.__data.copy().loc[self.__data['segment_code'] == segment_code, :]
+
 
     def exc(self):
         """
