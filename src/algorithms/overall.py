@@ -32,7 +32,7 @@ class Overall:
         self.__datapath = config.Config().expenditure.datapath
 
         # The graphing data will be stored in ...
-        self.__storage = os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'graphing')
+        self.__storage = os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'graphs')
         src.functions.directories.Directories().create(self.__storage)
 
         # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
