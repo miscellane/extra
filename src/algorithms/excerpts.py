@@ -1,3 +1,6 @@
+"""
+excerpts.py
+"""
 import os
 
 import dask
@@ -11,6 +14,9 @@ import src.functions.streams
 
 
 class Excerpts:
+    """
+    Excerpts
+    """
 
     def __init__(self, storage: str):
         """
@@ -51,6 +57,7 @@ class Excerpts:
         """
 
         :param dictionary:
+        :param segment_code:
         :return:
         """
 
