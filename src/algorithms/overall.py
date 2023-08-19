@@ -1,8 +1,6 @@
 """
 overall.py
 """
-import json
-import logging
 import os
 
 import dask
@@ -12,6 +10,7 @@ import pandas as pd
 import config
 import src.adjust.transactions
 import src.functions.directories
+import src.functions.objects
 import src.functions.streams
 
 
@@ -39,11 +38,6 @@ class Overall:
         self.__usecols = ['code', 'OTE', 'segment_code', 'year']
         self.__rename_aggregates = {'year': 'x', 'total': 'y'}
 
-        # Logging
-        logging.basicConfig(level=logging.INFO, format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
-                            datefmt='%Y-%m-%d %H:%M:%S')
-        self.__logger = logging.getLogger(__name__)
-
     def __read(self) -> pd.DataFrame:
         """
 
@@ -63,12 +57,8 @@ class Overall:
         :return:
         """
 
-        try:
-            with open(os.path.join(self.__storage, 'overall.json'), 'w') as disk:
-                json.dump(dictionary, disk)
-            return 'overall.json: success'
-        except IOError as err:
-            raise Exception(err) from err
+        return src.functions.objects.Objects().write(
+            nodes=dictionary, path=os.path.join(self.__storage, 'overall.json'))
 
     def __aggregates(self, blob: pd.DataFrame) -> pd.DataFrame:
         """
@@ -100,7 +90,7 @@ class Overall:
 
         return node
 
-    def exc(self):
+    def exc(self) -> str:
         """
 
         :return:
@@ -122,4 +112,4 @@ class Overall:
         dictionary = dask.compute(computations, scheduler='threads')[0]
         message = self.__persist(dictionary=dictionary)
 
-        self.__logger.info(message)
+        return message
