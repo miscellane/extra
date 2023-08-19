@@ -32,8 +32,6 @@ class Transactions:
             uri=self.__uri, header=0, usecols=['code', 'description'],
             dtype={'code': str, 'description': str})
 
-
-
         return data
 
     def __segments(self) -> pd.DataFrame:
