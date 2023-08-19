@@ -20,10 +20,14 @@ class Overall:
     Overall
     """
 
-    def __init__(self):
+    def __init__(self, storage: str):
         """
-        Constructor
+
+        :param storage:
         """
+
+        # The resulting graphing data will be stored in ...
+        self.__storage = storage
 
         # The overarching foci, i.e., segments, e.g., defence, economic affairs, etc.
         self.__segments = src.adjust.transactions.Transactions().segments
@@ -31,15 +35,11 @@ class Overall:
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
         self.__datapath = config.Config().expenditure.datapath
 
-        # The graphing data will be stored in ...
-        self.__storage = os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'graphs')
-        src.functions.directories.Directories().create(self.__storage)
-
         # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
         self.__usecols = ['code', 'OTE', 'segment_code', 'year']
         self.__rename_aggregates = {'year': 'x', 'total': 'y'}
 
-        # logging
+        # Logging
         logging.basicConfig(level=logging.INFO, format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
                             datefmt='%Y-%m-%d %H:%M:%S')
         self.__logger = logging.getLogger(__name__)
