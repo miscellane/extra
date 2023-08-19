@@ -20,7 +20,7 @@ class Excerpts:
         """
 
         # The overarching foci, i.e., segments, e.g., defence, economic affairs, etc.
-        self.__segments = src.adjust.transactions.Transactions().segments
+        self.__codes = src.adjust.transactions.Transactions().codes
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
         datapath = config.Config().expenditure.datapath
@@ -68,10 +68,19 @@ class Excerpts:
         except IOError as err:
             raise Exception(err) from err
 
-    def __node(self, segment_code: str):
+    @dask.delayed
+    def __nodes(self, segment_code: str) -> list:
 
         frame = self.__data.copy().loc[self.__data['segment_code'] == segment_code, :]
+        codes = frame['code'].unique()
 
+        structure = []
+        for code in codes:
+            partition = frame[frame['code'] == code, :]
+            data = partition[['x', 'y']]
+            description = self.__codes.loc[self.__codes['code'] == code, 'description'].array[0]
+            structure.append({'name': code, 'description': description, 'data': data.to_dict(orient='records')})
+        return structure
 
     def exc(self):
         """
@@ -85,4 +94,6 @@ class Excerpts:
 
         computations = []
         for segment_code in segment_codes:
-            pass
+            dictionary = self.__nodes(segment_code)
+            message = self.__persist(dictionary=dictionary, segment_code=segment_code)
+            computations.append(message)
