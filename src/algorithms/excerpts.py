@@ -1,5 +1,4 @@
 import json
-import logging
 import os
 
 import dask
@@ -33,11 +32,6 @@ class Excerpts:
         self.__usecols = ['code', 'description', 'OTE', 'segment_code', 'year']
         self.__rename_fields = {'year': 'x', 'OTE': 'y'}
 
-        # Logging
-        logging.basicConfig(level=logging.INFO, format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
-                            datefmt='%Y-%m-%d %H:%M:%S')
-        self.__logger = logging.getLogger(__name__)
-
     def __read(self, datapath: str) -> pd.DataFrame:
         """
 
@@ -69,6 +63,11 @@ class Excerpts:
 
     @dask.delayed
     def __nodes(self, segment_code: str) -> list:
+        """
+
+        :param segment_code:
+        :return:
+        """
 
         frame = self.__data.copy().loc[self.__data['segment_code'] == segment_code, :]
         codes = frame['code'].unique()
@@ -81,7 +80,7 @@ class Excerpts:
             structure.append({'name': code, 'description': description, 'data': data.to_dict(orient='records')})
         return structure
 
-    def exc(self):
+    def exc(self) -> list:
         """
 
         :return:
@@ -98,4 +97,4 @@ class Excerpts:
             computations.append(message)
         messages = dask.compute(computations, scheduler='threads')[0]
 
-        self.__logger.info(messages)
+        return messages
