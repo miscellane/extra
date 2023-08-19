@@ -27,7 +27,7 @@ class Interface:
 
     def graphs(self):
         """
-        
+
         :return:
         """
 
