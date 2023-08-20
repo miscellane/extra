@@ -15,7 +15,7 @@ $.getJSON(url, function (data) {
     optionSelected = dropdown.find("option:first-child").text();
 
     // Generate
-    generateChart(defaultOption);
+    generateChart(defaultOption, optionSelected);
 
 });
 
@@ -30,10 +30,10 @@ dropdown.on('change', function (e) {
     var valueSelected = this.options[e.target.selectedIndex].value;
 
     //Draw the Chart
-    generateChart(valueSelected);
+    generateChart(valueSelected, optionSelected);
 });
 
-function generateChart(fileNameKey){
+function generateChart(fileNameKey, fileNameValue){
 
   // Generate curves
   $.getJSON('https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/graphs/excerpts/' + fileNameKey + '.json', function (calculations){
@@ -73,7 +73,7 @@ function generateChart(fileNameKey){
           chart: {
               type: "line",
               zoomType: "xy",
-              marginTop: 50,
+              marginTop: 85,
               marginBottom: 160,
               height: 390,
               width: 330,
@@ -88,7 +88,7 @@ function generateChart(fileNameKey){
               }
           },
           subtitle: {
-              text: 'United Kingdom',
+              text: fileNameValue,
               x: 0,
               y: 45,
               style: {
