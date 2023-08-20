@@ -81,7 +81,7 @@ function generateChart(fileNameKey, fileNameValue){
           },
 
           title: {
-              text: 'Annual Central Government Expenditure',
+              text: 'United Kingdom<br>Annual Central Government Expenditure',
               x: 0,
               y: 5,
               style: {
