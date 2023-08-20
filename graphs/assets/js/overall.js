@@ -29,10 +29,6 @@ jQuery.getJSON(url, function (calculations){
     }
 
 
-    // Optimal Threshold
-   var j = calculations.length - 1;
-
-
     // Graphing
     Highcharts.setOptions({
         lang: {
@@ -41,6 +37,7 @@ jQuery.getJSON(url, function (calculations){
     });
 
 
+    // Hence
     Highcharts.chart("container0004", {
 
         chart: {
