@@ -75,8 +75,9 @@ function generateChart(fileNameKey, fileNameValue){
               zoomType: "xy",
               marginTop: 85,
               marginBottom: 160,
-              height: 390,
-              width: 330,
+              marginRight: 35,
+              height: 430,
+              width: 390,
           },
 
           title: {
@@ -109,8 +110,8 @@ function generateChart(fileNameKey, fileNameValue){
               layout: 'horizontal',
               align: 'center',
               itemStyle: {
-                  fontSize: '10px',
-                  width: '100px',
+                  fontSize: '11px',
+                  width: '120px',
                   textOverflow: 'ellipsis'
               },
               verticalAlign: 'bottom',
