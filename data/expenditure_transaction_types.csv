@@ -1,0 +1,70 @@
+code,description,segment_code,segment_description
+GF0101," Executive & Legal, Financial & Fiscal Affairs, External Affairs",GF01,General Public Services
+GF0102, Foreign Economic Aid,GF01,General Public Services
+GF0103, General Services,GF01,General Public Services
+GF0104, Basic Research,GF01,General Public Services
+GF0105, Research and Development General Public Services,GF01,General Public Services
+GF0106, General Public Services not elsewhere classified,GF01,General Public Services
+GF0107, Public Debt Transactions,GF01,General Public Services
+GF0108, Transfers between different levels of Government,GF01,General Public Services
+GF0201, Military Defence,GF02,Defence
+GF0202, Civil Defence,GF02,Defence
+GF0203, Foreign Military Aid,GF02,Defence
+GF0204, Research and Development Defence,GF02,Defence
+GF0205, Defence not elsewhere classified,GF02,Defence
+GF0301, Police services,GF03,General Public Order & Safety
+GF0302, Fire protection services,GF03,General Public Order & Safety
+GF0303, Law Courts,GF03,General Public Order & Safety
+GF0304, Prisons,GF03,General Public Order & Safety
+GF0305, Research and Development public order and safety,GF03,General Public Order & Safety
+GF0306, Public order and safety not elsewhere classified,GF03,General Public Order & Safety
+GF0401," General economic, commercial and labour affairs",GF04,Economic Affairs
+GF0402," Agriculture, forestry, fishing and hunting",GF04,Economic Affairs
+GF0403, Fuel and Energy,GF04,Economic Affairs
+GF0404," Mining, manufacturing and construction",GF04,Economic Affairs
+GF0405, Transport,GF04,Economic Affairs
+GF0406, Communication,GF04,Economic Affairs
+GF0407, Other Industries,GF04,Economic Affairs
+GF0408, Research and Development Economic Affairs,GF04,Economic Affairs
+GF0409, Economic Affairs not elsewhere classified,GF04,Economic Affairs
+GF0501, Waste Management,GF05,Environmental Protection
+GF0502, Water Waste Management,GF05,Environmental Protection
+GF0503, Pollution Abatement,GF05,Environmental Protection
+GF0504, Protection of biodiversity and landscape,GF05,Environmental Protection
+GF0505, Research and Development Environmental Protection,GF05,Environmental Protection
+GF0506, Environmental Protection Not Elsewhere Classified,GF05,Environmental Protection
+GF0601, Housing Development,GF06,Housing & Community Development
+GF0602, Community Development,GF06,Housing & Community Development
+GF0603, Water Supply,GF06,Housing & Community Development
+GF0604, Street Lighting,GF06,Housing & Community Development
+GF0605, Research & Development Housing & Community Amenities,GF06,Housing & Community Development
+GF0606, Housing & Community amenities not elsewhere classified,GF06,Housing & Community Development
+GF0701, Medical Products appliances and equipment,GF07,Health
+GF0702, Outpatient Services,GF07,Health
+GF0703, Hospital Services,GF07,Health
+GF0704, Public Health Services,GF07,Health
+GF0705, Research and Development Health,GF07,Health
+GF0706, Health not elsewhere classified,GF07,Health
+GF0801, Recreational & Sporting Services,GF08,Recreation
+GF0802, Cultural Services,GF08,Recreation
+GF0803, Broadcasting & Publishing Services,GF08,Recreation
+GF0804, Religious & Other Community Services,GF08,Recreation
+GF0805," Research and Development Recreation,  Culture & Religion",GF08,Recreation
+GF0806," Recreation, Culture & Religion not elsewhere classified",GF08,Recreation
+GF0901, Pre-primary  & Primary Education,GF09,Education
+GF0902, Secondary Education,GF09,Education
+GF0903, Post-Secondary Non-Tertiary Education,GF09,Education
+GF0904, Tertiary Education,GF09,Education
+GF0905, Education not Definable by Level,GF09,Education
+GF0906, Subsidiary Services to Education,GF09,Education
+GF0907, Research and Development Education,GF09,Education
+GF0908, Education not elsewhere classified,GF09,Education
+GF1001, Sickness & Disability,GF10,Social Protection
+GF1002, Old Age,GF10,Social Protection
+GF1003, Survivors,GF10,Social Protection
+GF1004, Family & Children,GF10,Social Protection
+GF1005, Unemployment,GF10,Social Protection
+GF1006, Housing,GF10,Social Protection
+GF1007, Social Exclusion not elsewhere classified,GF10,Social Protection
+GF1008, Research and Development Social Protection,GF10,Social Protection
+GF1009, Social Protection not elsewhere classified,GF10,Social Protection

@@ -1,0 +1,46 @@
+/* In Progress: ref. https://www.w3schools.com/howto/howto_custom_select.asp,
+   https://www.w3schools.com/howto/tryit.asp?filename=tryhow_custom_select,
+   https://www.w3schools.com/css/tryit.asp?filename=trycss_form_button,
+   https://fabriceleven.com/design/clever-way-to-change-the-drop-down-selector-arrow-icon/ */
+
+/* Body */
+body {
+    font-family: Gafata, Roboto, serif;
+}
+
+/* Select DIV */
+.selection {
+    position: page;
+}
+
+/* Styling the arrow inside the select element. */
+.selection:after {
+    content: "";
+    right: 15px;
+    top: 3px;
+    width: 0;
+    height: 0;
+    border: 5px solid;
+    border-color: black transparent transparent transparent;
+    position: relative;
+    pointer-events: none;
+}
+
+/* Widget */
+select::-ms-expand {
+    display: none;
+}
+
+/* Both */
+.selection select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 35px;
+    width: 210px;
+    margin: 3px 0;
+    padding: 0 3px;
+    font-family: Gafata, Roboto, serif;
+    border: 0 solid;
+    border-radius: 5px;
+    background-color: rgba(182, 173, 255, 0.18);
+}
