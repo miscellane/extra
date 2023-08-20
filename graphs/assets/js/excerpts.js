@@ -36,16 +36,20 @@ dropdown.on('change', function (e) {
 function generateChart(fileNameKey){
 
   // Generate curves
-  $.getJSON('https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/graphs/excerpts/' + fileNamekey + '.json', function (calculations){
+  $.getJSON('https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/graphs/excerpts/' + fileNameKey + '.json', function (calculations){
 
       // https://api.highcharts.com/highstock/tooltip.pointFormat
       // https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/bubble
       // https://api.highcharts.com/highcharts/tooltip.headerFormat
       // https://www.highcharts.com/demo/stock/compare
 
+      var seriesOptions = [];
+
 
       // Split
       for (var i = 0; i < calculations.length; i += 1) {
+
+          // document.write(calculations[i].data);
 
           seriesOptions[i] = {
               name: calculations[i].description,
@@ -181,9 +185,6 @@ function generateChart(fileNameKey){
 
       });
 
-  }).fail(function () {
-    console.log("Missing");
-    $('#container0003').empty();
   });
 
 }
