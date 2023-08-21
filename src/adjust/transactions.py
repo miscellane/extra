@@ -16,7 +16,7 @@ class Transactions:
         Constructor
         """
 
-        self.__uri = os.path.join(os.getcwd(), 'data', 'expenditure_transaction_types.csv')
+        self.__uri = os.path.join(os.getcwd(), 'data', 'expenditure', 'expenditure_transaction_types.csv')
 
         # the variables data
         self.codes: pd.DataFrame = self.__codes()
