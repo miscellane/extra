@@ -1,0 +1,42 @@
+"""
+interface.py
+"""
+import os
+import logging
+
+import src.metrics.overall
+import src.functions.objects
+
+
+class Interface:
+    """
+
+    """
+
+    def __init__(self):
+        """
+
+        """
+
+        self.__storage = ''
+
+        # logging
+        logging.basicConfig(level=logging.INFO,
+                            format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
+                            datefmt='%Y-%m-%d %H:%M:%S')
+        self.__logger = logging.getLogger(__name__)
+
+    def __persist(self, dictionary) -> str:
+        """
+
+        :param dictionary:
+        :return:
+        """
+
+        return src.functions.objects.Objects().write(
+            nodes=dictionary, path=os.path.join(self.__storage, 'overall.json'))
+
+    def exc(self):
+
+        overall = src.metrics.overall.Overall().exc()
+        self.__logger.info(overall)
