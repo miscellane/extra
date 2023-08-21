@@ -83,7 +83,7 @@ class Overall:
 
         # Get aggregates by segment
         aggregates = self.__aggregates(blob=data)
-        aggregates.sort_values(by=['segment_code', 'year'], ascending=True, inplace=True)
+        aggregates.sort_values(by=['segment_code', 'epoch'], ascending=True, inplace=True)
 
         # Extend: a sum per epoch year field
         temporary = aggregates.groupby(by=['epoch']).agg(denominator=('total', sum))
@@ -92,5 +92,6 @@ class Overall:
         print(temporary.loc[temporary['epoch'] == 1609459200000, :])
 
         # delta
-        temporary.loc[:, 'segment_delta'] = temporary.groupby(by=['segment_code'])['total'].diff().fillna(0)
+        temporary.loc[:, 'total_delta'] = temporary.groupby(by=['segment_code'])['total'].diff().fillna(0)
+        temporary.loc[:, 'total_shift'] = temporary['total'].shift(periods=1, fill_value=0)
         print(temporary.loc[temporary['segment_code'] == 'GF01', :])
