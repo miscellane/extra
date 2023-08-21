@@ -83,6 +83,7 @@ class Overall:
 
         # Get aggregates by segment
         aggregates = self.__aggregates(blob=data)
+        aggregates.sort_values(by=['segment_code', 'year'], ascending=True, inplace=True)
 
         # Extend: a sum per epoch year field
         temporary = aggregates.groupby(by=['epoch']).agg(denominator=('total', sum))
