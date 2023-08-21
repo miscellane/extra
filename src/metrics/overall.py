@@ -20,14 +20,10 @@ class Overall:
     Overall
     """
 
-    def __init__(self, storage: str):
+    def __init__(self):
         """
 
-        :param storage:
         """
-
-        # The resulting graphing data will be stored in ...
-        self.__storage = storage
 
         # The overarching foci, i.e., segments, e.g., defence, economic affairs, etc.
         self.__segments = src.adjust.transactions.Transactions().segments
@@ -50,16 +46,6 @@ class Overall:
 
         return data
 
-    def __persist(self, dictionary) -> str:
-        """
-
-        :param dictionary:
-        :return:
-        """
-
-        return src.functions.objects.Objects().write(
-            nodes=dictionary, path=os.path.join(self.__storage, 'overall.json'))
-
     @staticmethod
     def __aggregates(blob: pd.DataFrame) -> pd.DataFrame:
         """
@@ -73,7 +59,7 @@ class Overall:
 
         return aggregates
 
-    def exc(self):
+    def exc(self) -> pd.DataFrame:
         """
 
         :return:
@@ -97,4 +83,4 @@ class Overall:
         temporary.loc[:, 'series_shift'] = temporary['annual_total'].shift(periods=1, fill_value=np.NaN)
         temporary.loc[:, 'series_delta_%'] = 100 * temporary['series_delta'] / temporary['series_shift']
 
-        print(temporary.loc[temporary['segment_code'] == 'GF01', :])
+        return temporary
