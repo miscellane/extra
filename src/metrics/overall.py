@@ -83,11 +83,13 @@ class Overall:
 
         # Get aggregates by segment
         aggregates = self.__aggregates(blob=data)
-        print(aggregates)
+
+        # Extend: a sum per epoch year field
         temporary = aggregates.groupby(by=['epoch']).agg(denominator=('total', sum))
         temporary.reset_index(drop=False, inplace=True)
         temporary = aggregates.merge(temporary.copy(), how='left', on='epoch')
         print(temporary.loc[temporary['epoch'] == 1609459200000, :])
 
-
-
+        # delta
+        temporary.loc[:, 'segment_delta'] = temporary.groupby(by=['segment_code'])['total'].diff().fillna(0)
+        print(temporary.loc[temporary['segment_code'] == 'GF01', :])
