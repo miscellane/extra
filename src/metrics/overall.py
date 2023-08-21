@@ -81,17 +81,18 @@ class Overall:
         # Read-in the revalued data
         data = self.__read()
 
-        # Get aggregates by segment
+        # Per segment code, how much was spent each epoch year?
         aggregates = self.__aggregates(blob=data)
-        aggregates.sort_values(by=['segment_code', 'epoch'], ascending=True, inplace=True)
 
-        # Extend: a sum per epoch year field
+        # What is the expenditure per epoch year?
         temporary = aggregates.groupby(by=['epoch']).agg(denominator=('total', sum))
         temporary.reset_index(drop=False, inplace=True)
         temporary = aggregates.merge(temporary.copy(), how='left', on='epoch')
-        print(temporary.loc[temporary['epoch'] == 1609459200000, :])
 
         # delta
-        temporary.loc[:, 'total_delta'] = temporary.groupby(by=['segment_code'])['total'].diff().fillna(0)
-        temporary.loc[:, 'total_shift'] = temporary['total'].shift(periods=1, fill_value=0)
+        temporary.sort_values(by=['segment_code', 'epoch'], ascending=True, inplace=True)
+        temporary.loc[:, 'series_delta'] = temporary.groupby(by=['segment_code'])['total'].diff().fillna(0)
+        temporary.loc[:, 'series_shift'] = temporary['total'].shift(periods=1, fill_value=0)
+
+        temporary.loc[:, 'percent_of_year'] = 100 * temporary['total'] / temporary['denominator']
         print(temporary.loc[temporary['segment_code'] == 'GF01', :])
