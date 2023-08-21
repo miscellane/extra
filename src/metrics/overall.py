@@ -83,5 +83,11 @@ class Overall:
 
         # Get aggregates by segment
         aggregates = self.__aggregates(blob=data)
+        print(aggregates)
+        temporary = aggregates.groupby(by=['epoch']).agg(denominator=('total', sum))
+        temporary.reset_index(drop=False, inplace=True)
+        temporary = aggregates.merge(temporary.copy(), how='left', on='epoch')
+        print(temporary.loc[temporary['epoch'] == 1609459200000, :])
+
 
 
