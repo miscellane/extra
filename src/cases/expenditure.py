@@ -1,5 +1,6 @@
 import collections
 import logging
+import datetime
 
 import numpy as np
 import pandas as pd
@@ -97,10 +98,17 @@ class Expenditure:
         :return:
         """
 
+        # steps
         data = self.__dataset(sheet_name=str(year))
         data = self.__code(blob=data)
         data = self.__filter(blob=data)
         data = self.__segment(blob=data)
+
+        # year
         data.loc[:, 'year'] = year
+
+        # ... milliseconds since 1970-01-01
+        # seconds -> datetime.datetime.strptime('2020', '%Y').timestamp()
+        data.loc[:, 'epoch'] = 1000 * datetime.datetime.strptime(str(year), '%Y').timestamp()
 
         return data
