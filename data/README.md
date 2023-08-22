@@ -9,10 +9,15 @@ K02000001
 
 ### National Accounts
 
+Accounts
 * [Gross Domestic Product (GDP)](https://www.ons.gov.uk/economy/grossdomesticproductgdp)
 * [Quarterly National Accounts (QNA)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/quarterlynationalaccounts)
+  * [sample summary](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2022)
+  * Series: Possibly ``IHYQ``
 * [GDP in chained volume measures – real-time database (ABMI)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/realtimedatabaseforukgdpabmi)
 * [GDP quarterly national accounts, UK: October to December 2022 (an example)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2022)
+
+Adjusting
 * [GDP Deflator](https://www.gov.uk/government/collections/gdp-deflators-at-market-prices-and-money-gdp)
 * [Office for National Statistics (ONS) Seasonal Adjustment](https://www.ons.gov.uk/methodology/methodologytopicsandstatisticalconcepts/seasonaladjustment)
 * [Chained Volume Measures & Chain Linking Methodology](https://www.ons.gov.uk/economy/nationalaccounts/uksectoraccounts/methodologies/chainlinkingmethodsusedwithintheuknationalaccounts)
@@ -26,7 +31,6 @@ K02000001
 
 * [Bank of England Inflation Calculator](https://www.bankofengland.co.uk/monetary-policy/inflation/inflation-calculator)
 
-* GDP quarterly national accounts time series (cf. IHYQ, deflator series, [sample summary](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2022))
 
 * GDP Price Deflator & Formula
   * https://www.investopedia.com/terms/g/gdppricedeflator.asp
