@@ -4,7 +4,7 @@ interface.py
 import logging
 import os
 
-import src.algorithms.overall
+import src.algorithms.parent
 import src.algorithms.excerpts
 
 import src.functions.directories
@@ -38,7 +38,7 @@ class Interface:
         for pathstr in [path, os.path.join(path, 'excerpts')]:
             directories.create(path=pathstr)
 
-        message = src.algorithms.overall.Overall(storage=path).exc()
+        message = src.algorithms.parent.Parent(storage=path).exc()
         self.__logger.info(message)
 
         message = src.algorithms.excerpts.Excerpts(storage=os.path.join(path, 'excerpts')).exc()
