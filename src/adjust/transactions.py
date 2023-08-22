@@ -10,13 +10,19 @@ import src.functions.objects
 
 
 class Transactions:
+    """
+    Transactions
+
+    Herein, there are two expenditure transaction types levels: code level & segment level.  The
+    segment level is the parent level.  Each code is a member of a single segment, only.
+    """
 
     def __init__(self):
         """
         Constructor
         """
 
-        self.__uri = os.path.join(os.getcwd(), 'data', 'expenditure_transaction_types.csv')
+        self.__uri = os.path.join(os.getcwd(), 'data', 'expenditure', 'expenditure_transaction_types.csv')
 
         # the variables data
         self.codes: pd.DataFrame = self.__codes()

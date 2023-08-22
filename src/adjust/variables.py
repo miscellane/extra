@@ -11,7 +11,8 @@ import src.functions.streams
 
 class Variables:
     """
-
+    Each transaction code expenditure can be broken down into different parts.  The expenditure
+    variables describe these parts; some parts are aggregates of others.
     """
 
     def __init__(self):
@@ -19,7 +20,7 @@ class Variables:
 
         """
 
-        self.__uri = os.path.join(os.getcwd(), 'data', 'variables.csv')
+        self.__uri = os.path.join(os.getcwd(), 'data', 'expenditure', 'expenditure_variables.csv')
 
         # the variables data
         self.data: pd.DataFrame = self.__exc()

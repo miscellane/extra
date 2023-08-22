@@ -13,7 +13,7 @@ import src.functions.objects
 import src.functions.streams
 
 
-class Excerpts:
+class Children:
     """
     Excerpts
     """
@@ -105,7 +105,6 @@ class Excerpts:
 
         # Hence, the menu for the graphs
         menu = self.__transactions.segments.rename(columns={'segment_code': 'name', 'segment_description': 'desc'})
-        self.__objects.write(nodes=menu.to_dict(orient='records'),
-                             path=os.path.join(os.getcwd(), 'graphs', 'assets', 'menu', 'excerpts.json'))
+        self.__objects.write(nodes=menu.to_dict(orient='records'), path=os.path.join(self.__storage, 'menu.json'))
 
         return messages

@@ -12,8 +12,7 @@ def main():
     messages = src.adjust.revalue.Revalue().exc()
     logger.info(messages)
 
-    interface = src.algorithms.interface.Interface()
-    interface.graphs()
+    src.metrics.interface.Interface().exc()
 
 
 if __name__ == '__main__':
@@ -33,6 +32,6 @@ if __name__ == '__main__':
     # classes
     import src.cases.interface
     import src.adjust.revalue
-    import src.algorithms.interface
+    import src.metrics.interface
 
     main()
