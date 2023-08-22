@@ -1,15 +1,16 @@
 <br>
 
-## Notes
+# Notes
 
 United Kingdom, Area Code
 K02000001
 
 <br>
 
-### National Accounts
+## National Accounts
 
-Accounts
+### Accounts
+
 * [Gross Domestic Product (GDP)](https://www.ons.gov.uk/economy/grossdomesticproductgdp)
 * [Quarterly National Accounts (QNA)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/quarterlynationalaccounts)
   * [sample summary](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2022)
@@ -17,7 +18,14 @@ Accounts
 * [GDP in chained volume measures – real-time database (ABMI)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/realtimedatabaseforukgdpabmi)
 * [GDP quarterly national accounts, UK: October to December 2022 (an example)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2022)
 
-Adjusting
+<br>
+
+### Adjusting
+
+
+* GDP Price Deflator & Formula
+  * https://www.investopedia.com/terms/g/gdppricedeflator.asp
+  * https://www.ons.gov.uk/economy/inflationandpriceindices/methodologies/deflatorsandhowweusethemineconomicestimates
 * [GDP Deflator](https://www.gov.uk/government/collections/gdp-deflators-at-market-prices-and-money-gdp)
 * [Office for National Statistics (ONS) Seasonal Adjustment](https://www.ons.gov.uk/methodology/methodologytopicsandstatisticalconcepts/seasonaladjustment)
 * [Chained Volume Measures & Chain Linking Methodology](https://www.ons.gov.uk/economy/nationalaccounts/uksectoraccounts/methodologies/chainlinkingmethodsusedwithintheuknationalaccounts)
@@ -27,14 +35,9 @@ Adjusting
 <br>
 <br>
 
-### Miscellaneous
+## Miscellaneous
 
 * [Bank of England Inflation Calculator](https://www.bankofengland.co.uk/monetary-policy/inflation/inflation-calculator)
-
-
-* GDP Price Deflator & Formula
-  * https://www.investopedia.com/terms/g/gdppricedeflator.asp
-  * https://www.ons.gov.uk/economy/inflationandpriceindices/methodologies/deflatorsandhowweusethemineconomicestimates
 
 * Public Spending
   * https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicspending
