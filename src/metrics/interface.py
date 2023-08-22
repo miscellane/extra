@@ -25,6 +25,8 @@ class Interface:
         directories = src.functions.directories.Directories()
         directories.cleanup(path=self.__storage)
         directories.create(path=self.__storage)
+        directories.create(path=os.path.join(self.__storage, 'disaggregates'))
+        directories.create(path=os.path.join(self.__storage, 'children'))
 
         # logging
         logging.basicConfig(level=logging.INFO,
