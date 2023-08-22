@@ -11,6 +11,8 @@ K02000001
 
 * [Gross Domestic Product (GDP)](https://www.ons.gov.uk/economy/grossdomesticproductgdp)
 
+* [Quarterly National Accounts (QNA)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/quarterlynationalaccounts)
+
 * [GDP in chained volume measures – real-time database (ABMI)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/realtimedatabaseforukgdpabmi)
 
 * [GDP quarterly national accounts, UK: October to December 2022 (an example)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2022)
@@ -29,28 +31,26 @@ K02000001
 
 ### Miscellaneous
 
-BoE Inflation Calculator
-https://www.bankofengland.co.uk/monetary-policy/inflation/inflation-calculator
+* [Bank of England Inflation Calculator](https://www.bankofengland.co.uk/monetary-policy/inflation/inflation-calculator)
 
-GDP quarterly national accounts time series (cf. IHYQ, deflator series, [sample summary]((https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2022)) )
-https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/quarterlynationalaccounts
+* GDP quarterly national accounts time series (cf. IHYQ, deflator series, [sample summary](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2022))
 
-GDP Price Deflator & Formula
-https://www.investopedia.com/terms/g/gdppricedeflator.asp
-https://www.ons.gov.uk/economy/inflationandpriceindices/methodologies/deflatorsandhowweusethemineconomicestimates
+* GDP Price Deflator & Formula
+  * https://www.investopedia.com/terms/g/gdppricedeflator.asp
+  * https://www.ons.gov.uk/economy/inflationandpriceindices/methodologies/deflatorsandhowweusethemineconomicestimates
 
-Public Spending
-https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicspending
-https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicspending/datasets/esatable11annualexpenditureofcentralgovernment/current
+* Public Spending
+  * https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicspending
+  * https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicspending/datasets/esatable11annualexpenditureofcentralgovernment/current
 
-Green Book
-https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1063330/Green_Book_2022.pdf
+* Green Book
+  * https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1063330/Green_Book_2022.pdf
 
-Inflation
-https://api.beta.ons.gov.uk/v1/filters/cpih01/dimensions?
+* Inflation
+  * https://api.beta.ons.gov.uk/v1/filters/cpih01/dimensions?
 
-Business Population Estimates
-https://www.gov.uk/government/statistics/business-population-estimates-2022
+* Business Population Estimates
+  * https://www.gov.uk/government/statistics/business-population-estimates-2022
 
 <br>
 <br>
