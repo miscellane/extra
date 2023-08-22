@@ -14,6 +14,9 @@
   * Series Code: Possibly ``IHYQ``
 * [GDP in chained volume measures – real-time database (ABMI)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/realtimedatabaseforukgdpabmi)
 * [GDP quarterly national accounts, UK: October to December 2022 (an example)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2022)
+* Public Spending
+  * https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicspending
+  * https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicspending/datasets/esatable11annualexpenditureofcentralgovernment/current
 
 <br>
 
@@ -38,10 +41,6 @@
 ## Miscellaneous
 
 * [Bank of England Inflation Calculator](https://www.bankofengland.co.uk/monetary-policy/inflation/inflation-calculator)
-
-* Public Spending
-  * https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicspending
-  * https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicspending/datasets/esatable11annualexpenditureofcentralgovernment/current
 
 * Green Book
   * https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1063330/Green_Book_2022.pdf
