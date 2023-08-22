@@ -49,6 +49,6 @@ class Interface:
             structure.reset_index(drop=False, inplace=True)
             node = structure.to_dict(orient='tight')
             node['name'] = interest
-            self.__logger.info(node)
+            parts.append(node)
 
-
+        self.__logger.info(parts)
