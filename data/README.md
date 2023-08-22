@@ -1,9 +1,6 @@
 <br>
 
-# Notes
-
-United Kingdom, Area Code
-K02000001
+**United Kingdom**, Area Code: K02000001
 
 <br>
 
