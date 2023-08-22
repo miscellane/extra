@@ -5,7 +5,7 @@ import logging
 import os
 
 import src.algorithms.parent
-import src.algorithms.excerpts
+import src.algorithms.children
 
 import src.functions.directories
 
@@ -41,5 +41,5 @@ class Interface:
         message = src.algorithms.parent.Parent(storage=path).exc()
         self.__logger.info(message)
 
-        message = src.algorithms.excerpts.Excerpts(storage=os.path.join(path, 'excerpts')).exc()
+        message = src.algorithms.children.Children(storage=os.path.join(path, 'excerpts')).exc()
         self.__logger.info(message)
