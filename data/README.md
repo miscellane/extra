@@ -42,11 +42,11 @@
 
 * [Bank of England Inflation Calculator](https://www.bankofengland.co.uk/monetary-policy/inflation/inflation-calculator)
 
-* Green Book
-  * https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1063330/Green_Book_2022.pdf
-
 * Inflation
   * https://api.beta.ons.gov.uk/v1/filters/cpih01/dimensions?
+
+* Green Book
+  * https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1063330/Green_Book_2022.pdf
 
 * Business Population Estimates
   * https://www.gov.uk/government/statistics/business-population-estimates-2022
