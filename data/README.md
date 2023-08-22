@@ -6,12 +6,12 @@
 
 ## National Accounts
 
-### Accounts
+### Series
 
 * [Gross Domestic Product (GDP)](https://www.ons.gov.uk/economy/grossdomesticproductgdp)
 * [Quarterly National Accounts (QNA)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/quarterlynationalaccounts)
   * [sample summary](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2022)
-  * Series: Possibly ``IHYQ``
+  * Series Code: Possibly ``IHYQ``
 * [GDP in chained volume measures – real-time database (ABMI)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/realtimedatabaseforukgdpabmi)
 * [GDP quarterly national accounts, UK: October to December 2022 (an example)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2022)
 
