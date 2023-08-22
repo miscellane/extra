@@ -13,7 +13,7 @@ import src.functions.objects
 import src.functions.streams
 
 
-class Excerpts:
+class Children:
     """
     Excerpts
     """
