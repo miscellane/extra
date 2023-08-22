@@ -53,6 +53,8 @@ class Interface:
             frame = overall[['epoch', interest, 'segment_code']]
             structure = frame.pivot(index='epoch', columns='segment_code', values=interest)
             structure.reset_index(drop=False, inplace=True)
+            structure.dropna(axis=0, inplace=True)
+            self.__logger.info(structure)
             node = structure.to_dict(orient='tight')
             node['name'] = interest
             parts.append(node)
