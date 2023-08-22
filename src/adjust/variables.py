@@ -11,7 +11,8 @@ import src.functions.streams
 
 class Variables:
     """
-
+    Each transaction code expenditure can be broken down into different parts.  The expenditure
+    variables describe these parts; some parts are aggregates of others.
     """
 
     def __init__(self):
