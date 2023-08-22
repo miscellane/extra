@@ -6,6 +6,7 @@ import logging
 
 import src.metrics.overall
 import src.functions.objects
+import src.functions.directories
 
 
 class Interface:
@@ -18,7 +19,10 @@ class Interface:
 
         """
 
-        self.__storage = ''
+        self.__storage = os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'metrics')
+        directories = src.functions.directories.Directories()
+        directories.cleanup(path=self.__storage)
+        directories.create(path=self.__storage)
 
         # logging
         logging.basicConfig(level=logging.INFO,
@@ -26,20 +30,22 @@ class Interface:
                             datefmt='%Y-%m-%d %H:%M:%S')
         self.__logger = logging.getLogger(__name__)
 
-    def __persist(self, dictionary) -> str:
+    @staticmethod
+    def __persist(dictionary: any, path: str) -> str:
         """
 
         :param dictionary:
         :return:
         """
 
-        return src.functions.objects.Objects().write(
-            nodes=dictionary, path=os.path.join(self.__storage, 'overall.json'))
+        return src.functions.objects.Objects().write(nodes=dictionary, path=path)
 
-    def exc(self):
+    def __disaggregates(self):
+        pass
+
+    def __aggregates(self) -> str:
 
         overall = src.metrics.overall.Overall().exc()
-        self.__logger.info(overall)
 
         parts = []
         for interest in ['annual_total', 'annual_segment_%', 'series_delta_%']:
@@ -51,4 +57,9 @@ class Interface:
             node['name'] = interest
             parts.append(node)
 
-        self.__logger.info(parts)
+        return self.__persist(dictionary=parts, path=os.path.join(self.__storage, 'aggregates.json'))
+
+    def exc(self):
+
+        message = self.__aggregates()
+        self.__logger.info(message)
