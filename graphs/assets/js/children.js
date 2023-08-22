@@ -1,7 +1,7 @@
 var Highcharts;
 var optionSelected;
 var dropdown = $('#option_selector');
-var url = 'https://raw.githubusercontent.com/thirdreading/investments/develop/graphs/assets/menu/excerpts.json';
+var url = 'https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/metrics/children/menu.json';
 
 
 $.getJSON(url, function (data) {
@@ -36,7 +36,7 @@ dropdown.on('change', function (e) {
 function generateChart(fileNameKey, fileNameValue){
 
   // Generate curves
-  $.getJSON('https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/graphs/excerpts/' + fileNameKey + '.json', function (calculations){
+  $.getJSON('https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/metrics/children/' + fileNameKey + '.json', function (calculations){
 
       // https://api.highcharts.com/highstock/tooltip.pointFormat
       // https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/bubble
