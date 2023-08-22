@@ -40,9 +40,8 @@
 
 ## Miscellaneous
 
-* [Bank of England Inflation Calculator](https://www.bankofengland.co.uk/monetary-policy/inflation/inflation-calculator)
-
 * Inflation
+  * [Bank of England Inflation Calculator](https://www.bankofengland.co.uk/monetary-policy/inflation/inflation-calculator)
   * https://api.beta.ons.gov.uk/v1/filters/cpih01/dimensions?
 
 * Green Book
