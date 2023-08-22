@@ -9,13 +9,13 @@ K02000001
 
 ### National Accounts
 
-* https://www.ons.gov.uk/economy/grossdomesticproductgdp
+* [Gross Domestic Product (GDP)](https://www.ons.gov.uk/economy/grossdomesticproductgdp)
 
 * [GDP in chained volume measures – real-time database (ABMI)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/realtimedatabaseforukgdpabmi)
 
 * [GDP quarterly national accounts, UK: October to December 2022 (an example)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2022)
 
-* https://www.gov.uk/government/collections/gdp-deflators-at-market-prices-and-money-gdp
+* [GDP Deflator](https://www.gov.uk/government/collections/gdp-deflators-at-market-prices-and-money-gdp)
 
 * [ONS Seasonal Adjustment](https://www.ons.gov.uk/methodology/methodologytopicsandstatisticalconcepts/seasonaladjustment)
 
