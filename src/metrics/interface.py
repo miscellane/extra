@@ -5,6 +5,8 @@ import os
 import logging
 
 import src.metrics.aggregates
+import src.metrics.parent
+import src.metrics.children
 import src.functions.objects
 import src.functions.directories
 
@@ -64,4 +66,10 @@ class Interface:
     def exc(self):
 
         message = self.__aggregates()
+        self.__logger.info(message)
+
+        message = src.metrics.parent.Parent(storage=self.__storage).exc()
+        self.__logger.info(message)
+
+        message = src.metrics.children.Children(storage=os.path.join(self.__storage, 'children')).exc()
         self.__logger.info(message)
