@@ -58,7 +58,7 @@ class Parent:
         """
 
         return src.functions.objects.Objects().write(
-            nodes=dictionary, path=os.path.join(self.__storage, 'overall.json'))
+            nodes=dictionary, path=os.path.join(self.__storage, 'parent.json'))
 
     def __aggregates(self, blob: pd.DataFrame) -> pd.DataFrame:
         """
