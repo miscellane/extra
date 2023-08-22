@@ -17,7 +17,7 @@ K02000001
 
 * [GDP Deflator](https://www.gov.uk/government/collections/gdp-deflators-at-market-prices-and-money-gdp)
 
-* [ONS Seasonal Adjustment](https://www.ons.gov.uk/methodology/methodologytopicsandstatisticalconcepts/seasonaladjustment)
+* [Office for National Statistics (ONS) Seasonal Adjustment](https://www.ons.gov.uk/methodology/methodologytopicsandstatisticalconcepts/seasonaladjustment)
 
 * [Chained Volume Measures & Chain Linking Methodology](https://www.ons.gov.uk/economy/nationalaccounts/uksectoraccounts/methodologies/chainlinkingmethodsusedwithintheuknationalaccounts)
 
