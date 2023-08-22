@@ -40,3 +40,11 @@ class Interface:
 
         overall = src.metrics.overall.Overall().exc()
         self.__logger.info(overall)
+
+        for interest in ['annual_total', 'annual_segment_%', 'series_delta_%']:
+
+            frame = overall[['epoch', interest, 'segment_code']]
+            structure = frame.pivot(index='epoch', columns='segment_code', values=interest)
+            self.__logger.info(structure)
+
+
