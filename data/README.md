@@ -20,7 +20,7 @@ K02000001
 
 <br>
 
-### Adjusting
+### Calculating Comparable Values Across Time
 
 * GDP Price Deflator & Formula
   * https://www.investopedia.com/terms/g/gdppricedeflator.asp
