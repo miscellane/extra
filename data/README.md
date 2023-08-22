@@ -10,19 +10,12 @@ K02000001
 ### National Accounts
 
 * [Gross Domestic Product (GDP)](https://www.ons.gov.uk/economy/grossdomesticproductgdp)
-
 * [Quarterly National Accounts (QNA)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/quarterlynationalaccounts)
-
 * [GDP in chained volume measures – real-time database (ABMI)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/realtimedatabaseforukgdpabmi)
-
 * [GDP quarterly national accounts, UK: October to December 2022 (an example)](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2022)
-
 * [GDP Deflator](https://www.gov.uk/government/collections/gdp-deflators-at-market-prices-and-money-gdp)
-
 * [Office for National Statistics (ONS) Seasonal Adjustment](https://www.ons.gov.uk/methodology/methodologytopicsandstatisticalconcepts/seasonaladjustment)
-
 * [Chained Volume Measures & Chain Linking Methodology](https://www.ons.gov.uk/economy/nationalaccounts/uksectoraccounts/methodologies/chainlinkingmethodsusedwithintheuknationalaccounts)
-
 * [Consumer trends: chained volume measure, seasonally adjusted](https://www.beta.ons.gov.uk/economy/nationalaccounts/satelliteaccounts/datasets/consumertrendschainedvolumemeasureseasonallyadjusted/current)
   *[example](https://www.ons.gov.uk/economy/nationalaccounts/satelliteaccounts/bulletins/consumertrends/octobertodecember2022)
 
