@@ -26,8 +26,12 @@ K02000001
 * GDP Price Deflator & Formula
   * https://www.investopedia.com/terms/g/gdppricedeflator.asp
   * https://www.ons.gov.uk/economy/inflationandpriceindices/methodologies/deflatorsandhowweusethemineconomicestimates
-* [GDP Deflator](https://www.gov.uk/government/collections/gdp-deflators-at-market-prices-and-money-gdp)
-* [Office for National Statistics (ONS) Seasonal Adjustment](https://www.ons.gov.uk/methodology/methodologytopicsandstatisticalconcepts/seasonaladjustment)
+  * [GDP Deflator](https://www.gov.uk/government/collections/gdp-deflators-at-market-prices-and-money-gdp)
+
+* Seasonal Adjustments
+  * [Office for National Statistics (ONS) Seasonal Adjustment](https://www.ons.gov.uk/methodology/methodologytopicsandstatisticalconcepts/seasonaladjustment)
+
+
 * [Chained Volume Measures & Chain Linking Methodology](https://www.ons.gov.uk/economy/nationalaccounts/uksectoraccounts/methodologies/chainlinkingmethodsusedwithintheuknationalaccounts)
 * [Consumer trends: chained volume measure, seasonally adjusted](https://www.beta.ons.gov.uk/economy/nationalaccounts/satelliteaccounts/datasets/consumertrendschainedvolumemeasureseasonallyadjusted/current)
   * [example](https://www.ons.gov.uk/economy/nationalaccounts/satelliteaccounts/bulletins/consumertrends/octobertodecember2022)
