@@ -41,10 +41,14 @@ class Interface:
         overall = src.metrics.overall.Overall().exc()
         self.__logger.info(overall)
 
+        parts = []
         for interest in ['annual_total', 'annual_segment_%', 'series_delta_%']:
 
             frame = overall[['epoch', interest, 'segment_code']]
             structure = frame.pivot(index='epoch', columns='segment_code', values=interest)
-            self.__logger.info(structure)
+            structure.reset_index(drop=False, inplace=True)
+            node = structure.to_dict(orient='tight')
+            node['name'] = interest
+            self.__logger.info(node)
 
 
