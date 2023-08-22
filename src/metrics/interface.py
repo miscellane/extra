@@ -4,7 +4,7 @@ interface.py
 import os
 import logging
 
-import src.metrics.overall
+import src.metrics.aggregates
 import src.functions.objects
 import src.functions.directories
 
@@ -45,12 +45,12 @@ class Interface:
 
     def __aggregates(self) -> str:
 
-        overall = src.metrics.overall.Overall().exc()
+        aggregates = src.metrics.aggregates.Aggregates().exc()
 
         parts = []
         for interest in ['annual_total', 'annual_segment_%', 'series_delta_%']:
 
-            frame = overall[['epoch', interest, 'segment_code']]
+            frame = aggregates[['epoch', interest, 'segment_code']]
             structure = frame.pivot(index='epoch', columns='segment_code', values=interest)
             structure.reset_index(drop=False, inplace=True)
             structure.dropna(axis=0, inplace=True)
