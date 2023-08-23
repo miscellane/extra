@@ -6,7 +6,7 @@ import pandas as pd
 import src.adjust.transactions
 
 
-class Parts:
+class Vertices:
     """
     Parts
     """
@@ -27,7 +27,7 @@ class Parts:
         self.__codes = transactions.codes
         self.__segments = transactions.segments
 
-    def __node(self, part: str, description: str) -> dict:
+    def __vertex(self, part: str, description: str) -> dict:
         """
 
         :param part:
@@ -68,4 +68,4 @@ class Parts:
         else:
             description = self.__desc_segment(part=part)
 
-        return self.__node(part=part, description=description)
+        return self.__vertex(part=part, description=description)
