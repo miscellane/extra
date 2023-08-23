@@ -52,6 +52,5 @@ class Tree:
             part = self.__part(field=field)
             computations.append(part)
         dictionary = dask.compute(computations, scheduler='threads')[0]
-        self.__logger.info(dictionary)
 
         return dictionary
