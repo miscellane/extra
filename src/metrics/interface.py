@@ -7,6 +7,7 @@ import logging
 import src.metrics.aggregates
 import src.metrics.parent
 import src.metrics.children
+import src.metrics.tree
 import src.functions.objects
 import src.functions.directories
 
@@ -47,19 +48,19 @@ class Interface:
     def __disaggregates(self):
         pass
 
-    def __aggregates(self, segment_code: str) -> str:
+    def __aggregates(self) -> str:
 
         aggregates = src.metrics.aggregates.Aggregates().exc()
 
         parts = []
-        for interest in ['annual_total', 'annual_segment_%', 'series_delta_%']:
+        for interest in ['annual_segment_total', 'annual_segment_%', 'series_delta_%']:
 
             frame = aggregates[['epoch', interest, 'segment_code']]
             structure = frame.pivot(index='epoch', columns='segment_code', values=interest)
             structure.reset_index(drop=False, inplace=True)
             structure.dropna(axis=0, inplace=True)
 
-            node = structure[['epoch', segment_code]].to_dict(orient='tight')
+            node = structure.to_dict(orient='tight')
             node['name'] = interest
             parts.append(node)
 
@@ -67,7 +68,7 @@ class Interface:
 
     def exc(self):
 
-        message = self.__aggregates(segment_code='GF10')
+        message = self.__aggregates()
         self.__logger.info(message)
 
         message = src.metrics.parent.Parent(storage=self.__storage).exc()
