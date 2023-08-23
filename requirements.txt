@@ -1,12 +1,11 @@
 dask[complete]
+numpy
+pandas
 jupyterlab
 requests
+xlrd>=2.0.1
 pytest
 coverage
 pytest-cov
 pylint
 flake8
-numpy
-pandas
-xlrd>=2.0.1
-
