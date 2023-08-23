@@ -1,5 +1,5 @@
 """
-parts.py
+vertex.py
 """
 import pandas as pd
 
@@ -8,7 +8,7 @@ import src.adjust.transactions
 
 class Vertex:
     """
-    Parts
+    Vertex
     """
 
     def __init__(self, data: pd.DataFrame, focus: str):
