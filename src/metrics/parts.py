@@ -11,13 +11,15 @@ class Parts:
     Parts
     """
 
-    def __init__(self, data: pd.DataFrame):
+    def __init__(self, data: pd.DataFrame, focus: str):
         """
 
         :param data:
+        :param focus: 'code' or 'segment'
         """
 
         self.__data = data
+        self.__focus = focus
 
         # The parent segments, e.g., defence, economic affairs, etc., and their child codes, e.g., military
         # defence (defence), civil defence (defence), etc.
@@ -26,25 +28,44 @@ class Parts:
         self.__segments = transactions.segments
 
     def __node(self, part: str, description: str) -> dict:
+        """
+
+        :param part:
+        :param description:
+        :return:
+        """
+
         excerpt = self.__data.copy()[['epoch', part]]
         return {'name': part, 'description': description, 'data': excerpt.to_dict(orient='records')}
 
-    def code(self, part: str) -> dict:
+    def __code(self, part: str) -> str:
         """
 
         :param part:
         :return:
         """
 
-        description = self.__codes[self.__codes['code'] == part, 'description'].array[0]
-        return self.__node(part=part, description=description)
+        return self.__codes[self.__codes['code'] == part, 'description'].array[0]
 
-    def segment(self, part: str) -> dict:
+    def __segment(self, part: str) -> str:
         """
 
         :param part: For example, parent segment GF02, etc.
         :return:
         """
 
-        description = self.__segments[self.__segments['segment_code'] == part, 'segment_description'].array[0]
+        return self.__segments[self.__segments['segment_code'] == part, 'segment_description'].array[0]
+
+    def exc(self, part: str) -> dict:
+        """
+        
+        :param part:
+        :return:
+        """
+
+        if self.__focus == 'code':
+            description = self.__code(part=part)
+        else:
+            description = self.__segment(part=part)
+
         return self.__node(part=part, description=description)
