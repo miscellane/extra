@@ -19,9 +19,10 @@ class Parts:
         self.__codes = transactions.codes
         self.__segments = transactions.segments
 
-    def __excerpt(self, part: str) -> pd.DataFrame:
+    def __node(self, part: str, description: str) -> dict:
 
-        return self.__data.copy()[['epoch', part]]
+        excerpt = self.__data.copy()[['epoch', part]]
+        return {'name': part, 'description': description, 'data': excerpt.to_dict(orient='records')}
 
     def code(self, part: str):
         """
@@ -31,8 +32,8 @@ class Parts:
         """
 
         description = self.__codes[self.__codes['code'] == part, 'description'].array[0]
-        excerpt = self.__excerpt(part=part)
-
+        node = self.__node(part=part, description=description)
+        
     def segment(self, part: str):
         """
 
@@ -41,4 +42,5 @@ class Parts:
         """
 
         description = self.__segments[self.__segments['segment_code'] == part, 'segment_description'].array[0]
-        excerpt = self.__excerpt(part=part)
+        node = self.__node(part=part, description=description)
+        
