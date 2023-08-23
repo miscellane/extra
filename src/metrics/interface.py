@@ -49,20 +49,26 @@ class Interface:
         pass
 
     def __aggregates(self) -> str:
+        """
+        * structure.to_dict(orient='tight')
+        
+        :return: 
+        """
 
         aggregates = src.metrics.aggregates.Aggregates().exc()
+        partitions = ['annual_segment_total', 'annual_segment_%', 'series_delta_%']
 
         parts = []
-        for interest in ['annual_segment_total', 'annual_segment_%', 'series_delta_%']:
+        for partition in partitions:
 
-            frame = aggregates[['epoch', interest, 'segment_code']]
-            structure = frame.pivot(index='epoch', columns='segment_code', values=interest)
+            frame = aggregates[['epoch', partition, 'segment_code']]
+            structure = frame.pivot(index='epoch', columns='segment_code', values=partition)
             structure.reset_index(drop=False, inplace=True)
             structure.dropna(axis=0, inplace=True)
-
-            node = structure.to_dict(orient='tight')
-            node['name'] = interest
+            
+            node = src.metrics.tree.Tree(data=structure, focus='segment_code').exc()
             parts.append(node)
+        parts = partitions.append(parts)
 
         return self.__persist(dictionary=parts, path=os.path.join(self.__storage, 'aggregates.json'))
 
