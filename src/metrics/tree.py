@@ -1,6 +1,7 @@
 """
 tree.py
 """
+import logging
 import os
 
 import dask
@@ -25,6 +26,11 @@ class Tree:
         self.__fields = data.columns.drop(labels=['epoch'])
         self.__vertex = src.metrics.vertex.Vertex(data=data, focus=focus)
 
+        # logging
+        logging.basicConfig(level=logging.INFO, format='\n\n%(message)s\n%(asctime)s.%(msecs).03d',
+                            datefmt='%Y-%m-%d %H:%M:%S')
+        self.__logger = logging.getLogger(__name__)
+
     @dask.delayed
     def __part(self, field: str) -> dict:
         """
@@ -46,5 +52,6 @@ class Tree:
             part = self.__part(field=field)
             computations.append(part)
         dictionary = dask.compute(computations, scheduler='threads')[0]
+        self.__logger.info(dictionary)
 
         return dictionary
