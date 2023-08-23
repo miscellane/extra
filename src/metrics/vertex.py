@@ -45,7 +45,7 @@ class Vertex:
         :return:
         """
 
-        return self.__codes[self.__codes['code'] == part, 'description'].array[0]
+        return self.__codes.loc[self.__codes['code'] == part, 'description'].array[0]
 
     def __desc_segment(self, part: str) -> str:
         """
@@ -54,7 +54,7 @@ class Vertex:
         :return:
         """
 
-        return self.__segments[self.__segments['segment_code'] == part, 'segment_description'].array[0]
+        return self.__segments.loc[self.__segments['segment_code'] == part, 'segment_description'].array[0]
 
     def exc(self, part: str) -> dict:
         """
