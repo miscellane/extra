@@ -65,12 +65,13 @@ class Interface:
             structure = frame.pivot(index='epoch', columns='segment_code', values=partition)
             structure.reset_index(drop=False, inplace=True)
             structure.dropna(axis=0, inplace=True)
-            
             node = src.metrics.tree.Tree(data=structure, focus='segment_code').exc()
-            parts.append(node)
-        parts = partitions.append(parts)
 
-        return self.__persist(dictionary=parts, path=os.path.join(self.__storage, 'aggregates.json'))
+            parts.append(node)
+
+        dictionary = {'partitions': partitions, 'data': parts}
+
+        return self.__persist(dictionary=dictionary, path=os.path.join(self.__storage, 'aggregates.json'))
 
     def exc(self):
 
