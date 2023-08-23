@@ -1,3 +1,6 @@
+"""
+tree.py
+"""
 import os
 
 import dask
@@ -8,6 +11,9 @@ import src.metrics.vertex
 
 
 class Tree:
+    """
+    Tree
+    """
 
     def __init__(self, data: pd.DataFrame, focus: str):
         """
@@ -21,10 +27,15 @@ class Tree:
 
     @dask.delayed
     def __part(self, field: str) -> dict:
+        """
+
+        :param field:
+        :return:
+        """
 
         return self.__vertex.exc(part=field)
 
-    def exc(self):
+    def exc(self) -> list:
         """
 
         :return:
