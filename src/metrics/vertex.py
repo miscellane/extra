@@ -6,7 +6,7 @@ import pandas as pd
 import src.adjust.transactions
 
 
-class Vertices:
+class Vertex:
     """
     Parts
     """
