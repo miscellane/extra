@@ -1,9 +1,15 @@
+"""
+parts.py
+"""
 import pandas as pd
 
 import src.adjust.transactions
 
 
 class Parts:
+    """
+    Parts
+    """
 
     def __init__(self, data: pd.DataFrame):
         """
@@ -20,7 +26,6 @@ class Parts:
         self.__segments = transactions.segments
 
     def __node(self, part: str, description: str) -> dict:
-
         excerpt = self.__data.copy()[['epoch', part]]
         return {'name': part, 'description': description, 'data': excerpt.to_dict(orient='records')}
 
