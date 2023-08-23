@@ -31,6 +31,7 @@ class Parts:
         """
 
         name = self.__codes[self.__codes['code'] == part, 'description'].array[0]
+        excerpt = self.__excerpt(part=part)
 
     def segment(self, part: str):
         """
@@ -40,3 +41,4 @@ class Parts:
         """
 
         name = self.__segments[self.__segments['segment_code'] == part, 'segment_description'].array[0]
+        excerpt = self.__excerpt(part=part)
