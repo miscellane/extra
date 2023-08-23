@@ -47,13 +47,35 @@ class Aggregates:
         :return:
         """
 
+        # Per epoch year, what is each segment's expenditure?
         aggregates = blob.copy().groupby(by=['segment_code', 'epoch']).agg(annual_segment_total=('OTE', sum))
         aggregates.reset_index(drop=False, inplace=True)
 
-        return aggregates
+        # Per epoch year, what is each segment's percentage expenditure?
+        temporary = aggregates.groupby(by=['epoch']).agg(denominator=('annual_segment_total', sum))
+        temporary.reset_index(drop=False, inplace=True)
+        temporary = aggregates.merge(temporary.copy(), how='left', on='epoch')
+        temporary.loc[:, 'annual_segment_%'] = 100 * temporary['annual_segment_total'] / temporary['denominator']
 
-    def __series(self, blob: pd.DataFrame):
-        pass
+        return temporary
+
+    @staticmethod
+    def __series(blob: pd.DataFrame) -> pd.DataFrame:
+        """
+
+        :param blob:
+        :return:
+        """
+
+        temporary = blob.copy()
+
+        # Per segment code time series, evaluate the delta percentage vis-à-vis the previous year
+        temporary.sort_values(by=['segment_code', 'epoch'], ascending=True, inplace=True)
+        temporary.loc[:, 'series_delta'] = temporary.groupby(by=['segment_code'])['annual_total'].diff().fillna(np.NaN)
+        temporary.loc[:, 'series_shift'] = temporary['annual_total'].shift(periods=1, fill_value=np.NaN)
+        temporary.loc[:, 'series_delta_%'] = 100 * temporary['series_delta'] / temporary['series_shift']
+
+        return temporary
 
     def exc(self) -> pd.DataFrame:
         """
@@ -65,18 +87,7 @@ class Aggregates:
         data = self.__read()
 
         # Per segment code, how much was spent each epoch year?
-        aggregates = self.__segments(blob=data)
+        data = self.__segments(blob=data)
+        data = self.__series(blob=data)
 
-        # What is the expenditure per epoch year?
-        temporary = aggregates.groupby(by=['epoch']).agg(denominator=('annual_segment_total', sum))
-        temporary.reset_index(drop=False, inplace=True)
-        temporary = aggregates.merge(temporary.copy(), how='left', on='epoch')
-        temporary.loc[:, 'annual_segment_%'] = 100 * temporary['annual_segment_total'] / temporary['denominator']
-
-        # Per segment code time series, evaluate the delta percentage vis-à-vis the previous year
-        temporary.sort_values(by=['segment_code', 'epoch'], ascending=True, inplace=True)
-        temporary.loc[:, 'series_delta'] = temporary.groupby(by=['segment_code'])['annual_total'].diff().fillna(np.NaN)
-        temporary.loc[:, 'series_shift'] = temporary['annual_total'].shift(periods=1, fill_value=np.NaN)
-        temporary.loc[:, 'series_delta_%'] = 100 * temporary['series_delta'] / temporary['series_shift']
-
-        return temporary
+        return data
