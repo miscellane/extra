@@ -30,7 +30,7 @@ class Parts:
         :return:
         """
 
-        name = self.__codes[self.__codes['code'] == part, 'description'].array[0]
+        description = self.__codes[self.__codes['code'] == part, 'description'].array[0]
         excerpt = self.__excerpt(part=part)
 
     def segment(self, part: str):
@@ -40,5 +40,5 @@ class Parts:
         :return:
         """
 
-        name = self.__segments[self.__segments['segment_code'] == part, 'segment_description'].array[0]
+        description = self.__segments[self.__segments['segment_code'] == part, 'segment_description'].array[0]
         excerpt = self.__excerpt(part=part)
