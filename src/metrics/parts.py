@@ -1,5 +1,6 @@
 import pandas as pd
 
+import src.adjust.transactions
 
 class Parts:
 
@@ -10,6 +11,10 @@ class Parts:
         """
 
         self.__data = data
+
+        transactions = src.adjust.transactions.Transactions()
+        self.__codes = transactions.codes
+        self.__segments = transactions.segments
 
     def code(self, part: str):
         """
