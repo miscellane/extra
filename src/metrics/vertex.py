@@ -36,6 +36,7 @@ class Vertex:
         """
 
         excerpt = self.__data.copy()[['epoch', part]]
+        excerpt.rename(columns={'epoch': 'x', part: 'y'}, inplace=True)
         return {'name': part, 'description': description, 'data': excerpt.to_dict(orient='records')}
 
     def __desc_code(self, part: str) -> str:
