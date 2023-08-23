@@ -12,7 +12,7 @@ jQuery.getJSON(url, function (source) {
 
 
     // split the data set parts
-    var dataLength = source.length,
+    var dataLength = source.data.length,
         groupingUnits = [[
             'year',   // unit name
             [1]      // allowed multiples
@@ -179,8 +179,8 @@ jQuery.getJSON(url, function (source) {
 
         series: [{
             type: 'spline',
-            name: 'Annual Segment Total',
-            data: source[0].data,
+            name: source.partitions[0],
+            data: source.data[0],
             dataGrouping: {
                 units: groupingUnits,
                 dateTimeLabelFormats: {
@@ -201,8 +201,8 @@ jQuery.getJSON(url, function (source) {
         },
             {
                 type: 'spline',
-                name: 'Annual Segment Percentage',
-                data: source[1].data,
+                name: source.partitions[1],
+                data: source.data[1],
                 color: '#6B8E23',
                 yAxis: 1,
                 dataGrouping: {
@@ -215,8 +215,8 @@ jQuery.getJSON(url, function (source) {
             },
             {
                 type: 'spline',
-                name: 'Annual Segment Delta',
-                data: source[2].data,
+                name: source.partitions[2],
+                data: source.data[2],
                 color: '#A08E23',
                 visible: true,
                 yAxis: 2,
@@ -231,7 +231,7 @@ jQuery.getJSON(url, function (source) {
             {
                 type: 'column',
                 name: 'Total',
-                data: source[0].data,
+                data: source.data[0],
                 stacking: 'normal',
                 yAxis: 3,
                 dataGrouping: {
