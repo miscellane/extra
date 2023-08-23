@@ -1,6 +1,9 @@
 dask
+numpy
+pandas
 jupyterlab
 requests
+xlrd
 pytest
 coverage
 pytest-cov
