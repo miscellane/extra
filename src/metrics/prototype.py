@@ -6,10 +6,6 @@ import numpy as np
 import pandas as pd
 
 import config
-import src.adjust.transactions
-import src.functions.directories
-import src.functions.objects
-import src.functions.streams
 
 
 class Prototype:
@@ -18,9 +14,6 @@ class Prototype:
         """
 
         """
-
-        # The overarching foci, i.e., segments, e.g., defence, economic affairs, etc.
-        self.__segments = src.adjust.transactions.Transactions().segments
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
         self.__datapath = config.Config().expenditure.datapath
