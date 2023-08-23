@@ -29,8 +29,9 @@ class Parts:
     def segment(self, part: str):
         """
 
-        :param part: For example, parent segment GF02, child segment GF0201, etc.
+        :param part: For example, parent segment GF02, etc.
         :return:
         """
 
-        fields = ['epoch', part]
+        name = self.__segments[self.__segments['segment_code'] == part, 'segment_description'].array[0]
+        excerpt = self.__data[['epoch', part]]
