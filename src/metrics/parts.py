@@ -19,12 +19,18 @@ class Parts:
         self.__codes = transactions.codes
         self.__segments = transactions.segments
 
+    def __excerpt(self, part: str) -> pd.DataFrame:
+
+        return self.__data.copy()[['epoch', part]]
+
     def code(self, part: str):
         """
 
         :param part:
         :return:
         """
+
+        name = self.__codes[self.__codes['code'] == part, 'description'].array[0]
 
     def segment(self, part: str):
         """
@@ -34,4 +40,3 @@ class Parts:
         """
 
         name = self.__segments[self.__segments['segment_code'] == part, 'segment_description'].array[0]
-        excerpt = self.__data[['epoch', part]]
