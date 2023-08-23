@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 
 import config
+import src.metrics.tree
 
 
 class Aggregates:
@@ -39,17 +40,20 @@ class Aggregates:
         return data
 
     @staticmethod
-    def __aggregates(blob: pd.DataFrame) -> pd.DataFrame:
+    def __segments(blob: pd.DataFrame) -> pd.DataFrame:
         """
 
         :param blob:
         :return:
         """
 
-        aggregates = blob.copy().groupby(by=['segment_code', 'epoch']).agg(annual_total=('OTE', sum))
+        aggregates = blob.copy().groupby(by=['segment_code', 'epoch']).agg(annual_segment_total=('OTE', sum))
         aggregates.reset_index(drop=False, inplace=True)
 
         return aggregates
+
+    def __series(self, blob: pd.DataFrame):
+        pass
 
     def exc(self) -> pd.DataFrame:
         """
@@ -61,13 +65,13 @@ class Aggregates:
         data = self.__read()
 
         # Per segment code, how much was spent each epoch year?
-        aggregates = self.__aggregates(blob=data)
+        aggregates = self.__segments(blob=data)
 
         # What is the expenditure per epoch year?
-        temporary = aggregates.groupby(by=['epoch']).agg(denominator=('annual_total', sum))
+        temporary = aggregates.groupby(by=['epoch']).agg(denominator=('annual_segment_total', sum))
         temporary.reset_index(drop=False, inplace=True)
         temporary = aggregates.merge(temporary.copy(), how='left', on='epoch')
-        temporary.loc[:, 'annual_segment_%'] = 100 * temporary['annual_total'] / temporary['denominator']
+        temporary.loc[:, 'annual_segment_%'] = 100 * temporary['annual_segment_total'] / temporary['denominator']
 
         # Per segment code time series, evaluate the delta percentage vis-à-vis the previous year
         temporary.sort_values(by=['segment_code', 'epoch'], ascending=True, inplace=True)
