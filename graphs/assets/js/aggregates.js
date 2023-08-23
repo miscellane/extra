@@ -11,19 +11,46 @@ jQuery.getJSON(url, function (source) {
     // https://api.highcharts.com/highstock/tooltip.pointFormat
 
 
-    // split the data set parts
-    var dataLength = source.data.length,
+    // Definitions
+    var alpha = [],
+        beta = [],
+        gamma = [],
         groupingUnits = [[
             'year',   // unit name
             [1]      // allowed multiples
         ]],
         i = 0;
 
+
+    // Splits
+    for (var i = 0; i < source.data[0].length; i += 1) {
+        alpha[i] = {
+            name: source.data[0][i].description,
+            data: source.data[0][i].data
+        };
+    }
+
+    for (var i = 0; i < source.data[1].length; i += 1) {
+        beta[i] = {
+            name: source.data[1][i].description,
+            data: source.data[1][i].data
+        };
+    }
+
+    for (var i = 0; i < source.data[2].length; i += 1) {
+        gamma[i] = {
+            name: source.data[2][i].description,
+            data: source.data[2][i].data
+        };
+    }
+
+    // Numbers
     Highcharts.setOptions({
         lang: {
             thousandsSep: ','
         }
     });
+
 
     // Draw a graph
     Highcharts.stockChart('container0001', {
@@ -69,7 +96,7 @@ jQuery.getJSON(url, function (source) {
 
         legend: {
             enabled: true,
-            width: 500,
+            width: 600,
             x: 65
             // align: 'middle',
             // layout: 'vertical',
@@ -106,143 +133,58 @@ jQuery.getJSON(url, function (source) {
                 x: 7
             },
             min: 0,
-            height: '23%',
+            height: '40%',
             lineWidth: 2,
             resize: {
                 enabled: true
             }
         }, {
-            labels: {
-                align: 'left',
-                x: 5
-            },
-            title: {
-                text: 'Annual Segment<br>Percentage',
-                align: 'middle',
-                x: 7
-            },
-            top: '26%',
-            height: '23%',
-            offset: 0,
-            lineWidth: 2
-        }, {
-            labels: {
-                align: 'left',
-                x: 5
-            },
-            title: {
-                text: 'Annual Segment<br>Delta',
-                align: 'middle',
-                x: 7
-            },
-            top: '52%',
-            height: '23%',
-            offset: 0,
-            lineWidth: 2
-        }, {
-             labels: {
-                 align: 'left',
-                 x: 5
-             },
-             title: {
-                 text: 'Total',
-                 align: 'middle',
-                 x: 7
-             },
-             top: '78%',
-             height: '18%',
-             offset: 0,
-             lineWidth: 2
+           labels: {
+               align: 'left',
+               x: 5
+           },
+           title: {
+               text: 'Annual Segment<br>Percentage',
+               align: 'middle',
+               x: 7
+           },
+           min: 0,
+           top: '45%',
+           height: '40%',
+           lineWidth: 2,
+           resize: {
+               enabled: true
            }
+       }
         ],
 
         plotOptions: {
             series: {
-                turboThreshold: 650000
+                marker: {
+                    enabled: true,
+                    radius: 2
+                },
+                lineWidth: 0.25,
+                dataLabels: {
+                    enabled: false
+                },
+                turboThreshold: 4000,
+                dataGrouping: {
+                  units: groupingUnits
+              },
+              tooltip: {
+                  pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {series.name}</b>: ' +
+                      '{point.y:,.2f}m£<br/>'
+              }
             }
         },
 
         tooltip: {
-            split: true,
-            dateTimeLabelFormats: {
-                millisecond: "%A, %e %b, %H:%M:%S.%L",
-                second: "%A, %e %b, %H:%M:%S",
-                minute: "%A, %e %b, %H:%M",
-                hour: "%A, %e %b, %H:%M",
-                day: "%A, %e %B, %Y",
-                week: "%A, %e %b, %Y",
-                month: "%B %Y",
-                year: "%Y"
-            }
-
+            split: true
         },
 
-        series: [{
-            type: 'spline',
-            name: source.partitions[0],
-            data: source.data[0],
-            dataGrouping: {
-                units: groupingUnits,
-                dateTimeLabelFormats: {
-                    millisecond: ['%A, %e %b, %H:%M:%S.%L', '%A, %b %e, %H:%M:%S.%L', '-%H:%M:%S.%L'],
-                    second: ['%A, %e %b, %H:%M:%S', '%A, %b %e, %H:%M:%S', '-%H:%M:%S'],
-                    minute: ['%A, %e %b, %H:%M', '%A, %b %e, %H:%M', '-%H:%M'],
-                    hour: ['%A, %e %b, %H:%M', '%A, %b %e, %H:%M', '-%H:%M'],
-                    day: ['%A, %e %b, %Y', '%A, %b %e', '-%A, %b %e, %Y'],
-                    week: ['Week from %A, %e %b, %Y', '%A, %b %e', '-%A, %b %e, %Y'],
-                    month: ['%B %Y', '%B', '-%B %Y'],
-                    year: ['%Y', '%Y', '-%Y']
-                }
-            },
-            tooltip: {
-                pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {series.name}</b>: ' +
-                    '{point.y:,.2f}m£<br/>'
-            }
-        },
-            {
-                type: 'spline',
-                name: source.partitions[1],
-                data: source.data[1],
-                color: '#6B8E23',
-                yAxis: 1,
-                dataGrouping: {
-                    units: groupingUnits
-                },
-                tooltip: {
-                    pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {series.name}</b>: ' +
-                        '{point.y:,.2f}%<br/>'
-                }
-            },
-            {
-                type: 'spline',
-                name: source.partitions[2],
-                data: source.data[2],
-                color: '#A08E23',
-                visible: true,
-                yAxis: 2,
-                dataGrouping: {
-                    units: groupingUnits
-                },
-                tooltip: {
-                    pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {series.name}</b>: ' +
-                        '{point.y:,.2f}%<br/>'
-                }
-            },
-            {
-                type: 'column',
-                name: 'Total',
-                data: source.data[0],
-                stacking: 'normal',
-                yAxis: 3,
-                dataGrouping: {
-                    units: groupingUnits
-                },
-                tooltip: {
-                    pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {series.name}</b>: ' +
-                        '{point.y:,.2f}m£<br/>'
-                }
-            }
-        ],
+        series: alpha,
+
         responsive: {
             rules: [{
                 condition: {
@@ -257,7 +199,4 @@ jQuery.getJSON(url, function (source) {
         }
     });
 
-}).fail(function () {
-    console.log("Missing");
-    $('#container0001').empty();
 });
