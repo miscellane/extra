@@ -47,7 +47,7 @@ class Interface:
     def __disaggregates(self):
         pass
 
-    def __aggregates(self) -> str:
+    def __aggregates(self, segment_code: str) -> str:
 
         aggregates = src.metrics.aggregates.Aggregates().exc()
 
@@ -59,7 +59,7 @@ class Interface:
             structure.reset_index(drop=False, inplace=True)
             structure.dropna(axis=0, inplace=True)
 
-            node = structure.to_dict(orient='tight')
+            node = structure[['epoch', segment_code]].to_dict(orient='tight')
             node['name'] = interest
             parts.append(node)
 
@@ -67,7 +67,7 @@ class Interface:
 
     def exc(self):
 
-        message = self.__aggregates()
+        message = self.__aggregates(segment_code='GF10')
         self.__logger.info(message)
 
         message = src.metrics.parent.Parent(storage=self.__storage).exc()
