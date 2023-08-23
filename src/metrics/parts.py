@@ -38,7 +38,7 @@ class Parts:
         excerpt = self.__data.copy()[['epoch', part]]
         return {'name': part, 'description': description, 'data': excerpt.to_dict(orient='records')}
 
-    def __code(self, part: str) -> str:
+    def __desc_code(self, part: str) -> str:
         """
 
         :param part:
@@ -47,7 +47,7 @@ class Parts:
 
         return self.__codes[self.__codes['code'] == part, 'description'].array[0]
 
-    def __segment(self, part: str) -> str:
+    def __desc_segment(self, part: str) -> str:
         """
 
         :param part: For example, parent segment GF02, etc.
@@ -64,8 +64,8 @@ class Parts:
         """
 
         if self.__focus == 'code':
-            description = self.__code(part=part)
+            description = self.__desc_code(part=part)
         else:
-            description = self.__segment(part=part)
+            description = self.__desc_segment(part=part)
 
         return self.__node(part=part, description=description)
