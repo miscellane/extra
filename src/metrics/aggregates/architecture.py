@@ -80,7 +80,7 @@ class Architecture:
 
         return temporary
 
-    def exc(self) -> pd.DataFrame:
+    def exc(self) -> list[str]:
         """
 
         :return:
@@ -93,10 +93,10 @@ class Architecture:
         data = self.__segments(blob=data)
         data = self.__series(blob=data)
 
-        # Write
-        src.functions.streams.Streams().write(blob=data, path=os.path.join(self.__storage, 'aggregates.csv'))
+        # Persist
+        # * csv
+        # * json
+        __csv = src.functions.streams.Streams().write(blob=data, path=os.path.join(self.__storage, 'aggregates.csv'))
+        __json = src.metrics.aggregates.structuring.Structuring(storage=self.__storage).exc(blob=data)
 
-        # Re-structuring & writing; .json for graphing
-        src.metrics.aggregates.structuring.Structuring(storage=self.__storage).exc(blob=data)
-
-        return data
+        return [__csv, __json]
