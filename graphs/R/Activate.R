@@ -4,7 +4,7 @@ Activate <- function () {
   # Packages
   packages <- c('data.table', 'tidyverse', 'moments', 'rmarkdown', 'latex2exp',
                 'roxygen2', 'healthcareai', 'equatiomatic', 'rstatix', 'matrixStats', 'patchwork',
-                'kableExtra', 'bookdown', 'paletteer', 'ggthemes', 'ggcorrplot')
+                'kableExtra', 'bookdown', 'paletteer', 'ggthemes', 'ggcorrplot', 'plotly')
 
 
   # Activate
