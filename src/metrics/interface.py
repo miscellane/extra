@@ -35,51 +35,6 @@ class Interface:
                             datefmt='%Y-%m-%d %H:%M:%S')
         self.__logger = logging.getLogger(__name__)
 
-    @staticmethod
-    def __persist(dictionary: any, path: str) -> str:
-        """
-
-        :param dictionary:
-        :return:
-        """
-
-        return src.functions.objects.Objects().write(nodes=dictionary, path=path)
-
-    def __disaggregates(self):
-        pass
-
-    def __aggregates(self) -> str:
-        """
-        * structure.to_dict(orient='tight')
-        
-        :return: 
-        """
-
-        aggregates = src.metrics.aggregates.architecture.Architecture(storage=self.__storage).exc()
-        self.__logger.info(aggregates)
-        partitions = ['annual_segment_total', 'annual_segment_%', 'series_delta_%']
-
-        parts = []
-        for partition in partitions:
-            frame = aggregates[['epoch', partition, 'segment_code']]
-            structure = frame.pivot(index='epoch', columns='segment_code', values=partition)
-            structure.reset_index(drop=False, inplace=True)
-            structure.dropna(axis=0, inplace=True)
-
-            # Either
-            node = src.metrics.tree.Tree(data=structure, focus='segment_code').exc()
-
-            # Or
-            # node = structure.to_dict(orient='tight')
-            # node['name'] = partition
-
-            # Subsequently
-            parts.append(node)
-
-        dictionary = {'partitions': partitions, 'data': parts}
-
-        return self.__persist(dictionary=dictionary, path=os.path.join(self.__storage, 'aggregates.json'))
-
     def exc(self):
         """
 
@@ -89,7 +44,7 @@ class Interface:
         '''
         In-depth
         '''
-        message = self.__aggregates()
+        message = src.metrics.aggregates.architecture.Architecture(storage=self.__storage).exc()
         self.__logger.info(message)
 
         '''
