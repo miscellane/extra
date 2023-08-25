@@ -54,7 +54,7 @@ class Aggregates:
         aggregates.reset_index(drop=False, inplace=True)
 
         # Per epoch year, what is each segment's percentage expenditure?
-        temporary = aggregates.groupby(by=['epoch', 'year']).agg(denominator=('annual_segment_total', sum))
+        temporary = aggregates.groupby(by=['epoch']).agg(denominator=('annual_segment_total', sum))
         temporary.reset_index(drop=False, inplace=True)
         temporary = aggregates.merge(temporary.copy(), how='left', on='epoch')
         temporary.loc[:, 'annual_segment_%'] = 100 * temporary['annual_segment_total'] / temporary['denominator']
