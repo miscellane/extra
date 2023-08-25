@@ -14,7 +14,9 @@ Aggregates <- function () {
     ggplot(mapping = aes(x = year, y = value, colour = segment_code)) +
     geom_point(alpha = 0.25) +
     facet_wrap(~partition, nrow = 3, ncol = 1, scales = 'free_y') +
-    theme_minimal()
+    theme_minimal() +
+    theme(panel.spacing = unit(x = 2, units = 'lines'),
+          panel.grid.minor = element_blank())
 
 
 }
