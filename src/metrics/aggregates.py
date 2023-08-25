@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 
 import config
+import src.functions.streams
 
 
 class Aggregates:
@@ -15,10 +16,12 @@ class Aggregates:
     Overall
     """
 
-    def __init__(self):
+    def __init__(self, storage: str):
         """
 
         """
+
+        self.__storage = storage
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
         self.__datapath = config.Config().expenditure.datapath
@@ -88,5 +91,8 @@ class Aggregates:
         # Per segment code, how much was spent each epoch year?
         data = self.__segments(blob=data)
         data = self.__series(blob=data)
+
+        # Write
+        src.functions.streams.Streams().write(blob=data, path=os.path.join(self.__storage, 'aggregates.csv'))
 
         return data
