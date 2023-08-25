@@ -16,7 +16,8 @@ Aggregates <- function () {
     facet_wrap(~partition, nrow = 3, ncol = 1, scales = 'free_y') +
     theme_minimal() +
     theme(panel.spacing = unit(x = 2, units = 'lines'),
-          panel.grid.minor = element_blank())
+          panel.grid.minor = element_blank(),
+          panel.grid.major = element_line(size = 0.1))
 
 
 }
