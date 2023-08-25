@@ -55,7 +55,7 @@ class Interface:
         :return: 
         """
 
-        aggregates = src.metrics.aggregates.Aggregates().exc()
+        aggregates = src.metrics.aggregates.Aggregates(storage=self.__storage).exc()
         self.__logger.info(aggregates)
         partitions = ['annual_segment_total', 'annual_segment_%', 'series_delta_%']
 
