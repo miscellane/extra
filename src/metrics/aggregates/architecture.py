@@ -9,6 +9,7 @@ import pandas as pd
 
 import config
 import src.functions.streams
+import src.metrics.aggregates.structuring
 
 
 class Architecture:
@@ -94,5 +95,8 @@ class Architecture:
 
         # Write
         src.functions.streams.Streams().write(blob=data, path=os.path.join(self.__storage, 'aggregates.csv'))
+
+        # Re-structuring & writing; .json for graphing
+        src.metrics.aggregates.structuring.Structuring(storage=self.__storage).exc(blob=data)
 
         return data
