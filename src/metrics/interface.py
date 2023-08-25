@@ -4,7 +4,7 @@ interface.py
 import os
 import logging
 
-import src.metrics.aggregates
+import src.metrics.architecture
 import src.metrics.parent
 import src.metrics.children
 import src.metrics.tree
@@ -55,7 +55,7 @@ class Interface:
         :return: 
         """
 
-        aggregates = src.metrics.aggregates.Aggregates(storage=self.__storage).exc()
+        aggregates = src.metrics.architecture.Architecture(storage=self.__storage).exc()
         self.__logger.info(aggregates)
         partitions = ['annual_segment_total', 'annual_segment_%', 'series_delta_%']
 
@@ -81,10 +81,20 @@ class Interface:
         return self.__persist(dictionary=dictionary, path=os.path.join(self.__storage, 'aggregates.json'))
 
     def exc(self):
+        """
 
+        :return:
+        """
+
+        '''
+        In-depth
+        '''
         message = self.__aggregates()
         self.__logger.info(message)
 
+        '''
+        Simple
+        '''
         message = src.metrics.parent.Parent(storage=self.__storage).exc()
         self.__logger.info(message)
 
