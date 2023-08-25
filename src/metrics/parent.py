@@ -50,17 +50,8 @@ class Parent:
 
         return data
 
-    def __persist(self, dictionary) -> str:
-        """
-
-        :param dictionary:
-        :return:
-        """
-
-        return src.functions.objects.Objects().write(
-            nodes=dictionary, path=os.path.join(self.__storage, 'parent.json'))
-
-    def __aggregates(self, blob: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def __aggregates(blob: pd.DataFrame) -> pd.DataFrame:
         """
 
         :param blob:
@@ -69,7 +60,6 @@ class Parent:
 
         aggregates = blob.copy().groupby(by=['segment_code', 'year']).agg(total=('OTE', sum))
         aggregates.reset_index(drop=False, inplace=True)
-        aggregates.rename(columns=self.__rename_aggregates, inplace=True)
 
         return aggregates
 
@@ -90,7 +80,20 @@ class Parent:
 
         return node
 
-    def exc(self) -> str:
+    def __alternative(self, aggregates: pd.DataFrame) -> str:
+
+        alternative = aggregates.copy().rename(columns=self.__rename_aggregates, inplace=False)
+        segment_codes = alternative['segment_code'].unique()
+        computations = []
+        for segment_code in segment_codes:
+            node = self.__node(aggregates=alternative, segment_code=segment_code)
+            computations.append(node)
+        dictionary = dask.compute(computations, scheduler='threads')[0]
+
+        return src.functions.objects.Objects().write(
+            nodes=dictionary, path=os.path.join(self.__storage, 'parent.json'))
+
+    def exc(self) -> list:
         """
 
         :return:
@@ -102,14 +105,10 @@ class Parent:
         # Get aggregates by segment
         aggregates = self.__aggregates(blob=data)
 
-        # The unique segments
-        segment_codes = aggregates['segment_code'].unique()
+        # CSV: persist ...
+        __csv = src.functions.streams.Streams().write(blob=aggregates, path=os.path.join(self.__storage, 'parent.csv'))
 
-        computations = []
-        for segment_code in segment_codes:
-            node = self.__node(aggregates=aggregates, segment_code=segment_code)
-            computations.append(node)
-        dictionary = dask.compute(computations, scheduler='threads')[0]
-        message = self.__persist(dictionary=dictionary)
+        # JSON: persist ...
+        __json = self.__alternative(aggregates=aggregates)
 
-        return message
+        return [__csv, __json]
