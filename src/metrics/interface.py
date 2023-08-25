@@ -60,13 +60,19 @@ class Interface:
 
         parts = []
         for partition in partitions:
-
             frame = aggregates[['epoch', partition, 'segment_code']]
             structure = frame.pivot(index='epoch', columns='segment_code', values=partition)
             structure.reset_index(drop=False, inplace=True)
             structure.dropna(axis=0, inplace=True)
+
+            # Either
             node = src.metrics.tree.Tree(data=structure, focus='segment_code').exc()
 
+            # Or
+            # node = structure.to_dict(orient='tight')
+            # node['name'] = partition
+
+            # Then
             parts.append(node)
 
         dictionary = {'partitions': partitions, 'data': parts}
