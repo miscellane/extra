@@ -19,9 +19,5 @@ Activate <- function () {
   if ('tidyverse' %in% packages) {
     lapply(X = c('magrittr', 'dplyr', 'tibble', 'ggplot2', 'stringr', 'lubridate'), .activate)
   }
-
-
-  # Active libraries
-  sessionInfo()
-
+  
 }
