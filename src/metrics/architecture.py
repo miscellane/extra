@@ -11,7 +11,7 @@ import config
 import src.functions.streams
 
 
-class Aggregates:
+class Architecture:
     """
     Overall
     """
