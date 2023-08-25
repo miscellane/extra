@@ -7,8 +7,14 @@ Aggregates <- function () {
   T <- dplyr::rename(T, annual_segment_rate = 'annual_segment_.', series_delta_rate = 'series_delta_.')
   str(object = T)
 
+  descriptions <- data.table::fread(file = file.path(getwd(), 'data', 'expenditure', 'expenditure_transaction_types.csv'),
+                                    select = c('segment_code', 'segment_description'), strip.white = TRUE,
+                                    colClasses = c(segment_code = 'character', segment_description = 'character'),
+                                    data.table = FALSE) %>% dplyr::distinct(.keep_all = TRUE)
+  descriptions
 
-  T %>%
+
+  diagram <- T %>%
     dplyr::select(segment_code, year, annual_segment_total, annual_segment_rate, series_delta_rate) %>%
     tidyr::gather(key = 'partition', value = 'value', -c('segment_code', 'year')) %>%
     ggplot(mapping = aes(x = year, y = value, colour = segment_code)) +
@@ -17,7 +23,17 @@ Aggregates <- function () {
     theme_minimal() +
     theme(panel.spacing = unit(x = 2, units = 'lines'),
           panel.grid.minor = element_blank(),
-          panel.grid.major = element_line(size = 0.1))
+          panel.grid.major = element_line(size = 0.1),
+          axis.text.x = element_text(size = 9), axis.text.y = element_text(size = 9),
+          axis.title.x = element_text(size = 11), axis.title.y = element_text(size = 11)) +
+    xlab(label = '\nyear\n') +
+    ylab(label = '\n\n')
+
+  diagram
+
+
+
+  plotly::ggplotly(diagram)
 
 
 }
