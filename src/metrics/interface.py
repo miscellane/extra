@@ -73,7 +73,7 @@ class Interface:
             # node = structure.to_dict(orient='tight')
             # node['name'] = partition
 
-            # Then
+            # Subsequently
             parts.append(node)
 
         dictionary = {'partitions': partitions, 'data': parts}
