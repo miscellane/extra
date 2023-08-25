@@ -4,7 +4,7 @@ interface.py
 import os
 import logging
 
-import src.metrics.architecture
+import src.metrics.aggregates.architecture
 import src.metrics.parent
 import src.metrics.children
 import src.metrics.tree
@@ -55,7 +55,7 @@ class Interface:
         :return: 
         """
 
-        aggregates = src.metrics.architecture.Architecture(storage=self.__storage).exc()
+        aggregates = src.metrics.aggregates.architecture.Architecture(storage=self.__storage).exc()
         self.__logger.info(aggregates)
         partitions = ['annual_segment_total', 'annual_segment_%', 'series_delta_%']
 
