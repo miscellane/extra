@@ -55,7 +55,7 @@ class Structuring:
 
         return parts
 
-    def exc(self, blob: pd.DataFrame):
+    def exc(self, blob: pd.DataFrame) -> str:
         """
 
         :param blob:
@@ -68,4 +68,4 @@ class Structuring:
         # This structure declares an injective mapping: partitions[i] -> data[i]
         dictionary = {'partitions': self.__partitions, 'data': parts}
 
-        self.__persist(dictionary=dictionary, path=os.path.join(self.__storage, 'aggregates.json'))
+        return self.__persist(dictionary=dictionary, path=os.path.join(self.__storage, 'aggregates.json'))
