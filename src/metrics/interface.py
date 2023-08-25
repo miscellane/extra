@@ -56,6 +56,7 @@ class Interface:
         """
 
         aggregates = src.metrics.aggregates.Aggregates().exc()
+        self.__logger.info(aggregates)
         partitions = ['annual_segment_total', 'annual_segment_%', 'series_delta_%']
 
         parts = []
