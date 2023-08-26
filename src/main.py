@@ -20,14 +20,18 @@ def __extraneous():
 def main():
     logger.info('investments')
 
+    # The Excel sheets cases
     messages = src.cases.interface.Interface().exc()
     logger.info(messages)
 
+    # Ascertain comparable cost values by adjusting for inflation via a deflator
     messages = src.adjust.revalue.Revalue().exc()
     logger.info(messages)
 
+    # Calculating metrics
     src.metrics.interface.Interface().exc()
 
+    # Deleting __pycache__
     __extraneous()
 
 
