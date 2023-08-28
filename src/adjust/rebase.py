@@ -53,9 +53,15 @@ class Rebase:
         :return:
         """
 
+        # Reading-in the raw deflator data
         data = src.functions.streams.Streams().read(
             uri=self.__deflator.source, header=0, usecols=['year', 'quote'], dtype={'year': int, 'quote': float})
+
+        # Rebasing the data
         data = self.__calculate(data=data.copy())
+
+        # Store
+
         self.__logger.info(data)
 
         return data
