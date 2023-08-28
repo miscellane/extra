@@ -145,7 +145,20 @@ jQuery.getJSON(url, function (calculations){
       lineWidth: 2,
       resize: {
         enabled: true
-      }
+      },
+      plotLines: [{
+        value: calculations.series[0].rebase,
+        width: 2,
+        color: 'orange'
+      }]
+    },
+
+    xAxis: {
+      plotLines: [{
+        value: calculations.series[0].epoch,
+        width: 1.5,
+        color: 'orange'
+      }]
     },
 
 		// Tooltip
