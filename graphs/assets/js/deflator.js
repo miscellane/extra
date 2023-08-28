@@ -29,7 +29,7 @@ jQuery.getJSON(url, function (calculations){
   Highcharts.stockChart('container0005', {
 
     rangeSelector: {
-      selected: 1,
+      selected: 5,
       verticalAlign: 'top',
       floating: false,
       inputPosition: {
