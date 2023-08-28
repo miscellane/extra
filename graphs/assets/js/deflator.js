@@ -45,28 +45,34 @@ jQuery.getJSON(url, function (calculations){
       inputDateFormat: '%Y'
     },
 
+		// Chart
     chart: {
       zoomType: 'x'
       // borderWidth: 2,
       // marginRight: 100
     },
 
+		// Title
     title: {
       text: 'Deflator Series'
     },
 
+		// Subtitle
     subtitle: {
       text: 'Country: United Kingdom, Base Year: '
     },
 
+		// Time
     time: {
       // timezone: 'Europe/London'
     },
 
+		// Credits
     credits: {
       enabled: false
     },
 
+		// Legend
     legend: {
       enabled: true,
       width: 600,
@@ -77,6 +83,7 @@ jQuery.getJSON(url, function (calculations){
       // verticalAlign: 'bottom'
     },
 
+		// Graph caption
     caption: {
       verticalAlign: "bottom",
       y: 25,
@@ -85,6 +92,7 @@ jQuery.getJSON(url, function (calculations){
         'that the base year is <b>2010</b>.</p>'
     },
 
+		// Export options
     exporting: {
       buttons: {
         contextButton: {
@@ -95,6 +103,7 @@ jQuery.getJSON(url, function (calculations){
       }
     },
 
+		// The y-axis
     yAxis: {
       labels: {
         align: 'left',
@@ -112,6 +121,7 @@ jQuery.getJSON(url, function (calculations){
       }
     },
 
+		// Tooltip
     tooltip: {
       dateTimeLabelFormats: {
         millisecond: "%A, %e %b, %H:%M:%S.%L",
@@ -125,6 +135,7 @@ jQuery.getJSON(url, function (calculations){
       }
     },
 
+		// Plot options
     plotOptions: {
       series: {
         turboThreshold: 4000,
@@ -136,9 +147,9 @@ jQuery.getJSON(url, function (calculations){
           units: groupingUnits
         },
         tooltip: {
-          headerFormat: '<p><span style="font-size: 13px; color:#aab597">\u25CF {point.x:.0f}</span></p>',
-          pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {series.name} </b>: ' +
-            '{point.y:,.2f}<br/>'
+          // headerFormat: '<p><span style="font-size: 13px; color:#aab597">\u25CF {point.x:.0f}</span></p>',
+          pointFormat: '<span style="color:{point.color}">\u25CF</span> <b>{series.name}</b>:<br/>' +
+            '&nbsp; &nbsp;{point.y:,.2f}<br/>'
         }
       }
     },
