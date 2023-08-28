@@ -62,7 +62,7 @@ class Rebase:
         :return:
         """
 
-        data = blob.copy()[['epoch', 'rebase']]
+        data = blob.copy().loc[blob['year'] >= 1971, ['epoch', 'rebase']]
         data.rename(columns={'epoch': 'x', 'rebase': 'y'}, inplace=True)
         dictionary = {'name': 'deflator',
                       'description': f'Deflator Series (Base Year: {self.__deflator.rebase_year})',
