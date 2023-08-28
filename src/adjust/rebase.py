@@ -66,7 +66,7 @@ class Rebase:
         data.rename(columns={'epoch': 'x', 'rebase': 'y'}, inplace=True)
         dictionary = {'name': 'deflator',
                       'description': f'Deflator Series (Base Year: {self.__deflator.rebase_year})',
-                      'data': data.to_dict(orient='tight')}
+                      'data': data.to_dict(orient='records')}
         return src.functions.objects.Objects().write(
             nodes=dictionary, path=os.path.join(self.__deflator.storage, 'series.json'))
 
