@@ -1,6 +1,6 @@
 {
     "name": "deflator",
-    "key": [
+    "attribute": [
         {
             "year": 2010,
             "epoch": 1262304000000,
