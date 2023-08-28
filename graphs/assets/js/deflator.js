@@ -86,7 +86,7 @@ jQuery.getJSON(url, function (calculations){
 
 		// Subtitle
     subtitle: {
-      text: 'Country: United Kingdom, Base Year: '
+      text: '<p>Country: United Kingdom, Base Year: ' + calculations.attribute[0].year + '</p>'
     },
 
 		// Time
