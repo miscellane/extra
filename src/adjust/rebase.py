@@ -66,7 +66,7 @@ class Rebase:
         data = blob.copy()[['epoch', 'rebase']]
         data.rename(columns={'epoch': 'x', 'rebase': 'y'}, inplace=True)
         dictionary = {'name': 'deflator',
-                      'key': excerpt,
+                      'attribute': excerpt,
                       'description': 'Deflator Series',
                       'data': data.to_dict(orient='records')}
         return src.functions.objects.Objects().write(
