@@ -2,6 +2,7 @@
     "name": "deflator",
     "series": [
         {
+            "year": 2010,
             "epoch": 1262304000000,
             "rebase": 100.0
         }
