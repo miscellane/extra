@@ -1,6 +1,11 @@
 {
     "name": "deflator",
-    "rebase_year": 2010,
+    "series": [
+        {
+            "epoch": 1262304000000,
+            "rebase": 100.0
+        }
+    ],
     "description": "Deflator Series",
     "data": [
         {
