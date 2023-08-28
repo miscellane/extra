@@ -36,7 +36,8 @@ class Rebase:
         # the rebase data
         self.data = self.__exc()
 
-    def __epoch(self, series: pd.Series) -> pd.Series:
+    @staticmethod
+    def __epoch(series: pd.Series) -> pd.Series:
 
         nanoseconds = pd.to_datetime(series.astype(str), format='%Y').astype(np.int64)
         milliseconds: pd.Series = (nanoseconds / (10 ** 6)).astype(np.longlong)
@@ -54,9 +55,8 @@ class Rebase:
         value = data.loc[data['year'] == self.__deflator.rebase_year, 'quote'].array[0]
         data.loc[:, 'rebase'] = 100 * data['quote'] / value
         data.loc[:, 'kappa'] = 100 / data['rebase']
-        self.__logger.info(data.info())
         data.loc[:, 'epoch'] = self.__epoch(series=data['year']).values
-        self.__logger.info(data.info())
+        
         return data
 
     def __exc(self) -> pd.DataFrame:
