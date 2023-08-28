@@ -106,8 +106,6 @@ jQuery.getJSON(url, function (calculations){
       x: 65,
       y: -45,
       align: 'middle'
-      // layout: 'vertical'
-      // verticalAlign: 'bottom'
     },
 
 		// Graph caption
