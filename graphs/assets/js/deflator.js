@@ -77,8 +77,8 @@ jQuery.getJSON(url, function (calculations){
       enabled: true,
       width: 600,
       x: 65,
-      y: 15
-      // align: 'middle'
+      y: -45,
+      align: 'middle'
       // layout: 'vertical'
       // verticalAlign: 'bottom'
     },
@@ -87,8 +87,8 @@ jQuery.getJSON(url, function (calculations){
     caption: {
       verticalAlign: "bottom",
       y: 25,
-      text: '<p>This series is a <b>rebased</b> United Kingdom Treasury\'s deflator series.  At present, the  ' +
-        'base year of the treasury\'s series is the latest year in the series.  The series is rebased such ' +
+      text: '<p>This series is a <b>rebased</b> United Kingdom Treasury\'s deflator series.  At present, the base' +
+        'year of the treasury\'s series is the latest year in the series.  The series is rebased such' +
         'that the base year is <b>2010</b>.</p>'
     },
 
