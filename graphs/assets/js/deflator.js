@@ -147,7 +147,7 @@ jQuery.getJSON(url, function (calculations){
         enabled: true
       },
       plotLines: [{
-        value: calculations.series[0].rebase,
+        value: calculations.attribute[0].rebase,
         width: 2,
         color: 'orange'
       }]
@@ -155,7 +155,7 @@ jQuery.getJSON(url, function (calculations){
 
     xAxis: {
       plotLines: [{
-        value: calculations.series[0].epoch,
+        value: calculations.attribute[0].epoch,
         width: 1.5,
         color: 'orange'
       }]
