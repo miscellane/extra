@@ -27,7 +27,7 @@ Aggregates <- function () {
                                     colClasses = c(segment_code = 'character', segment_description = 'character'),
                                     data.table = FALSE) %>% dplyr::distinct(.keep_all = TRUE)
   descriptions
-  
+
   # Diagram Object
   diagram <- structure %>%
     ggplot(mapping = aes(x = year, y = value, colour = segment_code)) +
