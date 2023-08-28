@@ -13,7 +13,7 @@ jQuery.getJSON(url, function (source) {
         gamma = [],
         groupingUnits = [[
             'year',   // unit name
-            [2]      // allowed multiples
+            [1]      // allowed multiples
         ]],
         i = 0;
 
