@@ -187,7 +187,6 @@ jQuery.getJSON(url, function (calculations){
           units: groupingUnits
         },
         tooltip: {
-          // headerFormat: '<p><span style="font-size: 13px; color:#aab597">\u25CF {point.x:.0f}</span></p>',
           pointFormat: '<span style="color:{point.color}">\u25CF</span> <b>{series.name}</b>:<br/>' +
             '&nbsp; &nbsp;{point.y:,.2f}<br/>'
         }
