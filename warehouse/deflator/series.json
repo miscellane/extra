@@ -1,6 +1,7 @@
 {
     "name": "deflator",
-    "description": "Deflator Series (Base Year: 2010)",
+    "rebase_year": 2010,
+    "description": "Deflator Series",
     "data": [
         {
             "x": -473385600000,
