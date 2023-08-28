@@ -147,7 +147,7 @@ jQuery.getJSON(url, function (calculations){
       plotLines: [{
         value: calculations.attribute[0].rebase,
         width: 2,
-        color: 'orange'
+        color: '#722f37'
       }]
     },
 
@@ -155,7 +155,7 @@ jQuery.getJSON(url, function (calculations){
       plotLines: [{
         value: calculations.attribute[0].epoch,
         width: 1.5,
-        color: 'orange'
+        color: '#722f37'
       }]
     },
 
