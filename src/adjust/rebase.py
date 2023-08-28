@@ -62,11 +62,11 @@ class Rebase:
         :return:
         """
 
-        # data = blob.copy().loc[blob['year'] >= 1971, ['epoch', 'rebase']]
+        excerpt = blob.loc[blob['year'] == self.__deflator.rebase_year, ['epoch', 'rebase']].to_dict(orient='records')
         data = blob.copy()[['epoch', 'rebase']]
         data.rename(columns={'epoch': 'x', 'rebase': 'y'}, inplace=True)
         dictionary = {'name': 'deflator',
-                      'rebase_year': self.__deflator.rebase_year,
+                      'series': excerpt,
                       'description': 'Deflator Series',
                       'data': data.to_dict(orient='records')}
         return src.functions.objects.Objects().write(
