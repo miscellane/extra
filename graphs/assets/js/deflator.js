@@ -28,8 +28,9 @@ jQuery.getJSON(url, function (calculations){
   // Draw a graph
   Highcharts.stockChart('container0005', {
 
+		// https://api.highcharts.com/highstock/rangeSelector.buttons
     rangeSelector: {
-      selected: 5,
+      selected: 5,  // The default range selection button: All -> 5
       verticalAlign: 'top',
       floating: false,
       inputPosition: {
@@ -42,7 +43,6 @@ jQuery.getJSON(url, function (calculations){
       },
       inputEnabled: true,
       inputDateFormat: '%Y'
-
     },
 
     chart: {
