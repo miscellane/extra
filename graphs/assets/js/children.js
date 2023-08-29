@@ -1,9 +1,11 @@
+// Declarations
 var Highcharts;
 var optionSelected;
 var dropdown = $('#option_selector');
 var url = 'https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/metrics/children/menu.json';
 
 
+// Menu data
 $.getJSON(url, function (data) {
 
     $.each(data, function (key, entry) {
@@ -33,159 +35,162 @@ dropdown.on('change', function (e) {
     generateChart(valueSelected, optionSelected);
 });
 
+
+// Draw
 function generateChart(fileNameKey, fileNameValue){
 
-  // Generate curves
-  $.getJSON('https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/metrics/children/' + fileNameKey + '.json', function (calculations){
 
-      // https://api.highcharts.com/highstock/tooltip.pointFormat
-      // https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/bubble
-      // https://api.highcharts.com/highcharts/tooltip.headerFormat
-      // https://www.highcharts.com/demo/stock/compare
-
-      var seriesOptions = [];
+	  // Generate curves
+	  $.getJSON('https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/metrics/children/' + fileNameKey + '.json', function (calculations){
 
 
-      // Split
-      for (var i = 0; i < calculations.length; i += 1) {
-
-          // document.write(calculations[i].data);
-
-          seriesOptions[i] = {
-              name: calculations[i].description,
-              data: calculations[i].data
-          };
-
-      }
+	      // https://api.highcharts.com/highstock/tooltip.pointFormat
+	      // https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/bubble
+	      // https://api.highcharts.com/highcharts/tooltip.headerFormat
+	      // https://www.highcharts.com/demo/stock/compare
 
 
-      // Graphing
-      Highcharts.setOptions({
-          lang: {
-              thousandsSep: ","
-          }
-      });
+	      // Split
+	      var seriesOptions = [];
+	      for (var i = 0; i < calculations.length; i += 1) {
+
+	          // document.write(calculations[i].data);
+
+	          seriesOptions[i] = {
+	              name: calculations[i].description,
+	              data: calculations[i].data
+	          };
+
+	      }
 
 
-      // Hence
-      Highcharts.chart("container0003", {
+	      // Graphing
+	      Highcharts.setOptions({
+	          lang: {
+	              thousandsSep: ","
+	          }
+	      });
 
-          chart: {
-              type: "line",
-              zoomType: "xy",
-              marginTop: 85,
-              marginBottom: 160,
-              marginRight: 35,
-              height: 430,
-              width: 390,
-          },
 
-          title: {
-              text: 'United Kingdom<br>Annual Central Government Expenditure',
-              x: 0,
-              y: 5,
-              style: {
-                  fontSize: '15px'
-              }
-          },
-          subtitle: {
-              text: fileNameValue,
-              x: 0,
-              y: 45,
-              style: {
-                  fontStyle: 'italic',
-                  fontSize: '13px',
-                  fontWeight: 'normal',
-                  color: 'grey',
-                  width: '80px'
-              }
-          },
+	      // Hence
+	      Highcharts.chart("container0003", {
 
-          credits: {
-              enabled: false
-          },
+	          chart: {
+	              type: "line",
+	              zoomType: "xy",
+	              marginTop: 85,
+	              marginBottom: 160,
+	              marginRight: 35,
+	              height: 430,
+	              width: 390,
+	          },
 
-          legend: {
-              enabled: true,
-              layout: 'horizontal',
-              align: 'center',
-              itemStyle: {
-                  fontSize: '11px',
-                  width: '120px',
-                  textOverflow: 'ellipsis'
-              },
-              verticalAlign: 'bottom',
-              margin: 40,
-              itemMarginTop: 2,
-              itemMarginBottom: 2,
-              x: 7.5,
-              y: 20,
-              floating: true
-          },
+	          title: {
+	              text: 'United Kingdom<br>Annual Central Government Expenditure',
+	              x: 0,
+	              y: 5,
+	              style: {
+	                  fontSize: '15px'
+	              }
+	          },
+	          subtitle: {
+	              text: fileNameValue,
+	              x: 0,
+	              y: 45,
+	              style: {
+	                  fontStyle: 'italic',
+	                  fontSize: '13px',
+	                  fontWeight: 'normal',
+	                  color: 'grey',
+	                  width: '80px'
+	              }
+	          },
 
-          xAxis: {
-              title: {
-                  text: 'Year'
-              },
-              maxPadding: 0.1,
-              gridLineWidth: 1
-          },
+	          credits: {
+	              enabled: false
+	          },
 
-          yAxis: {
-              title: {
-                  text: "Expense<br>(million pounds)"
-              },
-              maxPadding: 0.05,
-              min: 0,
-              endOnTick: false
-          },
+	          legend: {
+	              enabled: true,
+	              layout: 'horizontal',
+	              align: 'center',
+	              itemStyle: {
+	                  fontSize: '11px',
+	                  width: '120px',
+	                  textOverflow: 'ellipsis'
+	              },
+	              verticalAlign: 'bottom',
+	              margin: 40,
+	              itemMarginTop: 2,
+	              itemMarginBottom: 2,
+	              x: 7.5,
+	              y: 20,
+	              floating: true
+	          },
 
-          exporting: {
-              buttons: {
-                  contextButton: {
-                      menuItems: ["viewFullscreen", "printChart", "separator",
-                          "downloadPNG", "downloadJPEG", "downloadPDF", "downloadSVG", "separator",
-                          "downloadXLS", "downloadCSV"]
-                  }
-              }
-          },
+	          xAxis: {
+	              title: {
+	                  text: 'Year'
+	              },
+	              maxPadding: 0.1,
+	              gridLineWidth: 1
+	          },
 
-          tooltip: {
-              shared: true,
-              headerFormat: '<p><span style="font-size: 13px; color:#aab597">\u25CF {point.x:.0f}</span></p>',
-              pointFormat: '<br/><p><br/>' +
-                  '<span style="color:{point.color}">{series.name}</span>: {point.y:,.2f} (m£)<br/></p>' ,
-              style: {
-                  fontSize: "11px"
-              }
-          },
+	          yAxis: {
+	              title: {
+	                  text: "Expense<br>(million pounds)"
+	              },
+	              maxPadding: 0.05,
+	              min: 0,
+	              endOnTick: false
+	          },
 
-          plotOptions: {
-              series: {
-                  marker: {
-                      enabled: true,
-                      radius: 1
-                  },
-                  lineWidth: 0.5,
-                  dataLabels: {
-                      enabled: false
-                  },
-                  turboThreshold: 4000
-              }
-          },
+	          exporting: {
+	              buttons: {
+	                  contextButton: {
+	                      menuItems: ["viewFullscreen", "printChart", "separator",
+	                          "downloadPNG", "downloadJPEG", "downloadPDF", "downloadSVG", "separator",
+	                          "downloadXLS", "downloadCSV"]
+	                  }
+	              }
+	          },
 
-          series: seriesOptions
+	          tooltip: {
+	              shared: true,
+	              headerFormat: '<p><span style="font-size: 13px; color:#aab597">\u25CF {point.x:.0f}</span></p>',
+	              pointFormat: '<br/><p><br/>' +
+	                  '<span style="color:{point.color}">{series.name}</span>: {point.y:,.2f} (m£)<br/></p>' ,
+	              style: {
+	                  fontSize: "11px"
+	              }
+	          },
 
-          /* responsive: {
-              rules: [{
-                  condition: {
-                      maxWidth: 300
-                  }
-              }]
-          } */
+	          plotOptions: {
+	              series: {
+	                  marker: {
+	                      enabled: true,
+	                      radius: 1
+	                  },
+	                  lineWidth: 0.5,
+	                  dataLabels: {
+	                      enabled: false
+	                  },
+	                  turboThreshold: 4000
+	              }
+	          },
 
-      });
+	          series: seriesOptions
 
-  });
+	          /* responsive: {
+	              rules: [{
+	                  condition: {
+	                      maxWidth: 300
+	                  }
+	              }]
+	          } */
+
+	      });
+
+	  });
 
 }

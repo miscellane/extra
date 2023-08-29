@@ -1,10 +1,12 @@
+// Declarations
 var Highcharts;
 var seriesOptions = [];
-var url = document.getElementById("overall").getAttribute("url");
+var url = document.getElementById("parent").getAttribute("url");
 
 
 // Generate curves
 jQuery.getJSON(url, function (calculations){
+
 
     // https://api.highcharts.com/highstock/tooltip.pointFormat
     // https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/bubble
