@@ -52,7 +52,7 @@ jQuery.getJSON(url, function (source) {
     Highcharts.stockChart('container0001', {
 
         rangeSelector: {
-            selected: 1,
+            selected: 5,
             verticalAlign: 'top',
             floating: false,
             inputPosition: {
@@ -118,7 +118,7 @@ jQuery.getJSON(url, function (source) {
             }
         },
 
-        yAxis: {
+        yAxis: [{
             labels: {
                 align: 'left',
                 x: 5
@@ -129,18 +129,33 @@ jQuery.getJSON(url, function (source) {
                 x: 7
             },
             min: 0,
-            // height: '40%',
+            height: '35%',
             lineWidth: 2,
             resize: {
                 enabled: true
             }
-        },
+        }, {
+           labels: {
+               align: 'left',
+               x: 5
+           },
+           title: {
+               text: 'Annual Segment<br>Total',
+               align: 'middle',
+               x: 7
+           },
+           min: 0,
+           top: '45%',
+           height: '35%',
+           lineWidth: 2,
+           resize: {
+               enabled: true
+           }
+       }],
 
         tooltip: {
             shared: true,
-            headerFormat: '<p><span style="font-size: 13px; color:#aab597">\u25CF {point.x:.0f}</span></p>',
-            pointFormat: '<br/><p><br/>' +
-                '<span style="color:{point.color}">{series.name}</span>: {point.y:,.2f} (m£)<br/></p>' ,
+            split: false,
             style: {
                 fontSize: "11px"
             }
@@ -148,19 +163,44 @@ jQuery.getJSON(url, function (source) {
 
         plotOptions: {
             series: {
-                marker: {
-                    enabled: true,
-                    radius: 1
-                },
-                lineWidth: 0.5,
-                dataLabels: {
-                    enabled: false
-                },
-                turboThreshold: 4000
+                turboThreshold: 4000,
+                dataGrouping: {
+                  units: groupingUnits
+                }
             }
+
         },
 
-        series: alpha
+        series: [{
+	          name: alpha[0].name,
+	          data: alpha[0].data,
+	          tooltip: {
+		          pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
+	          },
+	          yAxis: 0
+        }, {
+	         name: alpha[1].name,
+	         data: alpha[1].data,
+	         tooltip: {
+	            pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
+	         },
+	         yAxis: 0
+       }, {
+          name: beta[0].name,
+          data: beta[0].data,
+          tooltip: {
+	            pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
+	        },
+          yAxis: 1
+       }, {
+          name: beta[1].name,
+          data: beta[1].data,
+          tooltip: {
+              pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
+          },
+          yAxis: 1
+       }]
+
     });
 
 });
