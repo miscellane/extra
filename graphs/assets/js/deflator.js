@@ -1,3 +1,4 @@
+// Declarations
 var Highcharts;
 var seriesOptions = [];
 var url = document.getElementById("deflator").getAttribute("url");
@@ -6,16 +7,20 @@ var url = document.getElementById("deflator").getAttribute("url");
 // Generate curves
 jQuery.getJSON(url, function (calculations){
 
+
+	// Data
 	seriesOptions[0] = {
 		name: calculations.description,
 		data: calculations.data
 	};
+
 
   // Definitions
   var groupingUnits = [[
       'year',   // unit name
       [1]       // allowed multiples
     ]];
+
 
   // Numbers
   Highcharts.setOptions({
@@ -72,32 +77,36 @@ jQuery.getJSON(url, function (calculations){
       verticalAlign: 'top'
     },
 
+
 		// Chart
     chart: {
       zoomType: 'x'
-      // borderWidth: 2,
-      // marginRight: 100
     },
+
 
 		// Title
     title: {
       text: 'Deflator Series'
     },
 
+
 		// Subtitle
     subtitle: {
       text: '<p>Country: United Kingdom, Base Year: ' + calculations.attribute[0].year + '</p>'
     },
+
 
 		// Time
     time: {
       // timezone: 'Europe/London'
     },
 
+
 		// Credits
     credits: {
       enabled: false
     },
+
 
 		// Legend
     legend: {
@@ -107,6 +116,7 @@ jQuery.getJSON(url, function (calculations){
       y: -95,
       align: 'middle'
     },
+
 
 		// Graph caption
     caption: {
@@ -119,6 +129,7 @@ jQuery.getJSON(url, function (calculations){
         '<span style="text-decoration: underline;">The gross domestic product (GDP) deflators at market prices, and money GDP</span></a>]</p>'
     },
 
+
 		// Export options
     exporting: {
       buttons: {
@@ -129,6 +140,7 @@ jQuery.getJSON(url, function (calculations){
         }
       }
     },
+
 
 		// The y-axis
     yAxis: {
@@ -153,6 +165,8 @@ jQuery.getJSON(url, function (calculations){
       }]
     },
 
+
+		// The x-axis
     xAxis: {
       plotLines: [{
         value: calculations.attribute[0].epoch,
@@ -160,6 +174,7 @@ jQuery.getJSON(url, function (calculations){
         color: '#5b5b5b'
       }]
     },
+
 
 		// Tooltip
     tooltip: {
@@ -174,6 +189,7 @@ jQuery.getJSON(url, function (calculations){
         year: "%Y"
       }
     },
+
 
 		// Plot options
     plotOptions: {
@@ -195,7 +211,9 @@ jQuery.getJSON(url, function (calculations){
       }
     },
 
+
     series: seriesOptions
+
 
   });
 
