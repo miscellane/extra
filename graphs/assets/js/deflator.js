@@ -112,8 +112,8 @@ jQuery.getJSON(url, function (calculations){
     caption: {
       verticalAlign: "bottom",
       y: 25,
-      text: '<p>This series is a <b>rebased</b> United Kingdom Treasury\'s deflator series.  At present, the base' +
-        'year of the treasury\'s series is the latest year in the series.  The series is rebased such' +
+      text: '<p>This series is a <b>rebased</b> United Kingdom Treasury\'s deflator series.  At present, the base ' +
+        'year of the treasury\'s series is the latest year of the series; the series is rebased such ' +
         'that the base year is <b>' + calculations.attribute[0].year + '</b>.</p>'
     },
 
@@ -147,15 +147,15 @@ jQuery.getJSON(url, function (calculations){
       plotLines: [{
         value: calculations.attribute[0].rebase,
         width: 2,
-        color: '#722f37'
+        color: '#ffa500'
       }]
     },
 
     xAxis: {
       plotLines: [{
         value: calculations.attribute[0].epoch,
-        width: 1.5,
-        color: '#722f37'
+        width: 1,
+        color: '#ffa500'
       }]
     },
 
@@ -177,9 +177,11 @@ jQuery.getJSON(url, function (calculations){
     plotOptions: {
       series: {
         turboThreshold: 4000,
+        color: '#5b5b5b5',
         marker: {
           enabled: true,
-          radius: 3
+          radius: 3,
+          fillColor: '#5b5b5b'
         },
         dataGrouping: {
           units: groupingUnits
