@@ -93,9 +93,9 @@ jQuery.getJSON(url, function (source) {
         legend: {
             enabled: true,
             width: 600,
-            x: 65
+            x: 65,
             // align: 'middle',
-            // layout: 'vertical',
+            layout: 'vertical',
             // verticalAlign: 'bottom',
             // y: 10,
             // x: 35
@@ -126,7 +126,8 @@ jQuery.getJSON(url, function (source) {
             title: {
                 text: 'Annual Segment<br>Total',
                 // align: 'middle',
-                x: 7
+                margin: 5,
+                x: 5
             },
             min: 0,
             height: '35%',
@@ -142,7 +143,8 @@ jQuery.getJSON(url, function (source) {
            title: {
                text: 'Annual Segment<br>Percentage',
                // align: 'middle',
-               x: 7
+               margin: 5,
+               x: 5
            },
            min: 0,
            top: '45%',
@@ -150,7 +152,8 @@ jQuery.getJSON(url, function (source) {
            lineWidth: 2,
            resize: {
                enabled: true
-           }
+           },
+           offset: 0
        }],
 
         tooltip: {
