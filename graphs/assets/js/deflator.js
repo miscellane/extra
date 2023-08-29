@@ -104,7 +104,7 @@ jQuery.getJSON(url, function (calculations){
       enabled: true,
       width: 600,
       x: 65,
-      y: -45,
+      y: -95,
       align: 'middle'
     },
 
@@ -114,7 +114,9 @@ jQuery.getJSON(url, function (calculations){
       y: 25,
       text: '<p>This series is a <b>rebased</b> United Kingdom Treasury\'s deflator series.  At present, the base ' +
         'year of the treasury\'s series is the latest year of the series; the series is rebased such ' +
-        'that the base year is <b>' + calculations.attribute[0].year + '</b>.</p>'
+        'that the base year is <b>' + calculations.attribute[0].year + '</b>. <br/><br/>' +
+        '[Source: <a href="https://www.gov.uk/government/collections/gdp-deflators-at-market-prices-and-money-gdp#full-publication-update-history" target="_blank">' +
+        '<span style="text-decoration: underline;">The gross domestic product (GDP) deflators at market prices, and money GDP</span></a>]</p>'
     },
 
 		// Export options
@@ -147,7 +149,7 @@ jQuery.getJSON(url, function (calculations){
       plotLines: [{
         value: calculations.attribute[0].rebase,
         width: 2,
-        color: '#ffa500'
+        color: '#5b5b5b'
       }]
     },
 
@@ -155,7 +157,7 @@ jQuery.getJSON(url, function (calculations){
       plotLines: [{
         value: calculations.attribute[0].epoch,
         width: 1,
-        color: '#ffa500'
+        color: '#5b5b5b'
       }]
     },
 
