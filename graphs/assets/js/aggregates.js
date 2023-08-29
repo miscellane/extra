@@ -166,6 +166,11 @@ jQuery.getJSON(url, function (source) {
 
         plotOptions: {
             series: {
+                marker: {
+                    enabled: true,
+                    radius: 2,
+                    symbol: 'circle'
+                },
                 turboThreshold: 4000,
                 dataGrouping: {
                   units: groupingUnits
