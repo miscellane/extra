@@ -125,7 +125,7 @@ jQuery.getJSON(url, function (source) {
             },
             title: {
                 text: 'Annual Segment<br>Total',
-                align: 'middle',
+                // align: 'middle',
                 x: 7
             },
             min: 0,
@@ -140,8 +140,8 @@ jQuery.getJSON(url, function (source) {
                x: 5
            },
            title: {
-               text: 'Annual Segment<br>Total',
-               align: 'middle',
+               text: 'Annual Segment<br>Percentage',
+               // align: 'middle',
                x: 7
            },
            min: 0,
@@ -179,28 +179,32 @@ jQuery.getJSON(url, function (source) {
 	          tooltip: {
 		          pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
 	          },
-	          yAxis: 0
+	          yAxis: 0,
+	          id: "0"
         }, {
 	         name: alpha[1].name,
 	         data: alpha[1].data,
 	         tooltip: {
 	            pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
 	         },
-	         yAxis: 0
+	         yAxis: 0,
+	         id: "1"
        }, {
           name: beta[0].name,
           data: beta[0].data,
           tooltip: {
 	            pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
 	        },
-          yAxis: 1
+          yAxis: 1,
+          linkedTo: "0"
        }, {
           name: beta[1].name,
           data: beta[1].data,
           tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
           },
-          yAxis: 1
+          yAxis: 1,
+          linkedTo: "1"
        }]
 
     });
