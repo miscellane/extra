@@ -1,3 +1,4 @@
+// Declarations
 var Highcharts;
 var optionSelected;
 var url = document.getElementById("aggregates").getAttribute("url");
@@ -40,6 +41,7 @@ jQuery.getJSON(url, function (source) {
         };
     }
 
+
     // Numbers
     Highcharts.setOptions({
         lang: {
@@ -69,8 +71,6 @@ jQuery.getJSON(url, function (source) {
 
         chart: {
             zoomType: 'x'
-            // borderWidth: 2,
-            // marginRight: 100
         },
 
         title: {
@@ -94,16 +94,10 @@ jQuery.getJSON(url, function (source) {
             enabled: true,
             width: 600,
             x: 65,
-            // align: 'middle',
-            layout: 'vertical',
-            // verticalAlign: 'bottom',
-            // y: 10,
-            // x: 35
+            layout: 'vertical'
         },
 
         caption: {
-            // verticalAlign: "top",
-            // y: 35,
             text: '<p>The United Kingdom\'s expenditure summaries are split into central & local government summaries.  Each summary has ' +
                 'a disaggregates tree.  This is a high level breakdown of central government expenditure across the years; deflator adjusted values.</p>'
         },
