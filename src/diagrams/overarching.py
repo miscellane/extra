@@ -18,8 +18,10 @@ def main():
     data = src.functions.streams.Streams().read(
         uri=os.path.join(root, 'data', 'expenditure', 'expenditure_transaction_segments.csv'),
         usecols=['parent_identifier', 'parent_description', 'segment_identifier', 'segment_description', 'segment_code'])
-    data.rename(columns={'parent_identifier': 'src', 'parent_description': 'parent',
-                         'segment_identifier': 'destination', 'segment_description': 'segment',
+    data.rename(columns={'parent_identifier': 'parent',
+                         'parent_description': 'name',
+                         'segment_identifier': 'id',
+                         'segment_description': 'segment',
                          'segment_code': 'identifier'}, inplace=True)
 
     # For directed acyclic graph purposes, append a collapsed field.  If a node is collapsed, its
@@ -27,8 +29,9 @@ def main():
     data.loc[:, 'collapsed'] = None
 
     # The parent node's details
-    node = pd.DataFrame(data={'src': None, 'destination': 'central', 'parent': None,
-                              'segment': 'Central Government Expenditure', 'identifier': 'T', 'collapsed': True},
+    node = pd.DataFrame(data={'parent': None, 'name': None,
+                              'id': 'central', 'segment': 'Central Government Expenditure',
+                              'identifier': 'T', 'collapsed': True},
                         index=[0])
     data = pd.concat([node, data], axis=0, ignore_index=True)
 
