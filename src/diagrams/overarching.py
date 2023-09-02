@@ -17,9 +17,9 @@ def main():
     # The data set of top government divisions/segments
     data = src.functions.streams.Streams().read(
         uri=os.path.join(root, 'data', 'expenditure', 'expenditure_transaction_segments.csv'),
-        usecols=['src', 'destination', 'segment_parent', 'segment_description', 'segment_code'])
-    data.rename(columns={'segment_description': 'name',
-                         'segment_parent': 'parent',
+        usecols=['parent_identifier', 'parent_description', 'segment_identifier', 'segment_description', 'segment_code'])
+    data.rename(columns={'parent_identifier': 'src', 'parent_description': 'parent',
+                         'segment_identifier': 'destination', 'segment_description': 'segment',
                          'segment_code': 'identifier'}, inplace=True)
 
     # For directed acyclic graph purposes, append a collapsed field.  If a node is collapsed, its
@@ -28,7 +28,7 @@ def main():
 
     # The parent node's details
     node = pd.DataFrame(data={'src': None, 'destination': 'central', 'parent': None,
-                              'name': 'Central Government Expenditure', 'identifier': '_T', 'collapsed': True},
+                              'segment': 'Central Government Expenditure', 'identifier': 'T', 'collapsed': True},
                         index=[0])
     data = pd.concat([node, data], axis=0, ignore_index=True)
 
