@@ -38,8 +38,8 @@ jQuery.getJSON(url, function (source){
 	            e.options.data.forEach(function (link) {
 
 	                if (link[0] === 'Central Government Expenditure') {
-	                    nodes['central'] = {
-	                        id: 'central',
+	                    nodes['Central Government Expenditure'] = {
+	                        id: 'Central Government Expenditure',
 	                        marker: {
 	                            radius: 20
 	                        }
