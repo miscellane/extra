@@ -41,13 +41,13 @@ jQuery.getJSON(url, function (source){
 	                    nodes['Central Government Expenditure'] = {
 	                        id: 'Central Government Expenditure',
 	                        marker: {
-	                            radius: 20
+	                            radius: 24
 	                        }
 	                    };
 	                    nodes[link[1]] = {
 	                        id: link[1],
 	                        marker: {
-	                            radius: 10
+	                            radius: 16
 	                        },
 	                        color: colors[i++]
 	                    };
