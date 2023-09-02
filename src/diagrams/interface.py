@@ -17,7 +17,7 @@ if __name__ == '__main__':
     sys.path.append(root)
     sys.path.append(os.path.join(root, 'src'))
 
-    path = os.path.join(root, 'warehouse', 'expenditure', 'diagrams')
+    storage = os.path.join(root, 'warehouse', 'expenditure', 'diagrams')
 
     # Threads
     os.environ['NUMEXPR_MAX_THREADS'] = '8'
@@ -32,8 +32,7 @@ if __name__ == '__main__':
     import src.functions.directories
 
     directories = src.functions.directories.Directories()
-    directories.cleanup(path=path)
-    directories.create(path=path)
-
+    directories.cleanup(path=storage)
+    directories.create(path=storage)
 
     main()
