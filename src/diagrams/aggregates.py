@@ -23,8 +23,8 @@ class Aggregates:
 
         self.__uri = os.path.join(os.getcwd(), 'data', 'expenditure', 'expenditure_transaction_types_aggregates.csv')
 
-        self.__fields = {'parent_identifier': 'parent', 'parent_description': 'name', 'child_identifier': 'id',
-                         'child_description': 'segment'}
+        self.__fields = {'parent_identifier': 'parent', 'parent_description': 'parent_desc', 'child_identifier': 'id',
+                         'child_description': 'child_desc'}
 
         # Logging
         logging.basicConfig(level=logging.INFO,
