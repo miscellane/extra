@@ -13,6 +13,9 @@ def main():
     # Data structure for illustration of aggregates relationships
     src.diagrams.aggregates.Aggregates(storage=storage).exc()
 
+    # Data structure for illustration of disaggregates
+    src.diagrams.disaggregates.Disaggregates(storage=storage).exc()
+
 
 if __name__ == '__main__':
 
@@ -34,6 +37,7 @@ if __name__ == '__main__':
     # Class
     import src.functions.directories
     import src.diagrams.aggregates
+    import src.diagrams.disaggregates
 
     directories = src.functions.directories.Directories()
     directories.cleanup(path=storage)
