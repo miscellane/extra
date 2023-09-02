@@ -1,11 +1,11 @@
-segment_code,segment_description,segment_identifier,parent_identifier,parent_description
-GF01,General Public Services,services,central,Central Government Expenditure
-GF02,Defence,defence,central,Central Government Expenditure
-GF03,General Public Order & Safety,order & safety,central,Central Government Expenditure
-GF04,Economic Affairs,economic affairs,central,Central Government Expenditure
-GF05,Environmental Protection,environment,central,Central Government Expenditure
-GF06,Housing & Community Development,housing,central,Central Government Expenditure
-GF07,Health,health,central,Central Government Expenditure
-GF08,Recreation,recreation,central,Central Government Expenditure
-GF09,Education,education,central,Central Government Expenditure
-GF10,Social Protection,social protection,central,Central Government Expenditure
+child_code,child_description,child_identifier,parent_code,parent_description,parent_identifier
+GF01,General Public Services,services,T,Central Government Expenditure,central
+GF02,Defence,defence,T,Central Government Expenditure,central
+GF03,General Public Order & Safety,order & safety,T,Central Government Expenditure,central
+GF04,Economic Affairs,economic affairs,T,Central Government Expenditure,central
+GF05,Environmental Protection,environment,T,Central Government Expenditure,central
+GF06,Housing & Community Development,housing,T,Central Government Expenditure,central
+GF07,Health,health,T,Central Government Expenditure,central
+GF08,Recreation,recreation,T,Central Government Expenditure,central
+GF09,Education,education,T,Central Government Expenditure,central
+GF10,Social Protection,social protection,T,Central Government Expenditure,central
