@@ -23,8 +23,8 @@
         [
             "Central Government Expenditure",
             "central",
-            NaN,
-            NaN,
+            null,
+            null,
             true
         ],
         [
