@@ -23,15 +23,23 @@ jQuery.getJSON(url, function (source){
       },
 
       series: [{
-          fillSpace: false,
-          marker: {
-              radius: 25
-          },
           type: 'treegraph',
           keys: keys,
           data: dataset,
+          fillSpace: false,
+          marker: {
+              fillColor: '#000000',
+              fillOpacity: 0.25,
+              lineWidth: 0,
+              radius: 25
+          },
+          link: {
+            curveFactor: 0.15
+          },
           dataLabels: {
-              format: '{point.id}'
+              color: '#222',
+              format: '{point.id}',
+              linkFormat: '{point.parent} \u2192 {point.id}'
           },
           tooltip: {
             pointFormat: '<b>{point.child_desc}</b><br/>'
