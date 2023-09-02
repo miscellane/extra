@@ -16,7 +16,7 @@ def main():
 
     # The data set of top government divisions/segments
     data = src.functions.streams.Streams().read(
-        uri=os.path.join(root, 'data', 'expenditure_transaction_segments.csv'),
+        uri=os.path.join(root, 'data', 'expenditure', 'expenditure_transaction_segments.csv'),
         usecols=['id', 'parent', 'segment_description', 'segment_code'])
     data.rename(columns={'segment_description': 'name', 'segment_code': 'identifier'}, inplace=True)
 
@@ -26,7 +26,7 @@ def main():
 
     # The parent node's details
     node = pd.DataFrame(data={'id': 'central', 'parent': None, 'name': 'Central Government',
-                              'identifier': '_T', 'collapsed': True})
+                              'identifier': '_T', 'collapsed': True}, index=[0])
     data = pd.concat([node, data], axis=0, ignore_index=True)
 
     # Save
