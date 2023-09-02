@@ -88,6 +88,14 @@ jQuery.getJSON(url, function (source){
 	            }
 	        }
 	    },
+	    caption: {
+          verticalAlign: "bottom",
+          y: -85,
+          x: 85,
+          text: '<p>A force directed graph of the United Kingdom treasury\'s central government expenditure<br>' +
+                'groupings; it illustrates the hierarchical breakdown of central government spending.  You<br>' +
+                'may drag the network around, it will reposition itself.</p>'
+      },
 	    series: [{
 	        accessibility: {
 	            enabled: false
