@@ -71,7 +71,7 @@ class Aggregates:
         return src.functions.objects.Objects().write(
             nodes=blob.to_dict(orient='tight'), path=os.path.join(self.__storage, 'aggregates.json'))
 
-    def exc(self):
+    def exc(self) -> None:
         """
 
         :return:
