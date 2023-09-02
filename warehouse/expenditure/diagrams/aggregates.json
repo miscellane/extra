@@ -1,0 +1,107 @@
+{
+    "index": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+    ],
+    "columns": [
+        "child_desc",
+        "id",
+        "parent_desc",
+        "parent",
+        "collapsed"
+    ],
+    "data": [
+        [
+            "Central Government Expenditure",
+            "central",
+            null,
+            null,
+            true
+        ],
+        [
+            "General Public Services",
+            "services",
+            "Central Government Expenditure",
+            "central",
+            null
+        ],
+        [
+            "Defence",
+            "defence",
+            "Central Government Expenditure",
+            "central",
+            null
+        ],
+        [
+            "General Public Order & Safety",
+            "order & safety",
+            "Central Government Expenditure",
+            "central",
+            null
+        ],
+        [
+            "Economic Affairs",
+            "economic affairs",
+            "Central Government Expenditure",
+            "central",
+            null
+        ],
+        [
+            "Environmental Protection",
+            "environment",
+            "Central Government Expenditure",
+            "central",
+            null
+        ],
+        [
+            "Housing & Community Development",
+            "housing",
+            "Central Government Expenditure",
+            "central",
+            null
+        ],
+        [
+            "Health",
+            "health",
+            "Central Government Expenditure",
+            "central",
+            null
+        ],
+        [
+            "Recreation",
+            "recreation",
+            "Central Government Expenditure",
+            "central",
+            null
+        ],
+        [
+            "Education",
+            "education",
+            "Central Government Expenditure",
+            "central",
+            null
+        ],
+        [
+            "Social Protection",
+            "social protection",
+            "Central Government Expenditure",
+            "central",
+            null
+        ]
+    ],
+    "index_names": [
+        null
+    ],
+    "column_names": [
+        null
+    ]
+}
