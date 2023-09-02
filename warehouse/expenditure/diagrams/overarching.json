@@ -16,7 +16,7 @@
         "src",
         "destination",
         "parent",
-        "name",
+        "segment",
         "identifier",
         "collapsed"
     ],
@@ -26,7 +26,7 @@
             "central",
             null,
             "Central Government Expenditure",
-            "_T",
+            "T",
             true
         ],
         [
