@@ -10,6 +10,9 @@ def main():
 
     logger.info('Data structures for illustrations')
 
+    # Data structure for illustration of aggregates relationships
+    src.diagrams.aggregates.Aggregates(storage=storage).exc()
+
 
 if __name__ == '__main__':
 
@@ -30,6 +33,7 @@ if __name__ == '__main__':
 
     # Class
     import src.functions.directories
+    import src.diagrams.aggregates
 
     directories = src.functions.directories.Directories()
     directories.cleanup(path=storage)
