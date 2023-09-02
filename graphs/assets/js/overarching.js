@@ -34,7 +34,7 @@ jQuery.getJSON(url, function (source){
               format: '{point.id}'
           },
           tooltip: {
-            pointFormat: '<b>{point.name}</b><br/>'
+            pointFormat: '<b>{point.segment}</b><br/>'
           }
       }]
 
