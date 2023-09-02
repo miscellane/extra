@@ -30,8 +30,8 @@ def main():
     data = pd.concat([node, data], axis=0, ignore_index=True)
 
     # Save
-    path = os.path.join(root, 'warehouse', 'expenditure', 'diagrams', 'overarching.json')
-    message = src.functions.objects.Objects().write(nodes=data.to_dict(orient='tight'), path=path)
+    message = src.functions.objects.Objects().write(nodes=data.to_dict(orient='tight'),
+                                                    path=os.path.join(path, 'overarching.json'))
     logger.info(message)
 
 
@@ -41,16 +41,24 @@ if __name__ == '__main__':
     sys.path.append(root)
     sys.path.append(os.path.join(root, 'src'))
 
+    path = os.path.join(root, 'warehouse', 'expenditure', 'diagrams')
+
     # Threads
     os.environ['NUMEXPR_MAX_THREADS'] = '8'
 
-    # logging
+    # Logging
     logging.basicConfig(level=logging.INFO,
                         format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
                         datefmt='%Y-%m-%d %H:%M:%S')
     logger = logging.getLogger(__name__)
 
+    # Class
     import src.functions.streams
     import src.functions.objects
+    import src.functions.directories
+
+    directories = src.functions.directories.Directories()
+    directories.cleanup(path)
+    directories.create(path)
 
     main()
