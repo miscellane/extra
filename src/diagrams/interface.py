@@ -28,5 +28,12 @@ if __name__ == '__main__':
                         datefmt='%Y-%m-%d %H:%M:%S')
     logger = logging.getLogger(__name__)
 
+    # Class
+    import src.functions.directories
+
+    directories = src.functions.directories.Directories()
+    directories.cleanup(path=path)
+    directories.create(path=path)
+
 
     main()
