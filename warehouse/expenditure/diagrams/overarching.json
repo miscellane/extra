@@ -1,0 +1,107 @@
+{
+    "index": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+    ],
+    "columns": [
+        "id",
+        "parent",
+        "name",
+        "identifier",
+        "collapsed"
+    ],
+    "data": [
+        [
+            "central",
+            null,
+            "Central Government",
+            "_T",
+            true
+        ],
+        [
+            "services",
+            "central",
+            "General Public Services",
+            "GF01",
+            null
+        ],
+        [
+            "defence",
+            "central",
+            "Defence",
+            "GF02",
+            null
+        ],
+        [
+            "order & safety",
+            "central",
+            "General Public Order & Safety",
+            "GF03",
+            null
+        ],
+        [
+            "economic affairs",
+            "central",
+            "Economic Affairs",
+            "GF04",
+            null
+        ],
+        [
+            "environment",
+            "central",
+            "Environmental Protection",
+            "GF05",
+            null
+        ],
+        [
+            "housing",
+            "central",
+            "Housing & Community Development",
+            "GF06",
+            null
+        ],
+        [
+            "health",
+            "central",
+            "Health",
+            "GF07",
+            null
+        ],
+        [
+            "recreation",
+            "central",
+            "Recreation",
+            "GF08",
+            null
+        ],
+        [
+            "education",
+            "central",
+            "Education",
+            "GF09",
+            null
+        ],
+        [
+            "social protection",
+            "central",
+            "Social Protection",
+            "GF10",
+            null
+        ]
+    ],
+    "index_names": [
+        null
+    ],
+    "column_names": [
+        null
+    ]
+}
