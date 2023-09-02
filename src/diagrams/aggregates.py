@@ -3,68 +3,86 @@ aggregates.py
 """
 import logging
 import os
-import sys
 
 import pandas as pd
 
-
-def main():
-    """
-    Entry point
-    :return:
-    """
-
-    # The data set of top government divisions/segments
-    data = src.functions.streams.Streams().read(
-        uri=os.path.join(root, 'data', 'expenditure', 'expenditure_transaction_segments.csv'),
-        usecols=['parent_identifier', 'parent_description', 'segment_identifier', 'segment_description', 'segment_code'])
-    data.rename(columns={'parent_identifier': 'parent',
-                         'parent_description': 'name',
-                         'segment_identifier': 'id',
-                         'segment_description': 'segment',
-                         'segment_code': 'identifier'}, inplace=True)
-
-    # For directed acyclic graph purposes, append a collapsed field.  If a node is collapsed, its
-    # children are hidden by default
-    data.loc[:, 'collapsed'] = None
-
-    # The parent node's details
-    node = pd.DataFrame(data={'parent': None, 'name': None,
-                              'id': 'central', 'segment': 'Central Government Expenditure',
-                              'identifier': 'T', 'collapsed': True},
-                        index=[0])
-    data = pd.concat([node, data], axis=0, ignore_index=True)
-
-    # Save
-    message = src.functions.objects.Objects().write(nodes=data.to_dict(orient='tight'),
-                                                    path=os.path.join(path, 'overarching.json'))
-    logger.info(message)
+import src.functions.directories
+import src.functions.objects
+import src.functions.streams
 
 
-if __name__ == '__main__':
+class Aggregates:
 
-    root = os.getcwd()
-    sys.path.append(root)
-    sys.path.append(os.path.join(root, 'src'))
+    def __init__(self, storage: str):
+        """
 
-    path = os.path.join(root, 'warehouse', 'expenditure', 'diagrams')
+        :param storage:
+        """
 
-    # Threads
-    os.environ['NUMEXPR_MAX_THREADS'] = '8'
+        self.__storage = storage
 
-    # Logging
-    logging.basicConfig(level=logging.INFO,
-                        format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
-                        datefmt='%Y-%m-%d %H:%M:%S')
-    logger = logging.getLogger(__name__)
+        self.__uri = os.path.join(os.getcwd(), 'data', 'expenditure', 'expenditure_transaction_types_aggregates.csv')
 
-    # Class
-    import src.functions.streams
-    import src.functions.objects
-    import src.functions.directories
+        self.__fields = {'parent_identifier': 'parent', 'parent_description': 'name', 'child_identifier': 'id',
+                         'child_description': 'segment'}
 
-    directories = src.functions.directories.Directories()
-    directories.cleanup(path)
-    directories.create(path)
+        # Logging
+        logging.basicConfig(level=logging.INFO,
+                            format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
+                            datefmt='%Y-%m-%d %H:%M:%S')
+        self.__logger = logging.getLogger(__name__)
 
-    main()
+    def __data(self) -> pd.DataFrame:
+        """
+
+        :return:
+        """
+
+        # The data set of top government divisions/segments
+        data = src.functions.streams.Streams().read(uri=self.__uri, usecols=list(self.__fields.keys()))
+        data.rename(columns=self.__fields, inplace=True)
+
+        return data
+
+    @staticmethod
+    def __collapse(blob: pd.DataFrame) -> pd.DataFrame:
+        """
+
+        :param blob:
+        :return:
+        """
+
+        data = blob.copy()
+
+        # For directed acyclic graph purposes, append a collapsed field.  If a node is collapsed, its
+        # children are hidden by default
+        data.loc[:, 'collapsed'] = data['id'].apply(lambda x: True if x == 'central' else None)
+
+        return data
+
+    def __persist(self, blob: pd.DataFrame) -> str:
+        """
+
+        :param blob:
+        :return:
+        """
+
+        # Save
+        return src.functions.objects.Objects().write(
+            nodes=blob.to_dict(orient='tight'), path=os.path.join(self.__storage, 'aggregates.json'))
+
+    def exc(self):
+        """
+
+        :return:
+        """
+
+        # Data
+        data = self.__data()
+
+        # Collapse?
+        data = self.__collapse(blob=data)
+
+        # Save
+        message = self.__persist(blob=data)
+        self.__logger.info(message)
