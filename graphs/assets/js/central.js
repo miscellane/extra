@@ -11,7 +11,7 @@ jQuery.getJSON(url, function (source){
 	for (var i = 1; i < source.data.length; i += 1){
 
 		data.push([
-			source.data[i][1], source.data[i][2]
+			source.data[i][1], source.data[i][3]
 		]);
 
 	}
