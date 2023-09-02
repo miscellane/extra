@@ -30,7 +30,8 @@ def main():
     data = pd.concat([node, data], axis=0, ignore_index=True)
 
     # Save
-    message = src.functions.objects.Objects().write(nodes=data.to_dict(orient='tight'), path='')
+    path = os.path.join(root, 'warehouse', 'expenditure', 'diagrams', 'overarching.json')
+    message = src.functions.objects.Objects().write(nodes=data.to_dict(orient='tight'), path=path)
     logger.info(message)
 
 
