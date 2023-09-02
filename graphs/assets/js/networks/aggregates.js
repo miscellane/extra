@@ -1,17 +1,22 @@
 var Highcharts;
 
-var url = "https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/diagrams/overarching.json"
+var url = "https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/diagrams/aggregates.json"
 
 
 // Generate curves
 jQuery.getJSON(url, function (source){
 
-	var data = [];
+	// Indices
+	let columns = source.columns;
+	var pa = columns.indexOf('parent_desc'), ch = columns.indexOf('child_desc');
 
+	// Data
+	var data = [];
 	for (var i = 1; i < source.data.length; i += 1){
 
+		// parent, child
 		data.push([
-			source.data[i][1], source.data[i][3]
+			source.data[i][pa], source.data[i][ch]
 		]);
 
 	}
@@ -32,7 +37,7 @@ jQuery.getJSON(url, function (source){
 	        ) {
 	            e.options.data.forEach(function (link) {
 
-	                if (link[0] === 'central') {
+	                if (link[0] === 'Central Government Expenditure') {
 	                    nodes['central'] = {
 	                        id: 'central',
 	                        marker: {
