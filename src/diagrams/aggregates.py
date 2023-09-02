@@ -12,6 +12,9 @@ import src.functions.streams
 
 
 class Aggregates:
+    """
+    Aggregates
+    """
 
     def __init__(self, storage: str):
         """
