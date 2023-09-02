@@ -40,7 +40,13 @@ class Aggregates:
 
         # The data set of top government divisions/segments
         data = src.functions.streams.Streams().read(uri=self.__uri, usecols=list(self.__fields.keys()))
+
+        # Renaming fields
         data.rename(columns=self.__fields, inplace=True)
+
+        # Ensuring NaN cells have a <null> value
+        condition = data.isna()
+        data[condition] = None
 
         return data
 
