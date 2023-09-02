@@ -13,9 +13,9 @@
         10
     ],
     "columns": [
-        "segment",
+        "child_desc",
         "id",
-        "name",
+        "parent_desc",
         "parent",
         "collapsed"
     ],
