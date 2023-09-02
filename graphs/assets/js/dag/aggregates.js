@@ -1,6 +1,6 @@
 var Highcharts;
 
-var url = "https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/diagrams/overarching.json"
+var url = "https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/diagrams/aggregates.json"
 
 // Generate curves
 jQuery.getJSON(url, function (source){
@@ -34,7 +34,7 @@ jQuery.getJSON(url, function (source){
               format: '{point.id}'
           },
           tooltip: {
-            pointFormat: '<b>{point.segment}</b><br/>'
+            pointFormat: '<b>{point.child_desc}</b><br/>'
           }
       }]
 
