@@ -13,9 +13,9 @@
         10
     ],
     "columns": [
-        "src",
-        "destination",
         "parent",
+        "name",
+        "id",
         "segment",
         "identifier",
         "collapsed"
@@ -23,88 +23,88 @@
     "data": [
         [
             null,
-            "central",
             null,
+            "central",
             "Central Government Expenditure",
             "T",
             true
         ],
         [
             "central",
-            "services",
             "Central Government Expenditure",
+            "services",
             "General Public Services",
             "GF01",
             null
         ],
         [
             "central",
-            "defence",
             "Central Government Expenditure",
+            "defence",
             "Defence",
             "GF02",
             null
         ],
         [
             "central",
-            "order & safety",
             "Central Government Expenditure",
+            "order & safety",
             "General Public Order & Safety",
             "GF03",
             null
         ],
         [
             "central",
-            "economic affairs",
             "Central Government Expenditure",
+            "economic affairs",
             "Economic Affairs",
             "GF04",
             null
         ],
         [
             "central",
-            "environment",
             "Central Government Expenditure",
+            "environment",
             "Environmental Protection",
             "GF05",
             null
         ],
         [
             "central",
-            "housing",
             "Central Government Expenditure",
+            "housing",
             "Housing & Community Development",
             "GF06",
             null
         ],
         [
             "central",
-            "health",
             "Central Government Expenditure",
+            "health",
             "Health",
             "GF07",
             null
         ],
         [
             "central",
-            "recreation",
             "Central Government Expenditure",
+            "recreation",
             "Recreation",
             "GF08",
             null
         ],
         [
             "central",
-            "education",
             "Central Government Expenditure",
+            "education",
             "Education",
             "GF09",
             null
         ],
         [
             "central",
-            "social protection",
             "Central Government Expenditure",
+            "social protection",
             "Social Protection",
             "GF10",
             null
