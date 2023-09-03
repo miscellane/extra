@@ -1,6 +1,6 @@
 var Highcharts;
 
-var url = "https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/diagrams/aggregates.json"
+var url = "https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/diagrams/disaggregates.json"
 
 
 // Generate curves
@@ -12,7 +12,7 @@ jQuery.getJSON(url, function (source){
 
 	// Data
 	var data = [];
-	for (var i = 1; i < source.data.length; i += 1){
+	for (var i = 0; i < source.data.length; i += 1){
 
 		// parent, child
 		data.push([
@@ -41,13 +41,13 @@ jQuery.getJSON(url, function (source){
 	                    nodes['Central Government Expenditure'] = {
 	                        id: 'Central Government Expenditure',
 	                        marker: {
-	                            radius: 20
+	                            radius: 24
 	                        }
 	                    };
 	                    nodes[link[1]] = {
 	                        id: link[1],
 	                        marker: {
-	                            radius: 10
+	                            radius: 16
 	                        },
 	                        color: colors[i++]
 	                    };
@@ -69,6 +69,7 @@ jQuery.getJSON(url, function (source){
 	Highcharts.chart('container', {
 	    chart: {
 	        type: 'networkgraph',
+	        height: '100%',
 	        marginTop: -85
 	    },
 	    title: {
@@ -78,9 +79,6 @@ jQuery.getJSON(url, function (source){
 	    subtitle: {
 	        text: 'United Kingdom',
 	        align: 'left'
-	    },
-	    credits: {
-	      enabled: false
 	    },
 	    plotOptions: {
 	        networkgraph: {
@@ -92,12 +90,13 @@ jQuery.getJSON(url, function (source){
 	        }
 	    },
 	    caption: {
-                verticalAlign: "bottom",
-                y: -125,
-                x: 85,
-                text: '<p>An illustration of the top central government expenditure classifications at the United<br>' +
-                      'Kingdom\'s treasury.  You may drag the network around, it will reposition itself.</p>'
-            },
+          verticalAlign: "bottom",
+          y: -135,
+          x: 85,
+          text: '<p>A force directed graph of the United Kingdom treasury\'s central government expenditure<br>' +
+                'groupings; it illustrates the hierarchical breakdown of central government spending.  You<br>' +
+                'may drag the network around, it will reposition itself.</p>'
+      },
 	    series: [{
 	        accessibility: {
 	            enabled: false

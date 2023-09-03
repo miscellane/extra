@@ -1,0 +1,571 @@
+{
+    "index": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78
+    ],
+    "columns": [
+        "child_desc",
+        "id",
+        "parent_desc",
+        "parent"
+    ],
+    "data": [
+        [
+            "General Public Services",
+            "services",
+            "Central Government Expenditure",
+            "central"
+        ],
+        [
+            "Defence",
+            "defence",
+            "Central Government Expenditure",
+            "central"
+        ],
+        [
+            "General Public Order & Safety",
+            "order & safety",
+            "Central Government Expenditure",
+            "central"
+        ],
+        [
+            "Economic Affairs",
+            "economic affairs",
+            "Central Government Expenditure",
+            "central"
+        ],
+        [
+            "Environmental Protection",
+            "environment",
+            "Central Government Expenditure",
+            "central"
+        ],
+        [
+            "Housing & Community Development",
+            "housing",
+            "Central Government Expenditure",
+            "central"
+        ],
+        [
+            "Health",
+            "health",
+            "Central Government Expenditure",
+            "central"
+        ],
+        [
+            "Recreation",
+            "recreation",
+            "Central Government Expenditure",
+            "central"
+        ],
+        [
+            "Education",
+            "education",
+            "Central Government Expenditure",
+            "central"
+        ],
+        [
+            "Social Protection",
+            "social protection",
+            "Central Government Expenditure",
+            "central"
+        ],
+        [
+            "Executive & Legal, Financial & Fiscal Affairs, External Affairs",
+            "GF0101",
+            "General Public Services",
+            "services"
+        ],
+        [
+            "Foreign Economic Aid",
+            "GF0102",
+            "General Public Services",
+            "services"
+        ],
+        [
+            "General Services",
+            "GF0103",
+            "General Public Services",
+            "services"
+        ],
+        [
+            "Basic Research",
+            "GF0104",
+            "General Public Services",
+            "services"
+        ],
+        [
+            "Research and Development General Public Services",
+            "GF0105",
+            "General Public Services",
+            "services"
+        ],
+        [
+            "General Public Services not elsewhere classified",
+            "GF0106",
+            "General Public Services",
+            "services"
+        ],
+        [
+            "Public Debt Transactions",
+            "GF0107",
+            "General Public Services",
+            "services"
+        ],
+        [
+            "Transfers between different levels of Government",
+            "GF0108",
+            "General Public Services",
+            "services"
+        ],
+        [
+            "Military Defence",
+            "GF0201",
+            "Defence",
+            "defence"
+        ],
+        [
+            "Civil Defence",
+            "GF0202",
+            "Defence",
+            "defence"
+        ],
+        [
+            "Foreign Military Aid",
+            "GF0203",
+            "Defence",
+            "defence"
+        ],
+        [
+            "Research and Development Defence",
+            "GF0204",
+            "Defence",
+            "defence"
+        ],
+        [
+            "Defence not elsewhere classified",
+            "GF0205",
+            "Defence",
+            "defence"
+        ],
+        [
+            "Police services",
+            "GF0301",
+            "General Public Order & Safety",
+            "order & safety"
+        ],
+        [
+            "Fire protection services",
+            "GF0302",
+            "General Public Order & Safety",
+            "order & safety"
+        ],
+        [
+            "Law Courts",
+            "GF0303",
+            "General Public Order & Safety",
+            "order & safety"
+        ],
+        [
+            "Prisons",
+            "GF0304",
+            "General Public Order & Safety",
+            "order & safety"
+        ],
+        [
+            "Research and Development public order and safety",
+            "GF0305",
+            "General Public Order & Safety",
+            "order & safety"
+        ],
+        [
+            "Public order and safety not elsewhere classified",
+            "GF0306",
+            "General Public Order & Safety",
+            "order & safety"
+        ],
+        [
+            "General economic, commercial and labour affairs",
+            "GF0401",
+            "Economic Affairs",
+            "economic affairs"
+        ],
+        [
+            "Agriculture, forestry, fishing and hunting",
+            "GF0402",
+            "Economic Affairs",
+            "economic affairs"
+        ],
+        [
+            "Fuel and Energy",
+            "GF0403",
+            "Economic Affairs",
+            "economic affairs"
+        ],
+        [
+            "Mining, manufacturing and construction",
+            "GF0404",
+            "Economic Affairs",
+            "economic affairs"
+        ],
+        [
+            "Transport",
+            "GF0405",
+            "Economic Affairs",
+            "economic affairs"
+        ],
+        [
+            "Communication",
+            "GF0406",
+            "Economic Affairs",
+            "economic affairs"
+        ],
+        [
+            "Other Industries",
+            "GF0407",
+            "Economic Affairs",
+            "economic affairs"
+        ],
+        [
+            "Research and Development Economic Affairs",
+            "GF0408",
+            "Economic Affairs",
+            "economic affairs"
+        ],
+        [
+            "Economic Affairs not elsewhere classified",
+            "GF0409",
+            "Economic Affairs",
+            "economic affairs"
+        ],
+        [
+            "Waste Management",
+            "GF0501",
+            "Environmental Protection",
+            "environment"
+        ],
+        [
+            "Water Waste Management",
+            "GF0502",
+            "Environmental Protection",
+            "environment"
+        ],
+        [
+            "Pollution Abatement",
+            "GF0503",
+            "Environmental Protection",
+            "environment"
+        ],
+        [
+            "Protection of biodiversity and landscape",
+            "GF0504",
+            "Environmental Protection",
+            "environment"
+        ],
+        [
+            "Research and Development Environmental Protection",
+            "GF0505",
+            "Environmental Protection",
+            "environment"
+        ],
+        [
+            "Environmental Protection Not Elsewhere Classified",
+            "GF0506",
+            "Environmental Protection",
+            "environment"
+        ],
+        [
+            "Housing Development",
+            "GF0601",
+            "Housing & Community Development",
+            "housing"
+        ],
+        [
+            "Community Development",
+            "GF0602",
+            "Housing & Community Development",
+            "housing"
+        ],
+        [
+            "Water Supply",
+            "GF0603",
+            "Housing & Community Development",
+            "housing"
+        ],
+        [
+            "Street Lighting",
+            "GF0604",
+            "Housing & Community Development",
+            "housing"
+        ],
+        [
+            "Research & Development Housing & Community Amenities",
+            "GF0605",
+            "Housing & Community Development",
+            "housing"
+        ],
+        [
+            "Housing & Community amenities not elsewhere classified",
+            "GF0606",
+            "Housing & Community Development",
+            "housing"
+        ],
+        [
+            "Medical Products appliances and equipment",
+            "GF0701",
+            "Health",
+            "health"
+        ],
+        [
+            "Outpatient Services",
+            "GF0702",
+            "Health",
+            "health"
+        ],
+        [
+            "Hospital Services",
+            "GF0703",
+            "Health",
+            "health"
+        ],
+        [
+            "Public Health Services",
+            "GF0704",
+            "Health",
+            "health"
+        ],
+        [
+            "Research and Development Health",
+            "GF0705",
+            "Health",
+            "health"
+        ],
+        [
+            "Health not elsewhere classified",
+            "GF0706",
+            "Health",
+            "health"
+        ],
+        [
+            "Recreational & Sporting Services",
+            "GF0801",
+            "Recreation",
+            "recreation"
+        ],
+        [
+            "Cultural Services",
+            "GF0802",
+            "Recreation",
+            "recreation"
+        ],
+        [
+            "Broadcasting & Publishing Services",
+            "GF0803",
+            "Recreation",
+            "recreation"
+        ],
+        [
+            "Religious & Other Community Services",
+            "GF0804",
+            "Recreation",
+            "recreation"
+        ],
+        [
+            "Research and Development Recreation,  Culture & Religion",
+            "GF0805",
+            "Recreation",
+            "recreation"
+        ],
+        [
+            "Recreation, Culture & Religion not elsewhere classified",
+            "GF0806",
+            "Recreation",
+            "recreation"
+        ],
+        [
+            "Pre-primary  & Primary Education",
+            "GF0901",
+            "Education",
+            "education"
+        ],
+        [
+            "Secondary Education",
+            "GF0902",
+            "Education",
+            "education"
+        ],
+        [
+            "Post-Secondary Non-Tertiary Education",
+            "GF0903",
+            "Education",
+            "education"
+        ],
+        [
+            "Tertiary Education",
+            "GF0904",
+            "Education",
+            "education"
+        ],
+        [
+            "Education not Definable by Level",
+            "GF0905",
+            "Education",
+            "education"
+        ],
+        [
+            "Subsidiary Services to Education",
+            "GF0906",
+            "Education",
+            "education"
+        ],
+        [
+            "Research and Development Education",
+            "GF0907",
+            "Education",
+            "education"
+        ],
+        [
+            "Education not elsewhere classified",
+            "GF0908",
+            "Education",
+            "education"
+        ],
+        [
+            "Sickness & Disability",
+            "GF1001",
+            "Social Protection",
+            "social protection"
+        ],
+        [
+            "Old Age",
+            "GF1002",
+            "Social Protection",
+            "social protection"
+        ],
+        [
+            "Survivors",
+            "GF1003",
+            "Social Protection",
+            "social protection"
+        ],
+        [
+            "Family & Children",
+            "GF1004",
+            "Social Protection",
+            "social protection"
+        ],
+        [
+            "Unemployment",
+            "GF1005",
+            "Social Protection",
+            "social protection"
+        ],
+        [
+            "Housing",
+            "GF1006",
+            "Social Protection",
+            "social protection"
+        ],
+        [
+            "Social Exclusion not elsewhere classified",
+            "GF1007",
+            "Social Protection",
+            "social protection"
+        ],
+        [
+            "Research and Development Social Protection",
+            "GF1008",
+            "Social Protection",
+            "social protection"
+        ],
+        [
+            "Social Protection not elsewhere classified",
+            "GF1009",
+            "Social Protection",
+            "social protection"
+        ]
+    ],
+    "index_names": [
+        null
+    ],
+    "column_names": [
+        null
+    ]
+}
