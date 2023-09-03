@@ -72,11 +72,11 @@ jQuery.getJSON(url, function (source){
 	        height: '100%'
 	    },
 	    title: {
-	        text: 'Central Government',
+	        text: 'Central Government Expenditure Classifications',
 	        align: 'left'
 	    },
 	    subtitle: {
-	        text: 'Force-Directed Network Graph',
+	        text: 'United Kingdom',
 	        align: 'left'
 	    },
 	    plotOptions: {
@@ -90,7 +90,7 @@ jQuery.getJSON(url, function (source){
 	    },
 	    caption: {
                 verticalAlign: "bottom",
-                y: -85,
+                y: -125,
                 x: 85,
                 text: '<p>An illustration of the top central government expenditure classifications at the United Kingdom\'s<br>' +
                       'treasury.  You may drag the network around, it will reposition itself.</p>'
