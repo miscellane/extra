@@ -69,7 +69,8 @@ jQuery.getJSON(url, function (source){
 	Highcharts.chart('container', {
 	    chart: {
 	        type: 'networkgraph',
-	        height: '100%'
+	        height: '100%',
+	        marginTop: -85
 	    },
 	    title: {
 	        text: 'Central Government',
