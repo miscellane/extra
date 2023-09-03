@@ -88,6 +88,13 @@ jQuery.getJSON(url, function (source){
 	            }
 	        }
 	    },
+	    caption: {
+                verticalAlign: "bottom",
+                y: -85,
+                x: 85,
+                text: '<p>An illustration of the top central government expenditure classifications at the United Kingdom\'s<br>' +
+                      'treasury.  You may drag the network around, it will reposition itself.</p>'
+            },
 	    series: [{
 	        accessibility: {
 	            enabled: false
