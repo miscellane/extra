@@ -91,7 +91,7 @@ jQuery.getJSON(url, function (source){
 	    },
 	    caption: {
           verticalAlign: "bottom",
-          y: -85,
+          y: -135,
           x: 85,
           text: '<p>A force directed graph of the United Kingdom treasury\'s central government expenditure<br>' +
                 'groupings; it illustrates the hierarchical breakdown of central government spending.  You<br>' +
