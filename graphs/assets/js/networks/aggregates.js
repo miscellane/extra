@@ -69,7 +69,7 @@ jQuery.getJSON(url, function (source){
 	Highcharts.chart('container', {
 	    chart: {
 	        type: 'networkgraph',
-	        marginTop: -65
+	        marginTop: -85
 	    },
 	    title: {
 	        text: 'Central Government Expenditure Classifications',
@@ -78,6 +78,9 @@ jQuery.getJSON(url, function (source){
 	    subtitle: {
 	        text: 'United Kingdom',
 	        align: 'left'
+	    },
+	    credits: {
+	      enabled: false
 	    },
 	    plotOptions: {
 	        networkgraph: {
@@ -92,8 +95,8 @@ jQuery.getJSON(url, function (source){
                 verticalAlign: "bottom",
                 y: -125,
                 x: 85,
-                text: '<p>An illustration of the top central government expenditure classifications at the<br>' +
-                      'United Kingdom\'s treasury.  You may drag the network around, it will reposition itself.</p>'
+                text: '<p>An illustration of the top central government expenditure classifications at the United<br>' +
+                      'Kingdom\'s treasury.  You may drag the network around, it will reposition itself.</p>'
             },
 	    series: [{
 	        accessibility: {
