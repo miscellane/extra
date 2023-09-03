@@ -73,11 +73,11 @@ jQuery.getJSON(url, function (source){
 	        marginTop: -85
 	    },
 	    title: {
-	        text: 'Central Government',
+	        text: 'Central Government Expenditure Classifications',
 	        align: 'left'
 	    },
 	    subtitle: {
-	        text: 'Force-Directed Network Graph',
+	        text: 'United Kingdom',
 	        align: 'left'
 	    },
 	    plotOptions: {
