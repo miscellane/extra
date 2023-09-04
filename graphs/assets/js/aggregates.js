@@ -125,7 +125,7 @@ jQuery.getJSON(url, function (source) {
                 x: 9
             },
             min: 0,
-            height: '35%',
+            height: '30%',
             lineWidth: 2,
             resize: {
                 enabled: true
@@ -142,8 +142,27 @@ jQuery.getJSON(url, function (source) {
                x: 21
            },
            min: 0,
-           top: '45%',
-           height: '35%',
+           top: '31.5%',
+           height: '30%',
+           lineWidth: 2,
+           resize: {
+               enabled: true
+           },
+           offset: 0
+       }, {
+           labels: {
+               align: 'left',
+               x: 5
+           },
+           title: {
+               text: 'Percentage<br>Change',
+               align: 'middle',
+               margin: 5,
+               x: 21
+           },
+           // min: 0,
+           top: '63%',
+           height: '30%',
            lineWidth: 2,
            resize: {
                enabled: true
@@ -173,7 +192,7 @@ jQuery.getJSON(url, function (source) {
             }
 
         },
-        
+
         colors: ['#722f37', '#a000c8', '#800000', '#FFA500', '#6b8e23',
                  '#000000', '#999090', '#8080ff', '#ff9966', '#214949'],
 
@@ -337,6 +356,14 @@ jQuery.getJSON(url, function (source) {
           },
           yAxis: 1,
           linkedTo: "9"
+       }, {
+          name: gamma[0].name,
+          data: gamma[0].data,
+          tooltip: {
+              pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
+          },
+          yAxis: 2,
+          linkedTo: "0"
        }]
     });
 
