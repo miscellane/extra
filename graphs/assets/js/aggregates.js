@@ -173,7 +173,7 @@ jQuery.getJSON(url, function (source) {
 
         },
 
-        colors: ['#722f37', '#FFA500', '#6b8e23', '#000000', '#214949'],
+        colors: ['#722f37', '#a000c8', '#800000', '#FFA500', '#6b8e23', '#000000', '#214949', '#ff9966', '#8080ff', '#999090'],
 
         series: [{
 	          name: alpha[0].name,
