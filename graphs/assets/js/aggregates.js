@@ -173,8 +173,9 @@ jQuery.getJSON(url, function (source) {
             }
 
         },
-				// '#214949', '#ff9966'
-        colors: ['#722f37', '#a000c8', '#800000', '#FFA500', '#6b8e23', '#000000', '#999090', '#8080ff', '#ff9966'],
+        
+        colors: ['#722f37', '#a000c8', '#800000', '#FFA500', '#6b8e23',
+                 '#000000', '#999090', '#8080ff', '#ff9966', '#214949'],
 
         series: [{
 	          name: alpha[0].name,
@@ -249,6 +250,14 @@ jQuery.getJSON(url, function (source) {
            yAxis: 0,
            id: "8"
        }, {
+           name: alpha[9].name,
+           data: alpha[9].data,
+           tooltip: {
+              pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
+           },
+           yAxis: 0,
+           id: "9"
+       }, {
           name: beta[0].name,
           data: beta[0].data,
           tooltip: {
@@ -320,6 +329,14 @@ jQuery.getJSON(url, function (source) {
           },
           yAxis: 1,
           linkedTo: "8"
+       }, {
+          name: beta[9].name,
+          data: beta[9].data,
+          tooltip: {
+              pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
+          },
+          yAxis: 1,
+          linkedTo: "9"
        }]
     });
 
