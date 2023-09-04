@@ -54,19 +54,42 @@ jQuery.getJSON(url, function (source) {
     Highcharts.stockChart('container0001', {
 
         rangeSelector: {
-            selected: 5,
-            verticalAlign: 'top',
+		        buttonPosition: {
+                x: 0,
+                y: 0
+            },
+            buttons: [
+              {
+                type: 'year',
+                count: 5,
+                text: '5y',
+                title: 'View 5 years',
+                dataGrouping: {
+                  units: [['year', [1]]]
+                }
+              }, {
+               type: 'year',
+               count: 10,
+               text: '10y',
+               title: 'View 10 years',
+               dataGrouping: {
+                 units: [['year', [1]]]
+               }
+              }, {
+                type: 'all',
+                text: 'All',
+                title: 'View all'
+              }
+            ],
             floating: false,
+            inputDateFormat: '%Y',
+            inputEnabled: true,
             inputPosition: {
                 x: 0,
                 y: 0
             },
-            buttonPosition: {
-                x: 0,
-                y: 0
-            },
-            inputEnabled: true,
-            inputDateFormat: '%Y'
+            selected: 5,
+            verticalAlign: 'top'
         },
 
         chart: {
