@@ -92,9 +92,11 @@ jQuery.getJSON(url, function (source) {
 
         legend: {
             enabled: true,
+            layout: 'horizontal',
+            align: 'center',
             width: 600,
             x: 65,
-            layout: 'vertical'
+
         },
 
         caption: {
