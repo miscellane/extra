@@ -381,12 +381,94 @@ jQuery.getJSON(url, function (source) {
           linkedTo: "9"
        }, {
           name: gamma[0].name,
+          type: 'column',
           data: gamma[0].data,
           tooltip: {
               pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
           },
           yAxis: 2,
           linkedTo: "0"
+       }, {
+          name: gamma[1].name,
+          type: 'column',
+          data: gamma[1].data,
+          tooltip: {
+              pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
+          },
+          yAxis: 2,
+          linkedTo: "1"
+       }, {
+          name: gamma[2].name,
+          type: 'column',
+          data: gamma[2].data,
+          tooltip: {
+              pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
+          },
+          yAxis: 2,
+          linkedTo: "2"
+       }, {
+          name: gamma[3].name,
+          type: 'column',
+          data: gamma[3].data,
+          tooltip: {
+              pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
+          },
+          yAxis: 2,
+          linkedTo: "3"
+       }, {
+          name: gamma[4].name,
+          type: 'column',
+          data: gamma[4].data,
+          tooltip: {
+              pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
+          },
+          yAxis: 2,
+          linkedTo: "4"
+       }, {
+          name: gamma[5].name,
+          type: 'column',
+          data: gamma[5].data,
+          tooltip: {
+              pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
+          },
+          yAxis: 2,
+          linkedTo: "5"
+       }, {
+          name: gamma[6].name,
+          type: 'column',
+          data: gamma[6].data,
+          tooltip: {
+              pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
+          },
+          yAxis: 2,
+          linkedTo: "6"
+       }, {
+          name: gamma[7].name,
+          type: 'column',
+          data: gamma[7].data,
+          tooltip: {
+              pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
+          },
+          yAxis: 2,
+          linkedTo: "7"
+       }, {
+          name: gamma[8].name,
+          type: 'column',
+          data: gamma[8].data,
+          tooltip: {
+              pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
+          },
+          yAxis: 2,
+          linkedTo: "8"
+       }, {
+          name: gamma[9].name,
+          type: 'column',
+          data: gamma[9].data,
+          tooltip: {
+              pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
+          },
+          yAxis: 2,
+          linkedTo: "9"
        }]
     });
 
