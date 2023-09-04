@@ -95,8 +95,7 @@ jQuery.getJSON(url, function (source) {
             layout: 'horizontal',
             align: 'center',
             width: 600,
-            x: 65,
-
+            x: 65
         },
 
         caption: {
