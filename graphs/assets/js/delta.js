@@ -108,7 +108,7 @@ function generateChart(fileNameKey) {
                 }
             },
             subtitle: {
-                text: '\nElement <b>' + fileNameKey + ' (' + description + ')</b> of<br>variable <b>expenditure</b>\n',
+                text: '\nElement <b>' + fileNameKey + '</b>\n',
                 style: {
                     "fontSize": "11px",
                     "fontWeight": "light"
@@ -125,6 +125,7 @@ function generateChart(fileNameKey) {
             },
 
             xAxis: {
+                type: "datetime",
                 title: {
                     text: "Year"
                 },
