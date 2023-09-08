@@ -1,0 +1,126 @@
+/* Forked from: https://github.com/excentris/compass*/
+
+
+// Set-up
+$text-color: #46433A;
+$anchor-text-color: #CE534D;
+$background-color: #F1EED9;
+
+
+// Body
+body {
+  font-family: Vollkorn, serif;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+
+// Wrapper div for both header and main
+.wrapper {
+  margin-top: 10%;
+}
+
+
+// Logo
+.logo-container {
+  text-align: center;
+}
+
+.logo {
+  width: 96px;
+  height: 96px;
+  display: inline-block;
+  background-size: cover;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  border: 2px solid $background-color;
+  box-shadow: 0 0 0 3px $text-color;
+}
+
+
+// Author
+.author-container h1 {
+  font-size: 2.8em;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+
+// Tagline
+.tagline-container p {
+  font-size: 1.3em;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+
+// Horizontal Rule
+hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), $text-color, rgba(0, 0, 0, 0));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), $text-color, rgba(0, 0, 0, 0));
+  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), $text-color, rgba(0, 0, 0, 0));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), $text-color, rgba(0, 0, 0, 0));
+}
+
+
+// Footer
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 20px;
+}
+
+.poweredby {
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 0.6em;
+  line-height: 0.6em;
+  padding: 0 5px;
+}
+
+
+
+/* Media Queries */
+
+// X-Small devices (phones, 480px and up)
+@media (min-width: 480px) {
+
+  /* Wrapper stays 480px wide past 480px wide and is kept centered */
+  .wrapper {
+    width: 480px;
+    margin: 10% auto 0 auto;
+  }
+}
+
+// All other devices (768px and up)
+@media (min-width: 768px) {
+
+  /* Beyond 768px the layout is changed and the wrapper has a fixed width of 680px
+     to accommodate both the header column and the content column */
+  .wrapper {
+    width: 680px;
+  }
+
+  /* The header column stays left and has a dynamic width with all contents
+     aligned right */
+  header {
+    float: left;
+    width: 46%;
+    text-align: right;
+  }
+
+  .author-container h1,
+  .logo-container,
+  .tagline-container p {
+    text-align: right;
+  }
+
+  main {
+    width: 46%;
+    margin-left: 54%;
+    padding: 0;
+  }
+}
