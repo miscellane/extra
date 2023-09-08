@@ -154,9 +154,9 @@ function generateChart(fileNameKey) {
 
             tooltip: {
                 shared: true,
-                headerFormat: '<span style="font-size: 13px; color:{point.color}">\u25CF {point.x:,.2f}</span>',
+                headerFormat: '<span style="font-size: 13px; color:{point.color}">\u25CF ' + Highcharts.dateFormat('%Y', this.x) + '</span>',
                 pointFormat: '<br/><p><br/>' +
-                    '{series.name}: {point.y}<br/></p>' ,
+                    '{series.name}: {point.y:.2f}%<br/></p>' ,
                 style: {
                     fontSize: "11px"
                 }
