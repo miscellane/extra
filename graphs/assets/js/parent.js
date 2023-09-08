@@ -43,7 +43,7 @@ jQuery.getJSON(url, function (calculations){
     Highcharts.chart("container0004", {
 
         chart: {
-            type: "line",
+            type: "spline",
             zoomType: "xy",
             marginTop: 65,
             marginBottom: 160,
