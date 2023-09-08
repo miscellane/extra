@@ -2,7 +2,6 @@ var Highcharts;
 var optionSelected;
 var dropdown = $("#option_selector");
 var url = document.getElementById("delta").getAttribute("url");
-var url = document.getElementById("delta").getAttribute("variable");
 
 
 
@@ -51,19 +50,24 @@ dropdown.on("change", function (e) {
 // Generate graphs
 function generateChart(fileNameKey) {
 
+
     $.getJSON(url, function (source){
+
 
         // https://api.highcharts.com/highstock/tooltip.pointFormat
         // https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/bubble
         // https://api.highcharts.com/highcharts/tooltip.headerFormat
         // https://www.highcharts.com/demo/stock/compare
 
+
         // Partition
         let partitions = source.partitions;
         var pa = partitions.indexOf('series_delta_%');
 
+
         // Data ...
         let calculations = source.data[pa];
+
 
         // Split
         for (var i = 0; i < calculations.length; i += 1) {
@@ -104,7 +108,7 @@ function generateChart(fileNameKey) {
                 }
             },
             subtitle: {
-                text: '\nElement <b>' + fileNameKey + ' (' + description + ')</b> of<br>variable <b>' + variable + '</b>\n',
+                text: '\nElement <b>' + fileNameKey + ' (' + description + ')</b> of<br>variable <b>expenditure</b>\n',
                 style: {
                     "fontSize": "11px",
                     "fontWeight": "light"
