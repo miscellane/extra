@@ -154,12 +154,23 @@ function generateChart(fileNameKey) {
 
             tooltip: {
                 shared: true,
-                headerFormat: '<span style="font-size: 13px; color:{point.color}">\u25CF ' + Highcharts.dateFormat('%Y', this.x) + '</span>',
-                pointFormat: '<br/><p><br/>' +
-                    '{series.name}: {point.y:.2f}%<br/></p>' ,
+                xDateFormat: '%Y',
+                // headerFormat: '<span style="font-size: 13px; color:{point.color}">\u25CF ' + Highcharts.dateFormat('%Y', this.x) + '</span>',
+                pointFormat: '<br/><p>' +
+                    '<span style="font-size: 13px; color:{point.color}">\u25CF {series.name}: {point.y:.2f}%</span></p>' ,
                 style: {
                     fontSize: "11px"
-                }
+                },
+                dateTimeLabelFormats: {
+                                    millisecond: "%A, %e %b, %H:%M:%S.%L",
+                                    second: "%A, %e %b, %H:%M:%S",
+                                    minute: "%A, %e %b, %H:%M",
+                                    hour: "%A, %e %b, %H:%M",
+                                    day: "%A, %e %B, %Y",
+                                    week: "%A, %e %b, %Y",
+                                    month: "%B %Y",
+                                    year: "%Y"
+                                }
             },
 
             plotOptions: {
