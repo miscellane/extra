@@ -150,7 +150,7 @@ jQuery.getJSON(url, function (source) {
             },
             min: 0,
             height: '30%',
-            lineWidth: 2,
+            lineWidth: 0.05,
             resize: {
                 enabled: true
             }
@@ -168,7 +168,7 @@ jQuery.getJSON(url, function (source) {
            min: 0,
            top: '31.5%',
            height: '30%',
-           lineWidth: 2,
+           lineWidth: 0.05,
            resize: {
                enabled: true
            },
@@ -187,7 +187,7 @@ jQuery.getJSON(url, function (source) {
            // min: 0,
            top: '63%',
            height: '30%',
-           lineWidth: 2,
+           lineWidth: 0.05,
            resize: {
                enabled: true
            },
