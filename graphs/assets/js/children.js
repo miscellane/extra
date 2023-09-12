@@ -76,7 +76,7 @@ function generateChart(fileNameKey, fileNameValue){
 	      Highcharts.chart("container0003", {
 
 	          chart: {
-	              type: "line",
+	              type: "spline",
 	              zoomType: "xy",
 	              marginTop: 85,
 	              marginBottom: 160,
