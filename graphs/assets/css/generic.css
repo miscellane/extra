@@ -32,6 +32,13 @@ main {
 
 /* HTML5 display definitions */
 
+figcaption {
+	width: 80%;
+	color: rgba(70, 67, 58, 0.695); /* rgba(70, 67, 58, 0.65), #46433A */
+	font-size: 90%;
+	margin-left: 65px;
+}
+
 /**
  * Correct `block` display not defined for any HTML5 element in IE 8/9.
  * Correct `block` display not defined for `details` or `summary` in IE 10/11
