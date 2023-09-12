@@ -79,10 +79,10 @@ function generateChart(fileNameKey, fileNameValue){
 	              type: "spline",
 	              zoomType: "xy",
 	              marginTop: 85,
-	              marginBottom: 160,
-	              marginRight: 35,
-	              height: 430,
-	              width: 390,
+	              marginBottom: 175,
+	              marginRight: 5,
+	              height: 445,
+	              width: 405,
 	          },
 
 	          title: {
@@ -120,12 +120,12 @@ function generateChart(fileNameKey, fileNameValue){
 	                  textOverflow: 'ellipsis'
 	              },
 	              verticalAlign: 'bottom',
-	              margin: 40,
+	              margin: 20,
 	              itemMarginTop: 2,
 	              itemMarginBottom: 2,
-	              x: 7.5,
-	              y: 20,
-	              floating: true
+	              x: 5.5,
+	              y: 0,
+	              floating: false
 	          },
 
 	          xAxis: {
