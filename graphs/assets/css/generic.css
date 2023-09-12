@@ -6,7 +6,7 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling user zoom.
  */
 html {
-    font-family: Vollkorn, Gafata, sans-serif; /* 1 */
+    font-family: Vollkorn, sans-serif; /* 1 */
     -ms-text-size-adjust: 100%; /* 2 */
     -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -439,7 +439,7 @@ th {
 .gamma{
     border: 0 solid;
     padding: 20px;
-    text-align: center;
+    text-align: left;
 }
 
 .introduction{
