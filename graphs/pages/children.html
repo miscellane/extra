@@ -4,9 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../assets/css/menu.css" type="text/css">
+        <link rel="stylesheet" href="../assets/css/generic.css" type="text/css">
 
-        <link href="https://cdn.jsdelivr.net/npm/@fontawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
@@ -14,16 +15,35 @@
     </head>
     <body>
 
-        <div class="selection">
-            <label for="option_selector"><br/>
-                <select id="option_selector">
-                    <!-- <option id="option_selector_title">Please select a ...</option> -->
-                </select>
-            </label>
-        </div>
+        <div class="grid-container">
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
 
-        <script src="../assets/js/children.js" type="text/javascript"></script>
-        <div id="container0003" style="height: 480px; width: 390px; margin: 0 auto"></div>
+            <div class="gamma">
+                A high level illustrative summary of expenditure ... consider these graphs in relation to population,
+                demographic, changes over time [link to demography pages, which shall include spatial illustrations].  The
+                values are inflation adjusted, therefore comparable [link to deflator series pages].
+            </div>
+            <div class="introduction">
+                <div class="selection">
+                    <label for="option_selector"><br/>
+                        <select id="option_selector">
+                            <!-- <option id="option_selector_title">Please select a ...</option> -->
+                        </select>
+                    </label>
+                </div>
+
+                <script src="../assets/js/children.js" type="text/javascript"></script>
+                <div id="container0003" style="height: 480px; width: 390px; margin: 0 auto"></div>
+            </div>
+            <div class="grid-item"></div>
+
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+
+        </div>
 
         <script src="https://code.highcharts.com/highcharts.js" crossorigin="anonymous"></script>
         <script src="https://code.highcharts.com/highcharts-more.js" crossorigin="anonymous"></script>
