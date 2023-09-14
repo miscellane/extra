@@ -9,7 +9,7 @@ jQuery.getJSON(url, function (source) {
 
 
     // Definitions
-    var alpha = [],
+    var total = [],
         beta = [],
         groupingUnits = [[
             'year',   // unit name
@@ -20,7 +20,7 @@ jQuery.getJSON(url, function (source) {
 
     // Splits
     for (var i = 0; i < source.data[0].length; i += 1) {
-        alpha[i] = {
+        total[i] = {
             name: source.data[0][i].description,
             data: source.data[0][i].data
         };
@@ -204,80 +204,80 @@ jQuery.getJSON(url, function (source) {
                  '#000000', '#999090', '#8080ff', '#ff9966', '#214949'],
 
         series: [{
-	          name: alpha[0].name,
-	          data: alpha[0].data,
+	          name: total[0].name,
+	          data: total[0].data,
 	          tooltip: {
 		          pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
 	          },
 	          yAxis: 0,
 	          id: "0"
         }, {
-	         name: alpha[1].name,
-	         data: alpha[1].data,
+	         name: total[1].name,
+	         data: total[1].data,
 	         tooltip: {
 	            pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
 	         },
 	         yAxis: 0,
 	         id: "1"
        }, {
-	         name: alpha[2].name,
-	         data: alpha[2].data,
+	         name: total[2].name,
+	         data: total[2].data,
 	         tooltip: {
 	            pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
 	         },
 	         yAxis: 0,
 	         id: "2"
        }, {
-           name: alpha[3].name,
-           data: alpha[3].data,
+           name: total[3].name,
+           data: total[3].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
            },
            yAxis: 0,
            id: "3"
        }, {
-           name: alpha[4].name,
-           data: alpha[4].data,
+           name: total[4].name,
+           data: total[4].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
            },
            yAxis: 0,
            id: "4"
        }, {
-           name: alpha[5].name,
-           data: alpha[5].data,
+           name: total[5].name,
+           data: total[5].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
            },
            yAxis: 0,
            id: "5"
        }, {
-           name: alpha[6].name,
-           data: alpha[6].data,
+           name: total[6].name,
+           data: total[6].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
            },
            yAxis: 0,
            id: "6"
        }, {
-           name: alpha[7].name,
-           data: alpha[7].data,
+           name: total[7].name,
+           data: total[7].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
            },
            yAxis: 0,
            id: "7"
        }, {
-           name: alpha[8].name,
-           data: alpha[8].data,
+           name: total[8].name,
+           data: total[8].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
            },
            yAxis: 0,
            id: "8"
        }, {
-           name: alpha[9].name,
-           data: alpha[9].data,
+           name: total[9].name,
+           data: total[9].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
            },
