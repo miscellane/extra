@@ -104,6 +104,7 @@ function generateChart(fileNameKey) {
 
             title: {
                 text: seriesOptions.name,
+                y: 5,
                 style: {
                     "fontSize": "18px"
                 }
