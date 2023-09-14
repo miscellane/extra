@@ -146,6 +146,10 @@ jQuery.getJSON(url, function (source) {
             }
         },
 
+        xAxis: {
+          gridLineWidth: 0.5
+        },
+
         yAxis: [{
             labels: {
                 align: 'left',
