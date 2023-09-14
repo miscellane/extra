@@ -20,8 +20,15 @@ jQuery.getJSON(url, function (source) {
 
     // Splits
     for (var i = 0; i < source.data[0].length; i += 1) {
+
+        if (['GF02', 'GF05', 'GF07', 'GF09', 'GF10'].includes(source.data[0][i].name))
+            visible = true;
+        else
+            visible = false;
+
         total[i] = {
             name: source.data[0][i].description,
+            visible: visible,
             data: source.data[0][i].data
         };
     }
