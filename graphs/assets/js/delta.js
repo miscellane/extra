@@ -16,7 +16,7 @@ $.getJSON(url, function (source) {
     let data = source.data[pa];
 
 		// Menu
-    for (var k = 0; k < (data.length - 1); k += 1) {
+    for (var k = 0; k < data.length; k += 1) {
         dropdown.append($("<option></option>").attr("value", data[k].name).text(data[k].description));
     }
 
