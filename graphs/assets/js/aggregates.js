@@ -95,7 +95,7 @@ jQuery.getJSON(url, function (source) {
             zoomType: 'x',
             type: 'spline',
             height: 765,
-            width: 415
+            width: 405
         },
 
         title: {
