@@ -306,6 +306,7 @@ jQuery.getJSON(url, function (source) {
            id: "9"
        }, {
           name: percentage[0].name,
+          type: 'column',
           data: percentage[0].data,
           tooltip: {
 	            pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
@@ -314,6 +315,7 @@ jQuery.getJSON(url, function (source) {
           linkedTo: "0"
        }, {
           name: percentage[1].name,
+          type: 'column',
           data: percentage[1].data,
           tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
