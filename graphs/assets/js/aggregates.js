@@ -94,8 +94,8 @@ jQuery.getJSON(url, function (source) {
         chart: {
             zoomType: 'x',
             type: 'spline',
-            height: 765,
-            width: 405
+            height: 635,
+            width: 395
         },
 
         title: {
@@ -128,12 +128,6 @@ jQuery.getJSON(url, function (source) {
             margin: 25,
             width: 560,
             x: 85
-        },
-
-        caption: {
-            text: '<p>The United Kingdom\'s expenditure summaries are split into central & local government summaries.  Each summary has ' +
-                'a [disaggregates tree].  These graphs are high level disaggregates summaries of central government expenditure across the ' +
-                'years; deflator adjusted.</p>'
         },
 
         exporting: {
