@@ -212,6 +212,7 @@ jQuery.getJSON(url, function (source) {
 
         series: [{
 	          name: total[0].name,
+	          visible: total[0].visible,
 	          data: total[0].data,
 	          tooltip: {
 		          pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
@@ -220,6 +221,7 @@ jQuery.getJSON(url, function (source) {
 	          id: "0"
         }, {
 	         name: total[1].name,
+	         visible: total[1].visible,
 	         data: total[1].data,
 	         tooltip: {
 	            pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
@@ -228,6 +230,7 @@ jQuery.getJSON(url, function (source) {
 	         id: "1"
        }, {
 	         name: total[2].name,
+	         visible: total[2].visible,
 	         data: total[2].data,
 	         tooltip: {
 	            pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
@@ -236,6 +239,7 @@ jQuery.getJSON(url, function (source) {
 	         id: "2"
        }, {
            name: total[3].name,
+           visible: total[3].visible,
            data: total[3].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
@@ -244,6 +248,7 @@ jQuery.getJSON(url, function (source) {
            id: "3"
        }, {
            name: total[4].name,
+           visible: total[4].visible,
            data: total[4].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
@@ -252,6 +257,7 @@ jQuery.getJSON(url, function (source) {
            id: "4"
        }, {
            name: total[5].name,
+           visible: total[5].visible,
            data: total[5].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
@@ -260,6 +266,7 @@ jQuery.getJSON(url, function (source) {
            id: "5"
        }, {
            name: total[6].name,
+           visible: total[6].visible,
            data: total[6].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
@@ -268,6 +275,7 @@ jQuery.getJSON(url, function (source) {
            id: "6"
        }, {
            name: total[7].name,
+           visible: total[7].visible,
            data: total[7].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
@@ -276,6 +284,7 @@ jQuery.getJSON(url, function (source) {
            id: "7"
        }, {
            name: total[8].name,
+           visible: total[8].visible,
            data: total[8].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
@@ -284,6 +293,7 @@ jQuery.getJSON(url, function (source) {
            id: "8"
        }, {
            name: total[9].name,
+           visible: total[9].visible,
            data: total[9].data,
            tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
