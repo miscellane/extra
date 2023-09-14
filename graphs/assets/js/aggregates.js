@@ -196,9 +196,10 @@ jQuery.getJSON(url, function (source) {
             series: {
                 marker: {
                     enabled: true,
-                    radius: 2,
+                    radius: 1,
                     symbol: 'circle'
                 },
+                lineWidth: 0.5,
                 turboThreshold: 4000,
                 dataGrouping: {
                   units: groupingUnits
