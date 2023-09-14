@@ -156,7 +156,7 @@ jQuery.getJSON(url, function (source) {
                 x: 5
             },
             title: {
-                text: 'Annual Segment<br>Total',
+                text: 'Annual Segment<br>Total (m£)',
                 align: 'middle',
                 margin: 5,
                 x: 9
@@ -173,7 +173,7 @@ jQuery.getJSON(url, function (source) {
                x: 5
            },
            title: {
-               text: 'Annual Segment<br>Percentage',
+               text: 'Annual Segment<br>Percentage (%)',
                align: 'middle',
                margin: 5,
                x: 21
