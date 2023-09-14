@@ -173,25 +173,6 @@ jQuery.getJSON(url, function (source) {
                enabled: true
            },
            offset: 0
-       }, {
-           labels: {
-               align: 'left',
-               x: 5
-           },
-           title: {
-               text: 'Percentage<br>Change',
-               align: 'middle',
-               margin: 5,
-               x: 21
-           },
-           // min: 0,
-           top: '63%',
-           height: '30%',
-           lineWidth: 0.05,
-           resize: {
-               enabled: true
-           },
-           offset: 0
        }],
 
         tooltip: {
