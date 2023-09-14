@@ -120,7 +120,7 @@ function generateChart(fileNameKey) {
             },
 
             legend: {
-                enabled: true,
+                enabled: false,
                 x: 15
             },
 
