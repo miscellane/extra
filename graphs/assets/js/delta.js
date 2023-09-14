@@ -98,17 +98,18 @@ function generateChart(fileNameKey) {
             chart: {
                 type: "line",
                 zoomType: "xy",
-                marginTop: 105
+                marginTop: 85,
+                height: 325
             },
 
             title: {
-                text: 'Delta<br>Percentages',
+                text: seriesOptions.name,
                 style: {
                     "fontSize": "18px"
                 }
             },
             subtitle: {
-                text: '\nElement <b>' + fileNameKey + '</b>\n',
+                text: '\n<br/>Percentage change vis-a-vis the previous year<br/>\n',
                 style: {
                     "fontSize": "11px",
                     "fontWeight": "light"
