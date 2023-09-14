@@ -187,6 +187,7 @@ function generateChart(fileNameKey) {
 
             series: [{
                     type: "column",
+                    color: '#888888',
                     name: seriesOptions.name,
                     data: seriesOptions.data
                 }
