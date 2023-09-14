@@ -187,7 +187,8 @@ jQuery.getJSON(url, function (source) {
             split: false,
             style: {
                 fontSize: "11px"
-            }
+            },
+            padding: 15
         },
 
         plotOptions: {
@@ -295,7 +296,7 @@ jQuery.getJSON(url, function (source) {
            visible: total[9].visible,
            data: total[9].data,
            tooltip: {
-              pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/></p>'
+              pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}m£<br/><br/></p>'
            },
            yAxis: 0,
            id: "9"
