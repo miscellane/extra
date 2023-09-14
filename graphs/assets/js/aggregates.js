@@ -186,7 +186,7 @@ jQuery.getJSON(url, function (source) {
             shared: true,
             split: false,
             style: {
-                fontSize: "11px"
+                fontSize: '11px'
             },
             padding: 15
         },
@@ -203,6 +203,10 @@ jQuery.getJSON(url, function (source) {
                 dataGrouping: {
                   units: groupingUnits
                 }
+            },
+            column: {
+              borderWidth: 0,
+              stacking: 'normal'
             }
 
         },
