@@ -86,7 +86,9 @@ jQuery.getJSON(url, function (source) {
 
         chart: {
             zoomType: 'x',
-            type: 'spline'
+            type: 'spline',
+            height: 765,
+            width: 415
         },
 
         title: {
