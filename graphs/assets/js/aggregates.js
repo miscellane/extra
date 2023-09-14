@@ -11,7 +11,6 @@ jQuery.getJSON(url, function (source) {
     // Definitions
     var alpha = [],
         beta = [],
-        gamma = [],
         groupingUnits = [[
             'year',   // unit name
             [1]      // allowed multiples
@@ -31,13 +30,6 @@ jQuery.getJSON(url, function (source) {
         beta[i] = {
             name: source.data[1][i].description,
             data: source.data[1][i].data
-        };
-    }
-
-    for (var i = 0; i < source.data[2].length; i += 1) {
-        gamma[i] = {
-            name: source.data[2][i].description,
-            data: source.data[2][i].data
         };
     }
 
