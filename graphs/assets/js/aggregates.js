@@ -10,7 +10,7 @@ jQuery.getJSON(url, function (source) {
 
     // Definitions
     var total = [],
-        beta = [],
+        percentage = [],
         groupingUnits = [[
             'year',   // unit name
             [1]      // allowed multiples
@@ -27,7 +27,7 @@ jQuery.getJSON(url, function (source) {
     }
 
     for (var i = 0; i < source.data[1].length; i += 1) {
-        beta[i] = {
+        percentage[i] = {
             name: source.data[1][i].description,
             data: source.data[1][i].data
         };
@@ -284,80 +284,80 @@ jQuery.getJSON(url, function (source) {
            yAxis: 0,
            id: "9"
        }, {
-          name: beta[0].name,
-          data: beta[0].data,
+          name: percentage[0].name,
+          data: percentage[0].data,
           tooltip: {
 	            pointFormat: '<br/><br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
 	        },
           yAxis: 1,
           linkedTo: "0"
        }, {
-          name: beta[1].name,
-          data: beta[1].data,
+          name: percentage[1].name,
+          data: percentage[1].data,
           tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
           },
           yAxis: 1,
           linkedTo: "1"
        }, {
-          name: beta[2].name,
-          data: beta[2].data,
+          name: percentage[2].name,
+          data: percentage[2].data,
           tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
           },
           yAxis: 1,
           linkedTo: "2"
        }, {
-          name: beta[3].name,
-          data: beta[3].data,
+          name: percentage[3].name,
+          data: percentage[3].data,
           tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
           },
           yAxis: 1,
           linkedTo: "3"
        }, {
-          name: beta[4].name,
-          data: beta[4].data,
+          name: percentage[4].name,
+          data: percentage[4].data,
           tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
           },
           yAxis: 1,
           linkedTo: "4"
        }, {
-          name: beta[5].name,
-          data: beta[5].data,
+          name: percentage[5].name,
+          data: percentage[5].data,
           tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
           },
           yAxis: 1,
           linkedTo: "5"
        }, {
-          name: beta[6].name,
-          data: beta[6].data,
+          name: percentage[6].name,
+          data: percentage[6].data,
           tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
           },
           yAxis: 1,
           linkedTo: "6"
        }, {
-          name: beta[7].name,
-          data: beta[7].data,
+          name: percentage[7].name,
+          data: percentage[7].data,
           tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
           },
           yAxis: 1,
           linkedTo: "7"
        }, {
-          name: beta[8].name,
-          data: beta[8].data,
+          name: percentage[8].name,
+          data: percentage[8].data,
           tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
           },
           yAxis: 1,
           linkedTo: "8"
        }, {
-          name: beta[9].name,
-          data: beta[9].data,
+          name: percentage[9].name,
+          data: percentage[9].data,
           tooltip: {
               pointFormat: '<br/><p><span style="color:{point.color}">{series.name}</span>: {point.y:,.2f}%<br/></p>'
           },
