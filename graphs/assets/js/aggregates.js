@@ -112,13 +112,21 @@ jQuery.getJSON(url, function (source) {
             enabled: true,
             layout: 'horizontal',
             align: 'center',
-            width: 600,
-            x: 65
+            itemStyle: {
+                fontSize: '11px',
+                width: '150px',
+                textOverflow: 'ellipsis'
+            },
+            verticalAlign: 'bottom',
+            margin: 25,
+            width: 560,
+            x: 85
         },
 
         caption: {
             text: '<p>The United Kingdom\'s expenditure summaries are split into central & local government summaries.  Each summary has ' +
-                'a disaggregates tree.  This is a high level breakdown of central government expenditure across the years; deflator adjusted values.</p>'
+                'a [disaggregates tree].  These graphs are high level disaggregates summaries of central government expenditure across the ' +
+                'years; deflator adjusted.</p>'
         },
 
         exporting: {
