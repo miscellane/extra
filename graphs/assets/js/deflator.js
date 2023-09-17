@@ -153,7 +153,7 @@ jQuery.getJSON(url, function (calculations){
         color: '#5b5b5b5',
         marker: {
           enabled: true,
-          radius: 3,
+          radius: 2,
           fillColor: '#5b5b5b'
         },
         dataGrouping: {
