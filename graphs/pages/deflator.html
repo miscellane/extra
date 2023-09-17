@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../assets/css/menu.css" type="text/css">
+        <link rel="stylesheet" href="../assets/css/generic.css" type="text/css">
 
         <link href="https://cdn.jsdelivr.net/npm/@fontawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
@@ -13,10 +15,34 @@
     </head>
     <body>
 
-        <script id="deflator"
-                url="https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/deflator/series.json"
-                src="../assets/js/deflator.js" type="text/javascript"></script>
-        <div id="container0005" style="height: 465px; width: 435px;  margin: 0 auto"></div>
+        <div class="grid-container">
+
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+
+            <div class="gamma"></div>
+            <div class="introduction">
+                <script id="deflator"
+                        url="https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/deflator/series.json"
+                        src="../assets/js/deflator.js" type="text/javascript"></script>
+                <div id="container0005" style="height: 445px; width: 390px;  margin: 0 auto"></div>
+            </div>
+            <div class="grid-item">
+                <figcaption>
+                    This series is a <b>rebased</b> United Kingdom Treasury deflator series.  At present, the base year of a
+                    treasury's series is the latest year of the series.  For comparative analytics purposes, each deflator series
+                    is rebased such that the base year is the indicated year.<br><br>
+                    [Source: <a href="https://www.gov.uk/government/collections/gdp-deflators-at-market-prices-and-money-gdp" target="_blank">
+                    <span style="text-decoration: underline;">The gross domestic product (GDP) deflators at market prices, and money GDP</span></a>]
+                </figcaption>
+            </div>
+
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+
+        </div>
 
         <script src="https://code.highcharts.com/stock/highstock.js"></script>
         <script src="https://code.highcharts.com/stock/modules/data.js"></script>

@@ -31,67 +31,28 @@ jQuery.getJSON(url, function (calculations){
 
 
   // Draw a graph
-  Highcharts.stockChart('container0005', {
-
-		// https://api.highcharts.com/highstock/rangeSelector.buttons
-    rangeSelector: {
-	    buttonPosition: {
-          x: 0,
-          y: 0
-        },
-      buttons: [
-        {
-          type: 'ytd',
-          text: 'YTD',
-          title: 'View year to date'
-        }, {
-          type: 'year',
-          count: 5,
-          text: '5y',
-          title: 'View 5 years',
-          dataGrouping: {
-            units: [['year', [1]]]
-          }
-        }, {
-         type: 'year',
-         count: 10,
-         text: '10y',
-         title: 'View 10 years',
-         dataGrouping: {
-           units: [['year', [1]]]
-         }
-        }, {
-          type: 'all',
-          text: 'All',
-          title: 'View all'
-        }
-      ],
-      floating: false,
-      inputDateFormat: '%Y',
-      inputEnabled: true,
-      inputPosition: {
-        x: 0,
-        y: 0
-      },
-      selected: 5,  // The default range selection button: All -> 5
-      verticalAlign: 'top'
-    },
-
+  Highcharts.chart('container0005', {
 
 		// Chart
     chart: {
-      zoomType: 'x'
+      type: 'spline',
+      zoomType: 'xy',
+      marginTop: 85,
+      height: 390,
+      width: 360
     },
 
 
 		// Title
     title: {
-      text: 'Deflator Series'
+      text: 'Deflator Series',
+      margin: 25
     },
 
 
 		// Subtitle
     subtitle: {
+      y: 50,
       text: '<p>Country: United Kingdom, Base Year: ' + calculations.attribute[0].year + '</p>'
     },
 
@@ -110,23 +71,16 @@ jQuery.getJSON(url, function (calculations){
 
 		// Legend
     legend: {
-      enabled: true,
-      width: 600,
-      x: 65,
-      y: -95,
-      align: 'middle'
+      enabled: false
     },
 
 
 		// Graph caption
     caption: {
       verticalAlign: "bottom",
+      x: 35,
       y: 25,
-      text: '<p>This series is a <b>rebased</b> United Kingdom Treasury\'s deflator series.  At present, the base ' +
-        'year of the treasury\'s series is the latest year of the series; the series is rebased such ' +
-        'that the base year is <b>' + calculations.attribute[0].year + '</b>. <br/><br/>' +
-        '[Source: <a href="https://www.gov.uk/government/collections/gdp-deflators-at-market-prices-and-money-gdp#full-publication-update-history" target="_blank">' +
-        '<span style="text-decoration: underline;">The gross domestic product (GDP) deflators at market prices, and money GDP</span></a>]</p>'
+      text: '<p><b>Base Year</b>: ' + calculations.attribute[0].year + '<br/></p>'
     },
 
 
@@ -144,23 +98,18 @@ jQuery.getJSON(url, function (calculations){
 
 		// The y-axis
     yAxis: {
-      labels: {
-        align: 'left',
-        x: 5
-      },
       title: {
-        text: 'monetary units',
-        align: 'middle',
-        x: 7
+        text: 'monetary units'
       },
+      maxPadding: 0.05,
+      gridLineWidth: 0.5,
       min: 0,
-      lineWidth: 2,
       resize: {
         enabled: true
       },
       plotLines: [{
         value: calculations.attribute[0].rebase,
-        width: 2,
+        width: 0.85,
         color: '#5b5b5b'
       }]
     },
@@ -168,9 +117,15 @@ jQuery.getJSON(url, function (calculations){
 
 		// The x-axis
     xAxis: {
+      type: 'datetime',
+      title: {
+          text: 'Year'
+      },
+      maxPadding: 0.05,
+      gridLineWidth: 0.5,
       plotLines: [{
         value: calculations.attribute[0].epoch,
-        width: 1,
+        width: 0.85,
         color: '#5b5b5b'
       }]
     },
@@ -198,7 +153,7 @@ jQuery.getJSON(url, function (calculations){
         color: '#5b5b5b5',
         marker: {
           enabled: true,
-          radius: 3,
+          radius: 2,
           fillColor: '#5b5b5b'
         },
         dataGrouping: {

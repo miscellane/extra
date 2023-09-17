@@ -5,23 +5,25 @@
 
 /* Body */
 body {
-    font-family: Gafata, Roboto, serif;
+    font-family: Vollkorn, Roboto, serif;
 }
 
 /* Select DIV */
 .selection {
     position: page;
+    border: 0;
 }
 
 /* Styling the arrow inside the select element. */
 .selection:after {
     content: "";
     right: 15px;
-    top: 3px;
+    top: 0.1px;
     width: 0;
     height: 0;
-    border: 5px solid;
-    border-color: black transparent transparent transparent;
+    border: 8px solid;
+    border-radius: 5px;
+    border-color: black black black black;
     position: relative;
     pointer-events: none;
 }
@@ -35,12 +37,12 @@ select::-ms-expand {
 .selection select {
     -webkit-appearance: none;
     -moz-appearance: none;
-    height: 35px;
-    width: 210px;
-    margin: 3px 0;
-    padding: 0 3px;
-    font-family: Gafata, Roboto, serif;
+    height: 40px;
+    width: 180px;
+    margin: 5px 0;
+    padding: 0 5px;
+    font-family: Vollkorn, Roboto, serif;
     border: 0 solid;
     border-radius: 5px;
-    background-color: rgba(182, 173, 255, 0.18);
+    background-color: rgba(182, 173, 255, 0.05);
 }
