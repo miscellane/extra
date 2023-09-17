@@ -38,19 +38,21 @@ jQuery.getJSON(url, function (calculations){
       type: 'spline',
       zoomType: 'xy',
       marginTop: 85,
-      height: 450,
-      width: 390
+      height: 390,
+      width: 360
     },
 
 
 		// Title
     title: {
-      text: 'Deflator Series'
+      text: 'Deflator Series',
+      margin: 25
     },
 
 
 		// Subtitle
     subtitle: {
+      y: 50,
       text: '<p>Country: United Kingdom, Base Year: ' + calculations.attribute[0].year + '</p>'
     },
 
@@ -76,6 +78,7 @@ jQuery.getJSON(url, function (calculations){
 		// Graph caption
     caption: {
       verticalAlign: "bottom",
+      x: 35,
       y: 25,
       text: '<p><b>Base Year</b>: ' + calculations.attribute[0].year + '<br/></p>'
     },
