@@ -14,7 +14,7 @@ import src.functions.objects
 import src.functions.streams
 
 
-class Parent:
+class Architecture:
     """
     Overall
     """
