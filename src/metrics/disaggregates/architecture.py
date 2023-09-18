@@ -19,7 +19,7 @@ class Architecture:
         self.__storage = storage
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
-        self.__datapath = config.Config().expenditure.datapath
+        self.__datapath = config.Config().expenditure.revalued_
 
         # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
         self.__usecols = ['code', 'OTE', 'segment_code', 'year', 'epoch']
@@ -47,9 +47,8 @@ class Architecture:
         # Read-in the revalued data
         data = self.__read()
         self.__logger.info(data)
+        segment_codes = data['code'].unique()
+        self.__logger.info(segment_codes)
 
-
-
-
-
-
+        for segment_code in segment_codes:
+            self.__logger.info(data[[segment_code, 'code']].drop_duplicates())
