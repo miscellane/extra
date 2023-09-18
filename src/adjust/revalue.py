@@ -28,10 +28,10 @@ class Revalue:
 
         # Expenditure metadata
         self.__expenditure = config.Config().expenditure
-        self.__datapath = self.__expenditure.datapath
+        self.__depository = self.__expenditure.revalued_
         directories = src.functions.directories.Directories()
-        directories.cleanup(self.__datapath)
-        directories.create(self.__datapath)
+        directories.cleanup(self.__depository)
+        directories.create(self.__depository)
 
         # The rebase values, and variables, for revaluation
         self.__rebase: pd.DataFrame = src.adjust.rebase.Rebase().data
@@ -90,7 +90,7 @@ class Revalue:
         """
 
         return self.__streams.write(blob=blob,
-                                    path=os.path.join(self.__datapath, f'{year}.csv'))
+                                    path=os.path.join(self.__depository, f'{year}.csv'))
 
     def exc(self) -> list:
         """
@@ -98,7 +98,8 @@ class Revalue:
         :return:
         """
 
-        paths = glob.glob(pathname=os.path.join(self.__expenditure.destination, '*.csv'))
+        # The data undergoing re-adjustment
+        paths = glob.glob(pathname=os.path.join(self.__expenditure.initial_, '*.csv'))
 
         computations = []
         for path in paths:
