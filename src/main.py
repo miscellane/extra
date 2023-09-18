@@ -1,20 +1,6 @@
 import logging
 import os
-import shutil
 import sys
-import pathlib
-
-
-def __extraneous():
-
-    for path in pathlib.Path.cwd().rglob('__pycache__'):
-        if path.is_dir():
-            try:
-                shutil.rmtree(path)
-            except PermissionError:
-                raise Exception(f'Delete Permission Denied: {path}')
-            else:
-                logger.info(f'Deleted: {path}')
 
 
 def main():
@@ -35,7 +21,7 @@ def main():
     src.metrics.interface.Interface().exc()
 
     # Deleting __pycache__
-    __extraneous()
+    src.functions.extraneous.Extraneous().extraneous()
 
 
 if __name__ == '__main__':
@@ -58,6 +44,7 @@ if __name__ == '__main__':
     import src.adjust.interface
     import src.metrics.interface
     import src.functions.directories
+    import src.functions.extraneous
 
     src.functions.directories.Directories().cleanup(path=os.path.join(os.getcwd(), 'warehouse'))
 
