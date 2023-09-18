@@ -47,8 +47,8 @@ class Architecture:
         # Read-in the revalued data
         data = self.__read()
         self.__logger.info(data)
-        segment_codes = data['code'].unique()
+        segment_codes = data['segment_code'].unique()
         self.__logger.info(segment_codes)
 
         for segment_code in segment_codes:
-            self.__logger.info(data[[segment_code, 'code']].drop_duplicates())
+            self.__logger.info(data.loc[data['segment_code'] == segment_code,  ['segment_code', 'code']].drop_duplicates())
