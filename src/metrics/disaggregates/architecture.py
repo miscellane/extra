@@ -2,6 +2,7 @@
 architecture.py
 """
 import os
+import logging
 
 import dask.dataframe
 import numpy as np
@@ -23,6 +24,12 @@ class Architecture:
         # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
         self.__usecols = ['code', 'OTE', 'segment_code', 'year', 'epoch']
 
+        # logging
+        logging.basicConfig(level=logging.INFO,
+                            format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
+                            datefmt='%Y-%m-%d %H:%M:%S')
+        self.__logger = logging.getLogger(__name__)
+
     def __read(self) -> pd.DataFrame:
         """
 
@@ -39,6 +46,7 @@ class Architecture:
 
         # Read-in the revalued data
         data = self.__read()
+        self.__logger.info(data)
 
 
 
