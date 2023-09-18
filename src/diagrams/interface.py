@@ -5,8 +5,6 @@ import logging
 import os
 
 import src.diagrams.classifications
-import src.diagrams.disaggregates
-import src.diagrams.aggregates
 import src.functions.directories
 
 
