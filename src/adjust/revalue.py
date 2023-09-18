@@ -11,7 +11,7 @@ import dask
 
 import config
 import src.adjust.rebase
-import src.adjust.variables
+import src.cases.variables
 import src.functions.streams
 import src.functions.directories
 
@@ -35,7 +35,7 @@ class Revalue:
 
         # The rebase values, and variables, for revaluation
         self.__rebase: pd.DataFrame = src.adjust.rebase.Rebase().data
-        fields = src.adjust.variables.Variables().fields
+        fields = src.cases.variables.Variables().fields
         self.__fields: np.ndarray = np.setdiff1d(fields, self.__expenditure.unavailable)
 
         # Instances
