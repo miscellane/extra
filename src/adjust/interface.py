@@ -1,5 +1,5 @@
 """
-revalue.py
+interface.py
 """
 import glob
 import os
@@ -16,9 +16,9 @@ import src.functions.streams
 import src.functions.directories
 
 
-class Revalue:
+class Interface:
     """
-    Revalue
+    Interface
     """
 
     def __init__(self):
