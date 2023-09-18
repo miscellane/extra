@@ -7,7 +7,7 @@ import os
 
 import src.functions.directories
 import src.metrics.aggregates.architecture
-import src.metrics.children
+import src.metrics.children.architecture
 import src.metrics.parent
 
 
@@ -67,5 +67,5 @@ class Interface:
         message = src.metrics.parent.Parent(storage=self.__paths.parent).exc()
         self.__logger.info(message)
 
-        message = src.metrics.children.Children(storage=self.__paths.children).exc()
+        message = src.metrics.children.architecture.Architecture(storage=self.__paths.children).exc()
         self.__logger.info(message)
