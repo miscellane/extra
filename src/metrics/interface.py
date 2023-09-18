@@ -6,9 +6,10 @@ import logging
 import os
 
 import src.functions.directories
+import src.metrics.disaggregates.architecture
 import src.metrics.aggregates.architecture
-import src.metrics.children
-import src.metrics.parent
+import src.metrics.children.architecture
+import src.metrics.parent.architecture
 
 
 class Interface:
@@ -61,11 +62,14 @@ class Interface:
         message = src.metrics.aggregates.architecture.Architecture(storage=self.__paths.aggregates).exc()
         self.__logger.info(message)
 
+        src.metrics.disaggregates.architecture.Architecture(storage=self.__paths.disaggregates).exc()
+
+
         '''
         Simple
         '''
-        message = src.metrics.parent.Parent(storage=self.__paths.parent).exc()
+        message = src.metrics.parent.architecture.Architecture(storage=self.__paths.parent).exc()
         self.__logger.info(message)
 
-        message = src.metrics.children.Children(storage=self.__paths.children).exc()
+        message = src.metrics.children.architecture.Architecture(storage=self.__paths.children).exc()
         self.__logger.info(message)

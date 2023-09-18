@@ -3,7 +3,7 @@ vertex.py
 """
 import pandas as pd
 
-import src.adjust.transactions
+import src.cases.transactions
 
 
 class Vertex:
@@ -23,7 +23,7 @@ class Vertex:
 
         # The parent segments, e.g., defence, economic affairs, etc., and their child codes, e.g., military
         # defence (defence), civil defence (defence), etc.
-        transactions = src.adjust.transactions.Transactions()
+        transactions = src.cases.transactions.Transactions()
         self.__codes = transactions.codes
         self.__segments = transactions.segments
 
