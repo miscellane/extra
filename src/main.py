@@ -25,7 +25,7 @@ def main():
     logger.info(messages)
 
     # Ascertain comparable cost values by adjusting for inflation via a deflator
-    messages = src.adjust.revalue.Revalue().exc()
+    messages = src.adjust.interface.Interface().exc()
     logger.info(messages)
 
     # Calculating metrics
@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
     # classes
     import src.cases.interface
-    import src.adjust.revalue
+    import src.adjust.interface
     import src.metrics.interface
 
     main()
