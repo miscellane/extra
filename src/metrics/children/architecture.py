@@ -34,7 +34,7 @@ class Architecture:
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
         # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
-        datapath = config.Config().expenditure.datapath
+        datapath = config.Config().expenditure.revalued_
         self.__data = self.__read(datapath=datapath, usecols=['code', 'description', 'OTE', 'segment_code', 'year'],
                                   rename_fields={'year': 'x', 'OTE': 'y'})
 
