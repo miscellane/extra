@@ -53,5 +53,8 @@ if __name__ == '__main__':
     import src.cases.interface
     import src.adjust.interface
     import src.metrics.interface
+    import src.functions.directories
+
+    src.functions.directories.Directories().cleanup(path=os.path.join(os.getcwd(), 'warehouse'))
 
     main()
