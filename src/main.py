@@ -20,6 +20,9 @@ def __extraneous():
 def main():
     logger.info('investments')
 
+    # Data maps
+    src.diagrams.interface.Interface().exc()
+
     # The Excel sheets cases
     messages = src.cases.interface.Interface().exc()
     logger.info(messages)
@@ -51,6 +54,7 @@ if __name__ == '__main__':
 
     # classes
     import src.cases.interface
+    import src.diagrams.interface
     import src.adjust.interface
     import src.metrics.interface
     import src.functions.directories
