@@ -3,44 +3,55 @@ aggregates.py
 """
 import logging
 import os
-import sys
+
+import src.diagrams.classifications
+import src.diagrams.disaggregates
+import src.diagrams.aggregates
+import src.functions.directories
 
 
-def main():
+class Interface:
 
-    logger.info('Data structures for illustrations')
+    def __init__(self):
 
-    # Data structure for illustration of aggregates relationships
-    src.diagrams.aggregates.Aggregates(storage=storage).exc()
+        # Storage
+        self.__storage = os.path.join(os.getcwd(), 'warehouse', 'expenditure', 'diagrams')
 
-    # Data structure for illustration of disaggregates
-    src.diagrams.disaggregates.Disaggregates(storage=storage).exc()
+        # And
+        self.__classifications = src.diagrams.classifications.Classifications(storage=self.__storage)
 
+        # Logging
+        logging.basicConfig(level=logging.INFO,
+                            format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
+                            datefmt='%Y-%m-%d %H:%M:%S')
+        self.__logger = logging.getLogger(__name__)
 
-if __name__ == '__main__':
+    def __aggregates(self):
 
-    root = os.getcwd()
-    sys.path.append(root)
-    sys.path.append(os.path.join(root, 'src'))
+        uri = os.path.join(os.getcwd(), 'data', 'expenditure', 'expenditure_transaction_types_aggregates.csv')
 
-    storage = os.path.join(root, 'warehouse', 'expenditure', 'diagrams')
+        fields = {'parent_identifier': 'parent', 'parent_description': 'parent_desc', 'child_identifier': 'id',
+                  'child_description': 'child_desc'}
 
-    # Threads
-    os.environ['NUMEXPR_MAX_THREADS'] = '8'
+        # Data structure: Aggregates
+        self.__classifications.exc(uri=uri, fields=fields, name='aggregates')
 
-    # Logging
-    logging.basicConfig(level=logging.INFO,
-                        format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
-                        datefmt='%Y-%m-%d %H:%M:%S')
-    logger = logging.getLogger(__name__)
+    def __disaggregates(self):
 
-    # Class
-    import src.functions.directories
-    import src.diagrams.aggregates
-    import src.diagrams.disaggregates
+        uri = os.path.join(os.getcwd(), 'data', 'expenditure', 'expenditure_transaction_types_disaggregates.csv')
 
-    directories = src.functions.directories.Directories()
-    directories.cleanup(path=storage)
-    directories.create(path=storage)
+        fields = {'parent_identifier': 'parent', 'parent_description': 'parent_desc', 'child_identifier': 'id',
+                  'child_description': 'child_desc'}
 
-    main()
+        # Data structure: Aggregates -> Disaggregates
+        self.__classifications.exc(uri=uri, fields=fields, name='disaggregates')
+
+    def exc(self):
+
+        directories = src.functions.directories.Directories()
+        directories.cleanup(path=self.__storage)
+        directories.create(path=self.__storage)
+
+        self.__logger.info('Data structures for illustrations')
+        self.__aggregates()
+        self.__disaggregates()
