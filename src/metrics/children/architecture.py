@@ -13,7 +13,7 @@ import src.functions.objects
 import src.functions.streams
 
 
-class Children:
+class Architecture:
     """
     Excerpts
     """
