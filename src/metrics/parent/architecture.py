@@ -8,7 +8,7 @@ import dask.dataframe
 import pandas as pd
 
 import config
-import src.adjust.transactions
+import src.cases.transactions
 import src.functions.directories
 import src.functions.objects
 import src.functions.streams
@@ -29,7 +29,7 @@ class Architecture:
         self.__storage = storage
 
         # The overarching foci, i.e., segments, e.g., defence, economic affairs, etc.
-        self.__segments = src.adjust.transactions.Transactions().segments
+        self.__segments = src.cases.transactions.Transactions().segments
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
         self.__datapath = config.Config().expenditure.datapath
