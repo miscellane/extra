@@ -8,7 +8,7 @@ import dask.dataframe
 import pandas as pd
 
 import config
-import src.adjust.transactions
+import src.cases.transactions
 import src.functions.objects
 import src.functions.streams
 
@@ -29,7 +29,7 @@ class Architecture:
         self.__objects = src.functions.objects.Objects()
 
         # The codes per segment
-        self.__transactions = src.adjust.transactions.Transactions()
+        self.__transactions = src.cases.transactions.Transactions()
         self.__codes = self.__transactions.codes
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
