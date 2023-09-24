@@ -62,7 +62,8 @@ class Interface:
         message = src.metrics.aggregates.architecture.Architecture(storage=self.__paths.aggregates).exc()
         self.__logger.info(message)
 
-        src.metrics.disaggregates.architecture.Architecture(storage=self.__paths.disaggregates).exc()
+        messages = src.metrics.disaggregates.architecture.Architecture(storage=self.__paths.disaggregates).exc()
+        self.__logger.info(messages)
 
 
         '''
@@ -71,5 +72,5 @@ class Interface:
         message = src.metrics.parent.architecture.Architecture(storage=self.__paths.parent).exc()
         self.__logger.info(message)
 
-        message = src.metrics.children.architecture.Architecture(storage=self.__paths.children).exc()
-        self.__logger.info(message)
+        messages = src.metrics.children.architecture.Architecture(storage=self.__paths.children).exc()
+        self.__logger.info(messages)
