@@ -41,11 +41,24 @@ class Structuring:
             # Either
             node = src.metrics.tree.Tree(data=structure, focus='code').exc()
 
-            # Or
-            # node = structure.to_dict(orient='tight')
-            # node['name'] = partition
-
             # Subsequently
             parts.append(node)
 
         return parts
+
+    def exc(self, blob: pd.DataFrame, segment_code) -> str:
+        """
+
+        :param blob:
+        :param segment_code
+        :return:
+        """
+
+        # The data partitions
+        parts = self.__parts(blob=blob)
+
+        # This structure declares an injective mapping: partitions[i] -> data[i]
+        dictionary = {'partitions': self.__partitions, 'data': parts}
+
+        return self.__persist(dictionary=dictionary, path=os.path.join(self.__storage, f'{segment_code}.json'))
+
