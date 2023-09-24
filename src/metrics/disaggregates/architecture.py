@@ -82,4 +82,7 @@ class Architecture:
 
         computations = []
         for segment_code in self.__segment_codes:
-            pass
+            transactions = self.__transactions(segment_code=segment_code)
+            series = self.__series(blob=transactions)
+            message = self.__persist(blob=series, segment_code=segment_code)
+            computations.append(message)
