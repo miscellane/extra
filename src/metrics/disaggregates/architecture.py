@@ -14,8 +14,9 @@ import src.functions.streams
 
 class Architecture:
 
-    def __init__(self, storage: str):
+    def __init__(self, blob: pd.DataFrame, storage: str):
 
+        self.__blob = blob
         self.__storage = storage
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
@@ -39,6 +40,18 @@ class Architecture:
         frame = dask.dataframe.read_csv(
             urlpath=os.path.join(self.__datapath, '*.csv'), usecols=self.__usecols)
         data = frame.compute().reset_index(drop=True)
+
+        return data
+
+    def __transactions(self, segment_code: str) -> pd.DataFrame:
+
+        # The records of a segment
+        data: pd.DataFrame = self.__blob.copy().loc[self.__blob['segment_code'] == segment_code, :]
+
+        # Per epoch year, what is each code's percentage?
+        temporary = data.groupby(by=['epoch']).agg(denominator=('OTE', sum))
+        data = data.copy().merge(temporary.copy(), how='left', on='epoch')
+        data.loc[:, 'annual_code_%'] = 100 * data['OTE'] / data['denominator']
 
         return data
 
