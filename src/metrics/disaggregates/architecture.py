@@ -96,7 +96,6 @@ class Architecture:
             series = self.__series(blob=transactions)
             message = self.__persist(blob=series, segment_code=segment_code)
             computations.append(message)
-
         dask.visualize(computations, filename='computations', format='pdf')
         messages = dask.compute(computations, scheduler='threads')[0]
 
