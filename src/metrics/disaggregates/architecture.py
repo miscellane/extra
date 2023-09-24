@@ -43,6 +43,7 @@ class Architecture:
 
         return data
 
+    @dask.delayed
     def __transactions(self, segment_code: str) -> pd.DataFrame:
 
         # The records of a segment
