@@ -22,12 +22,10 @@ class Architecture:
         self.__storage = storage
         self.__structuring = src.metrics.disaggregates.structuring.Structuring(storage=self.__storage)
 
-        # The data
+        # The data & fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
+        self.__usecols = ['code', 'OTE', 'segment_code', 'year', 'epoch']
         self.__blob = self.__read()
         self.__segment_codes = self.__blob['segment_code'].unique()
-
-        # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
-        self.__usecols = ['code', 'OTE', 'segment_code', 'year', 'epoch']
 
     def __read(self) -> pd.DataFrame:
         """
