@@ -19,7 +19,7 @@ class Architecture:
 
     def __init__(self, storage: str):
         """
-        
+
         :param storage:
         """
 
