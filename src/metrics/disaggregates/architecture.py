@@ -75,10 +75,20 @@ class Architecture:
 
     @dask.delayed
     def __persist(self, blob: pd.DataFrame, segment_code: str) -> str:
+        """
+
+        :param blob:
+        :param segment_code:
+        :return:
+        """
 
         return self.__structuring.exc(blob=blob, segment_code=segment_code)
 
     def exc(self) -> list:
+        """
+
+        :return:
+        """
 
         computations = []
         for segment_code in self.__segment_codes:
