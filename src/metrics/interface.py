@@ -65,7 +65,6 @@ class Interface:
         messages = src.metrics.disaggregates.architecture.Architecture(storage=self.__paths.disaggregates).exc()
         self.__logger.info(messages)
 
-
         '''
         Simple
         '''
