@@ -14,10 +14,12 @@ import src.functions.streams
 
 class Architecture:
 
-    def __init__(self, blob: pd.DataFrame, storage: str):
+    def __init__(self, storage: str):
 
-        self.__blob = blob
         self.__storage = storage
+
+        self.__blob = self.__read()
+        self.__segment_codes = self.__blob['segment_code'].unique()
 
         # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
         self.__datapath = config.Config().expenditure.revalued_
@@ -76,11 +78,6 @@ class Architecture:
 
     def exc(self):
 
-        # Read-in the revalued data
-        data = self.__read()
-        self.__logger.info(data)
-        segment_codes = data['segment_code'].unique()
-        self.__logger.info(segment_codes)
-
-        for segment_code in segment_codes:
-            self.__logger.info(data.loc[data['segment_code'] == segment_code,  ['segment_code', 'code']].drop_duplicates())
+        computations = []
+        for segment_code in self.__segment_codes:
+            pass
