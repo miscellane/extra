@@ -78,7 +78,7 @@ class Architecture:
 
         return self.__structuring.exc(blob=blob, segment_code=segment_code)
 
-    def exc(self):
+    def exc(self) -> list:
 
         computations = []
         for segment_code in self.__segment_codes:
