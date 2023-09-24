@@ -1,3 +1,6 @@
+"""
+architecture.py
+"""
 import os
 import pandas as pd
 
@@ -6,6 +9,9 @@ import src.functions.objects
 
 
 class Structuring:
+    """
+    Structuring
+    """
 
     def __init__(self, storage: str):
         """
@@ -29,6 +35,11 @@ class Structuring:
         return src.functions.objects.Objects().write(nodes=dictionary, path=path)
 
     def __parts(self, blob: pd.DataFrame):
+        """
+
+        :param blob:
+        :return:
+        """
 
         aggregates = blob.copy()
 
