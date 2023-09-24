@@ -55,6 +55,24 @@ class Architecture:
 
         return data
 
+    @dask.delayed
+    def __series(self, blob: pd.DataFrame) -> pd.DataFrame:
+        """
+
+        :param blob:
+        :return:
+        """
+
+        temporary = blob.copy()
+
+        # Per segment code time series, evaluate the delta percentage vis-à-vis the previous year
+        temporary.sort_values(by=['code', 'epoch'], ascending=True, inplace=True)
+        temporary.loc[:, 'series_delta'] = temporary.groupby(by=['code'])['OTE'].diff().fillna(np.NaN)
+        temporary.loc[:, 'series_shift'] = temporary.groupby(by=['code'])['OTE'].shift(periods=1, fill_value=np.NaN)
+        temporary.loc[:, 'series_delta_%'] = 100 * temporary['series_delta'] / temporary['series_shift']
+
+        return temporary
+
     def exc(self):
 
         # Read-in the revalued data
