@@ -64,15 +64,15 @@ class Architecture:
         :return:
         """
 
-        temporary = blob.copy()
+        data = blob.copy()
 
         # Per segment code time series, evaluate the delta percentage vis-à-vis the previous year
-        temporary.sort_values(by=['code', 'epoch'], ascending=True, inplace=True)
-        temporary.loc[:, 'series_delta'] = temporary.groupby(by=['code'])['OTE'].diff().fillna(np.NaN)
-        temporary.loc[:, 'series_shift'] = temporary.groupby(by=['code'])['OTE'].shift(periods=1, fill_value=np.NaN)
-        temporary.loc[:, 'series_delta_%'] = 100 * temporary['series_delta'] / temporary['series_shift']
+        data.sort_values(by=['code', 'epoch'], ascending=True, inplace=True)
+        data.loc[:, 'series_delta'] = data.groupby(by=['code'])['OTE'].diff().fillna(np.NaN)
+        data.loc[:, 'series_shift'] = data.groupby(by=['code'])['OTE'].shift(periods=1, fill_value=np.NaN)
+        data.loc[:, 'series_delta_%'] = 100 * data['series_delta'] / data['series_shift']
 
-        return temporary
+        return data
 
     def exc(self):
 
