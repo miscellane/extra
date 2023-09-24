@@ -2,27 +2,29 @@
 architecture.py
 """
 import os
-import logging
 
 import dask.dataframe
 import numpy as np
 import pandas as pd
 
 import config
-import src.functions.streams
+import src.metrics.disaggregates.structuring
 
 
 class Architecture:
 
     def __init__(self, storage: str):
+        """
+
+        :param storage:
+        """
 
         self.__storage = storage
+        self.__structuring = src.metrics.disaggregates.structuring.Structuring(storage=self.__storage)
 
+        # The data
         self.__blob = self.__read()
         self.__segment_codes = self.__blob['segment_code'].unique()
-
-        # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
-        self.__datapath = config.Config().expenditure.revalued_
 
         # The fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
         self.__usecols = ['code', 'OTE', 'segment_code', 'year', 'epoch']
@@ -33,8 +35,9 @@ class Architecture:
         :return:
         """
 
+        # The calculations must be based on revalued data sets, hence comparable prices/costs across years.
         frame = dask.dataframe.read_csv(
-            urlpath=os.path.join(self.__datapath, '*.csv'), usecols=self.__usecols)
+            urlpath=os.path.join(config.Config().expenditure.revalued_, '*.csv'), usecols=self.__usecols)
         data = frame.compute().reset_index(drop=True)
 
         return data
@@ -69,6 +72,11 @@ class Architecture:
         data.loc[:, 'series_delta_%'] = 100 * data['series_delta'] / data['series_shift']
 
         return data
+
+    @dask.delayed
+    def __persist(self, blob: pd.DataFrame, segment_code: str) -> str:
+
+        return self.__structuring.exc(blob=blob, segment_code=segment_code)
 
     def exc(self):
 
