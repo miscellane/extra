@@ -8,7 +8,9 @@ import numpy as np
 import pandas as pd
 
 import config
+import src.cases.transactions
 import src.metrics.disaggregates.structuring
+import src.functions.objects
 
 
 class Architecture:
@@ -19,8 +21,13 @@ class Architecture:
         :param storage:
         """
 
+        # The transactions data of each segment code type is stored in s separate JSON file.  The
+        # Structuring class ensures each file has the appropriate graphing structure
         self.__storage = storage
         self.__structuring = src.metrics.disaggregates.structuring.Structuring(storage=self.__storage)
+
+        # For the menu
+        self.__objects = src.functions.objects.Objects()
 
         # The data & fields in focus: The overall government expenditure per segment code is recorded in field <OTE>
         self.__usecols = ['code', 'OTE', 'segment_code', 'year', 'epoch']
@@ -96,5 +103,9 @@ class Architecture:
             computations.append(message)
         dask.visualize(computations, filename='computations', format='pdf')
         messages = dask.compute(computations, scheduler='threads')[0]
+
+        segments = src.cases.transactions.Transactions().segments
+        menu = segments.rename(columns={'segment_code': 'name', 'segment_description': 'desc'})
+        self.__objects.write(nodes=menu.to_dict(orient='records'), path=os.path.join(self.__storage, 'menu.json'))
 
         return messages
