@@ -210,7 +210,11 @@ function generateChart(fileNameKey, fileNameValue){
 
 		// Colours
         colors: ['#722f37', '#a000c8', '#800000', '#FFA500', '#6b8e23',
-                 '#000000', '#999090', '#8080ff', '#ff9966', '#214949']
+                 '#000000', '#999090', '#8080ff', '#ff9966', '#214949'],
+
+
+        // Series
+        series: total
 
 	});
 
