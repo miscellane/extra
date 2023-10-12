@@ -133,6 +133,23 @@ function generateChart(fileNameKey, fileNameValue){
         // Credits
         credits: {
             enabled: true
+        },
+
+
+        // Legend
+        legend: {
+            enabled: true,
+            layout: 'horizontal',
+            align: 'center',
+            itemStyle: {
+                fontSize: '11px',
+                width: '150px',
+                textOverflow: 'ellipsis'
+            },
+            verticalAlign: 'bottom',
+            margin: 25,
+            width: 560,
+            x: 85
         }
 
 
