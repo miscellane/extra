@@ -132,7 +132,7 @@ function generateChart(fileNameKey, fileNameValue){
 
         // Credits
         credits: {
-            enabled: false
+            enabled: true
         }
 
 
