@@ -52,7 +52,23 @@ function generateChart(fileNameKey, fileNameValue){
 
         // Partition
         let partitions = source.partitions;
-        var ot = partitions.indexOf('OTE'), an = partitions.indexOf('annual_code_%'), se = partitions.indexOf('series_delta_%');
+        var to = partitions.indexOf('OTE'), pe = partitions.indexOf('annual_code_%'), de = partitions.indexOf('series_delta_%');
+
+        // Splits
+        for (var i = 0; i < source.data[to].length; i += 1) {
+            total[i] = {
+                name: source.data[to][i].description,
+                visible: visible,
+                data: source.data[to][i].data
+            };
+        }
+
+        for (var i = 0; i < source.data[pe].length; i += 1) {
+            percentage[i] = {
+                name: source.data[pe][i].description,
+                data: source.data[pe][i].data
+            };
+        }
 
 	});
 
