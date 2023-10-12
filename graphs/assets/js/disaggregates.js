@@ -38,4 +38,9 @@ dropdown.on('change', function (e) {
 // Draw
 function generateChart(fileNameKey, fileNameValue){
 
+	// Generate curves
+	$.getJSON('https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/metrics/disaggregates/' + fileNameKey + '.json', function (calculations){
+
+	});
+
 }
