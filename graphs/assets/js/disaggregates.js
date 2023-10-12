@@ -39,7 +39,20 @@ dropdown.on('change', function (e) {
 function generateChart(fileNameKey, fileNameValue){
 
 	// Generate curves
-	$.getJSON('https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/metrics/disaggregates/' + fileNameKey + '.json', function (calculations){
+	$.getJSON('https://raw.githubusercontent.com/thirdreading/investments/develop/warehouse/expenditure/metrics/disaggregates/' + fileNameKey + '.json', function (source){
+
+		// Definitions
+        var total = [],
+            percentage = [],
+            groupingUnits = [[
+                'year',   // unit name
+                [1]      // allowed multiples
+            ]],
+            i = 0;
+
+        // Partition
+        let partitions = source.partitions;
+        var ot = partitions.indexOf('OTE'), an = partitions.indexOf('annual_code_%'), se = partitions.indexOf('series_delta_%');
 
 	});
 
