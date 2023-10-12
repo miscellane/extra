@@ -187,7 +187,30 @@ function generateChart(fileNameKey, fileNameValue){
              resize: {
                  enabled: true
             }
-        }
+        },
+
+
+        // Plot Options
+        plotOptions: {
+            series: {
+                marker: {
+                    enabled: true,
+                    radius: 1,
+                    symbol: 'circle'
+                },
+                lineWidth: 0.5,
+                turboThreshold: 4000,
+                dataGrouping: {
+                  units: groupingUnits
+                }
+            }
+
+        },
+
+
+		// Colours
+        colors: ['#722f37', '#a000c8', '#800000', '#FFA500', '#6b8e23',
+                 '#000000', '#999090', '#8080ff', '#ff9966', '#214949']
 
 	});
 
