@@ -150,7 +150,20 @@ function generateChart(fileNameKey, fileNameValue){
             margin: 25,
             width: 560,
             x: 85
+        },
+
+
+        // Exporting
+        exporting: {
+            buttons: {
+                contextButton: {
+                    menuItems: [ 'viewFullscreen', 'printChart', 'separator',
+                        'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG' , 'separator',
+                        'downloadXLS', 'downloadCSV']
+                }
+            }
         }
+
 
 
 	});
