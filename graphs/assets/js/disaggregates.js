@@ -162,9 +162,32 @@ function generateChart(fileNameKey, fileNameValue){
                         'downloadXLS', 'downloadCSV']
                 }
             }
+        },
+
+
+        // Axes
+        xAxis: {
+          gridLineWidth: 0.5
+        },
+
+        yAxis: {
+             labels: {
+                 align: 'left',
+                 x: 5
+             },
+             title: {
+                 text: 'Annual Transaction<br>Total (m£)',
+                 align: 'middle',
+                 margin: 5,
+                 x: 9
+             },
+             min: 0,
+             height: '42.5%',
+             lineWidth: 0.05,
+             resize: {
+                 enabled: true
+            }
         }
-
-
 
 	});
 
