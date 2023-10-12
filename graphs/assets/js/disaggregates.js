@@ -54,7 +54,7 @@ function generateChart(fileNameKey, fileNameValue){
 
         // Partition
         let partitions = source.partitions;
-        var to = partitions.indexOf('OTE'), pe = partitions.indexOf('annual_code_%'), de = partitions.indexOf('series_delta_%');
+        var to = partitions.indexOf('OTE');
 
 
         // Splits
@@ -65,14 +65,6 @@ function generateChart(fileNameKey, fileNameValue){
                 data: source.data[to][i].data
             };
         }
-
-        for (var i = 0; i < source.data[pe].length; i += 1) {
-            percentage[i] = {
-                name: source.data[pe][i].description,
-                data: source.data[pe][i].data
-            };
-        }
-        
 
 	});
 
