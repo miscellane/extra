@@ -105,8 +105,56 @@ function generateChart(fileNameKey, fileNameValue){
 	        },
 	        selected: 5,
 	        verticalAlign: 'top'
-	    }
+	    },
+
+
+	    // Chart
+	    chart: {
+            zoomType: 'x',
+            type: 'spline',
+            height: 635,
+            width: 395
+        },
+
+
+		// Title
+        title: {
+            text: 'Expenditure'
+        },
+
+
+		// Subtitle
+        subtitle: {
+            text: '<p>Annual Central Government Expenditure</p> <br/> ' +
+                '<p><b>...</b></p>'
+        },
+
+
+        // Credits
+        credits: {
+            enabled: false
+        }
+
 
 	});
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
