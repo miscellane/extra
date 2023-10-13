@@ -1383,10 +1383,6 @@
                 "description": " Waste Management",
                 "data": [
                     {
-                        "x": 978307200000.0,
-                        "y": 16.211311939070495
-                    },
-                    {
                         "x": 1009843200000.0,
                         "y": 18.152053055920156
                     },
@@ -1440,10 +1436,6 @@
                 "name": "GF0502",
                 "description": " Water Waste Management",
                 "data": [
-                    {
-                        "x": 978307200000.0,
-                        "y": Infinity
-                    },
                     {
                         "x": 1009843200000.0,
                         "y": 128.26741019528734
@@ -1499,10 +1491,6 @@
                 "description": " Pollution Abatement",
                 "data": [
                     {
-                        "x": 978307200000.0,
-                        "y": 61.15655324122002
-                    },
-                    {
                         "x": 1009843200000.0,
                         "y": -37.45764987186689
                     },
@@ -1556,10 +1544,6 @@
                 "name": "GF0504",
                 "description": " Protection of biodiversity and landscape",
                 "data": [
-                    {
-                        "x": 978307200000.0,
-                        "y": 18.085687938087762
-                    },
                     {
                         "x": 1009843200000.0,
                         "y": 16.462964385350674
@@ -1615,10 +1599,6 @@
                 "description": " Research and Development Environmental Protection",
                 "data": [
                     {
-                        "x": 978307200000.0,
-                        "y": 21.622276525169685
-                    },
-                    {
                         "x": 1009843200000.0,
                         "y": 22.706339795699396
                     },
@@ -1672,10 +1652,6 @@
                 "name": "GF0506",
                 "description": " Environmental Protection Not Elsewhere Classified",
                 "data": [
-                    {
-                        "x": 978307200000.0,
-                        "y": -12.053016526879777
-                    },
                     {
                         "x": 1009843200000.0,
                         "y": 50.7484104913844
