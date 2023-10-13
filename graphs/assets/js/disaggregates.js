@@ -127,6 +127,7 @@ function generateChart(fileNameKey, fileNameValue){
 			},
 
 			xAxis: {
+				type: 'datetime',
 				title: {
 					text: 'Year'
 				},
