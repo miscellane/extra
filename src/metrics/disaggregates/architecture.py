@@ -74,7 +74,8 @@ class Architecture:
         data.sort_values(by=['code', 'epoch'], ascending=True, inplace=True)
         data.loc[:, 'series_delta'] = data.groupby(by=['code'])['OTE'].diff().fillna(np.NaN)
         data.loc[:, 'series_shift'] = data.groupby(by=['code'])['OTE'].shift(periods=1, fill_value=np.NaN)
-        data.loc[:, 'series_delta_%'] = 100 * data['series_delta'] / data['series_shift']
+        data.loc[:, 'series_delta_%'] = np.where(data['series_shift'] != 0,
+                                                 100 * data['series_delta'] / data['series_shift'], np.NaN)
 
         return data
 
