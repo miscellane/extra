@@ -1383,10 +1383,6 @@
                 "description": " Recreational & Sporting Services",
                 "data": [
                     {
-                        "x": 978307200000.0,
-                        "y": 36.546005704018754
-                    },
-                    {
                         "x": 1009843200000.0,
                         "y": 45.14963140237392
                     },
@@ -1472,10 +1468,6 @@
                 "name": "GF0802",
                 "description": " Cultural Services",
                 "data": [
-                    {
-                        "x": 978307200000.0,
-                        "y": 5.697962636966182
-                    },
                     {
                         "x": 1009843200000.0,
                         "y": 1.0167968888658991
@@ -1563,10 +1555,6 @@
                 "description": " Broadcasting & Publishing Services",
                 "data": [
                     {
-                        "x": 978307200000.0,
-                        "y": 1.2812139885386926
-                    },
-                    {
                         "x": 1009843200000.0,
                         "y": 11.36266243721726
                     },
@@ -1652,10 +1640,6 @@
                 "name": "GF0804",
                 "description": " Religious & Other Community Services",
                 "data": [
-                    {
-                        "x": 978307200000.0,
-                        "y": Infinity
-                    },
                     {
                         "x": 1009843200000.0,
                         "y": 878.2889008369459
@@ -1743,10 +1727,6 @@
                 "description": " Research and Development Recreation,  Culture & Religion",
                 "data": [
                     {
-                        "x": 978307200000.0,
-                        "y": -67.26089921716509
-                    },
-                    {
                         "x": 1009843200000.0,
                         "y": 95.65778016738918
                     },
@@ -1832,10 +1812,6 @@
                 "name": "GF0806",
                 "description": " Recreation, Culture & Religion not elsewhere classified",
                 "data": [
-                    {
-                        "x": 978307200000.0,
-                        "y": -69.56075340438903
-                    },
                     {
                         "x": 1009843200000.0,
                         "y": -33.47635474308768
